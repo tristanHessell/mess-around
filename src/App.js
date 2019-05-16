@@ -1,26 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 
-import Playlist from './Playlist';
+import * as api from './api';
+import PlaylistView from './PlaylistView';
 
-const PLAYLIST = {
-  id: '',
-  name: 'PLAYLIST NAME',
-  description: 'hello description is me',
-  comments: {'01': 'badas'},
-  songs: [{
-    id: '01',
-    artists: ['Gus Dapperton', 'Miley Cyrus'],
-    name: 'Hello name',
-  }, {
-    id: '02',
-    artists: ['Gus Dapperton', 'Miley Cyrus'],
-    name: 'Hello name',
-  }],
-};
+const AppContainer = styled.div`
+  display:flex;
+  flex-direction: column;
+  height:100%;
+`;
 
+// TODO connect to spotify
+// TODO connect to a DB
+// TODO landing page
+// TODO list of playlists
 function App() {
-  const [playlist] = useState(PLAYLIST);
-  const [comments, setComments] = useState(PLAYLIST.comments);
+  const [playlist, setPlaylist] = useState();
+  const [comments, setComments] = useState();
 
   const onClickSave = ({changes}) => {
     setComments({
@@ -29,17 +26,30 @@ function App() {
     });
   };
 
+  useEffect(() => {
+    async function getPlaylist () {
+      const [newPlaylist, newComments] = await Promise.all([api.getPlaylist(), api.getComments()]);
+      ReactDOM.unstable_batchedUpdates(() => {
+        setPlaylist(newPlaylist);
+        setComments(newComments || {});
+      });
+    }
+
+    getPlaylist();
+
+  }, []);
+
   return (
-    <div>
-      <Playlist
+    <AppContainer>
+      {playlist && <PlaylistView
         id={playlist.id}
         name={playlist.name}
         description={playlist.description}
         comments={comments}
         songs={playlist.songs}
         onSaveComments={onClickSave}
-      />
-    </div>
+      />}
+    </AppContainer>
   );
 }
 
