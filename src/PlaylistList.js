@@ -15,21 +15,11 @@ const AutoSizerContainer = styled.div`
   flex: 1 1 auto;
 `;
 
-function hasCommentChanged (comment, change) {
-  if (!change && !comment) {
-    return false;
-  }
-
-  return change !== comment;
-};
-
-// TODO make it pop out (with the song & comment in a modal, with the comment filling the screen as possible) on hold/double click?
-// TODO write tests
-function PlaylistList({comments, changes, songs, onClickSave, onClickSong, onChangeComment, onClickUndo}) {
+function PlaylistList({comments, songs, onClickSave, onClickSaveAll, onClickSong, onChangeComment, onClickUndo, hasCommentChanged, readOnly}) {
 
   function rowRenderer ({index, style}) {
     const song = songs[index];
-    const hasChanged = hasCommentChanged(comments[song.id], changes[song.id]);
+    const hasChanged = hasCommentChanged(song.id);
 
     return (
       <div key={song.id} style={style}>
@@ -38,11 +28,13 @@ function PlaylistList({comments, changes, songs, onClickSave, onClickSong, onCha
           name={song.name}
           artists={song.artists}
           onChangeComment={onChangeComment}
-          comment={changes[song.id]}
+          comment={comments[song.id]}
           hasChanged={hasChanged}
           onClick={() => onClickSong(song.id)}
+          readOnly={readOnly}
+          onUndo={onClickUndo}
+          onSave={onClickSave}
         />
-        {hasChanged && <button onClick={() => onClickUndo(song.id, comments[song.id])}>Undo</button>}
       </div>
     );
   }
@@ -56,13 +48,13 @@ function PlaylistList({comments, changes, songs, onClickSave, onClickSong, onCha
               width={width}
               height={height}
               rowCount={songs.length}
-              rowHeight={75} // TODO change this
+              rowHeight={100} // TODO change this
               rowRenderer={rowRenderer}
             />
           )}
         </AutoSizer>
       </AutoSizerContainer>
-      <button onClick={() => onClickSave()}>Save</button>
+      {!readOnly && <button onClick={() => onClickSaveAll()}>Save All</button>}
     </PlaylistContainer>
   );
 }

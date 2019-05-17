@@ -21,7 +21,7 @@ export function getPlaylist (playlistId) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(PLAYLIST);
-    }, 2000)
+    }, 500)
   });
 };
 
@@ -29,6 +29,6 @@ export function getComments (playlistId) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(COMMENTS);
-    }, 2000)
+    }, 500)
   });
 };

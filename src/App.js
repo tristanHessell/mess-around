@@ -19,7 +19,7 @@ function App() {
   const [playlist, setPlaylist] = useState();
   const [comments, setComments] = useState();
 
-  const onClickSave = ({changes}) => {
+  const onClickSaveComments = (changes) => {
     setComments({
       ...comments,
       ...changes,
@@ -42,12 +42,12 @@ function App() {
   return (
     <AppContainer>
       {playlist && <PlaylistView
-        id={playlist.id}
+        playlistId={playlist.id}
         name={playlist.name}
         description={playlist.description}
         comments={comments}
         songs={playlist.songs}
-        onSaveComments={onClickSave}
+        onSaveComments={onClickSaveComments}
       />}
     </AppContainer>
   );

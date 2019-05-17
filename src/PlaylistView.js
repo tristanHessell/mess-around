@@ -1,5 +1,6 @@
 import React, { useReducer, useCallback, useState } from 'react';
 import styled from 'styled-components';
+import Modal from 'react-modal';
 
 import PlaylistList from './PlaylistList';
 import PlaylistCarousel from './PlaylistCarousel';
@@ -17,44 +18,72 @@ const PlaylistContainer = styled.div`
   height:100%;
 `;
 
-// TODO fix up state and duplication in playlist area
-// TODO make it pop out (with the song & comment in a modal, with the comment filling the screen as possible) on hold/double click?
 // TODO write tests
-function Playlist({id, name, description, comments, songs, onSaveComments}) {
+function Playlist({name, description, comments, songs, onSaveComments}) {
+  // TODO changes is a shit name
   const [changes, setChanges] = useReducer(reducer, comments);
-  const [viewToggle, setView] = useState('list');
+  const [showCarousel, setShowCarousel] = useState(false);
+  const [selectedSongId, setSelectedSongId] = useState(false);
   const onChangeComment = useCallback((songId, comment) => setChanges({type: 'CHANGE', songId, comment}), [setChanges]);
 
-  const onClickUndo = (songId, comment) => onChangeComment(songId, comment);
-  const onClickSave = () => onSaveComments({changes});
-  const onClickSong = (id) => console.log('clicked', id);
+  const onClickUndo = (songId) => onChangeComment(songId, comments[songId]);
+  const onClickSaveAll = () => onSaveComments(changes);
+  const onClickSave = (songId) => onSaveComments({[songId]: changes[songId]});
+
+  const toggleShowCarousel = () => {
+    setShowCarousel(!showCarousel);
+  }
+
+  const hasCommentChanged = (songId) => {
+    const change = changes[songId];
+    const comment = comments[songId];
+
+    if (!change && !comment) {
+      return false;
+    }
+  
+    return change !== comment;
+  };
 
   return (
     <PlaylistContainer>
       <h1>{name}</h1>
       <p>{description}</p>
 
-      <button onClick={() => setView(viewToggle === 'caro' ? 'list' : 'caro')}>Toggle View Type</button>
+      <Modal
+        isOpen={showCarousel}
+        onRequestClose={() => {
+          toggleShowCarousel();
+        }}
+      >
+        <PlaylistCarousel
+          songs={songs}
+          comments={changes}
+          onClickUndo={onClickUndo}
+          onClickSaveAll={onClickSaveAll}
+          onClickSave={onClickSave}
+          onClickSong={(id) => {
+            setSelectedSongId(id);
+          }}
+          onChangeComment={onChangeComment}
+          hasCommentChanged={hasCommentChanged}
+          selectedSongId={selectedSongId}
+        />
+      </Modal>
 
-      {viewToggle === 'caro' && <PlaylistCarousel
+      <PlaylistList
         songs={songs}
-        comments={comments}
-        changes={changes}
+        comments={changes}
         onClickUndo={onClickUndo}
+        onClickSaveAll={onClickSaveAll}
         onClickSave={onClickSave}
-        onClickSong={onClickSong}
+        onClickSong={(id) => {
+          toggleShowCarousel();
+          setSelectedSongId(id);
+        }}
         onChangeComment={onChangeComment}
-      />}
-
-      {viewToggle === 'list' && <PlaylistList
-        songs={songs}
-        comments={comments}
-        changes={changes}
-        onClickUndo={onClickUndo}
-        onClickSave={onClickSave}
-        onClickSong={onClickSong}
-        onChangeComment={onChangeComment}
-      />}
+        hasCommentChanged={hasCommentChanged}
+      />
     </PlaylistContainer>
   );
 }

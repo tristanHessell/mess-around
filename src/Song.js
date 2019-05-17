@@ -7,11 +7,12 @@ const SongContainer = styled.div`
   /*  */
 `;
 
-//TODO add readonly capabilities
-const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick}) => {
+const CommentArea = styled.textarea`
+  color: ${(props) => props.disabled ? 'red': 'blue'};
+`;
+const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick, onUndo, onSave, readOnly}) => {
   console.log('DRAW', songId);
 
-  // TODO handle e.target handling properly - dont want div onClick to interfere with links/text area etc
   const onClickSong = (e) => {
     if (onClick) {
       onClick(songId);
@@ -19,11 +20,13 @@ const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onCha
   };
 
   return (
-    <SongContainer onClick={onClickSong}>
+    <SongContainer onDoubleClick={onClickSong}>
       <div>{name}</div>
       <Artists artists={artists} />
-      <textarea type="text" value={comment} onChange={(e) => onChangeComment(songId, e.target.value)}/>
-      { hasChanged && 'changed'}
+      <CommentArea value={comment} onChange={(e) => onChangeComment(songId, e.target.value)} disabled={readOnly}/>
+      { !readOnly && hasChanged && 'changed'}
+      {hasChanged && <button onClick={() => onUndo(songId)}>Undo</button>}
+      {hasChanged && <button onClick={() => onSave(songId)}>Save</button>}
     </SongContainer>
   );
 });

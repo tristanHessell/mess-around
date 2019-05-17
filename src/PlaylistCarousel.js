@@ -8,20 +8,18 @@ const PlaylistCarouselContainer = styled.div`
   /*  */
 `;
 
-function hasCommentChanged (comment, change) {
-  if (!change && !comment) {
-    return false;
-  }
-
-  return change !== comment;
-};
-
-const PlaylistCarousel = React.memo(({songs, comments, changes, onClickSong, onChangeComment, onClickUndo, onClickSave}) => {
+const PlaylistCarousel = React.memo(({songs, comments, onClickSong, onChangeComment, onClickUndo, onClickSave, onClickSaveAll, hasCommentChanged, selectedSongId, readOnly}) => {
   return (
     <PlaylistCarouselContainer>
-      <Carousel showThumbs={false} showStatus={false} showIndicators={false}>
+      <Carousel
+        showThumbs={false}
+        showStatus={false}
+        showIndicators={false}
+        selectedItem={songs.findIndex((song) => song.id === selectedSongId)}
+        onChange={(index) => onClickSong(songs[index].id)}
+      >
         {songs.map((song) =>{
-          const hasChanged = hasCommentChanged(comments[song.id], changes[song.id]);
+          const hasChanged = hasCommentChanged(song.id);
 
           return (
             <div key={song.id}>
@@ -30,16 +28,19 @@ const PlaylistCarousel = React.memo(({songs, comments, changes, onClickSong, onC
                 name={song.name}
                 artists={song.artists}
                 onChangeComment={onChangeComment}
-                comment={changes[song.id]}
+                comment={comments[song.id]}
                 hasChanged={hasChanged}
                 onClick={() => onClickSong(song.id)}
+                readOnly={readOnly}
+                onUndo={onClickUndo}
+                onSave={onClickSave}
               />
-              {hasChanged && <button onClick={() => onClickUndo(song.id, comments[song.id])}>Undo</button>}
+
             </div>
           );
         })}
       </Carousel>
-      <button onClick={() => onClickSave()}>Save</button>
+      {!readOnly && <button onClick={() => onClickSaveAll()}>Save All</button>}
     </PlaylistCarouselContainer>
   );
 });
