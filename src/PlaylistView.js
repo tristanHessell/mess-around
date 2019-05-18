@@ -1,6 +1,9 @@
 import React, { useReducer, useCallback, useState } from 'react';
 import styled from 'styled-components';
+import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+
+import * as api from './api';
 
 import PlaylistList from './PlaylistList';
 import PlaylistCarousel from './PlaylistCarousel';
@@ -19,7 +22,30 @@ const PlaylistContainer = styled.div`
 `;
 
 // TODO write tests
-function Playlist({name, description, comments, songs, onSaveComments}) {
+//TODO move playlist stuff from App.js to here
+function Playlist({playlistId}) {
+  const [playlist, setPlaylist] = useState();
+  const [comments, setComments] = useState();
+
+  const onClickSaveComments = (changes) => {
+    setComments({
+      ...comments,
+      ...changes,
+    });
+  };
+
+  useEffect(() => {
+    async function getPlaylist () {
+      const [newPlaylist, newComments] = await Promise.all([api.getPlaylist(), api.getComments()]);
+      ReactDOM.unstable_batchedUpdates(() => {
+        setPlaylist(newPlaylist);
+        setComments(newComments || {});
+      });
+    }
+
+    getPlaylist();
+
+  }, []);
   // TODO changes is a shit name
   const [changes, setChanges] = useReducer(reducer, comments);
   const [showCarousel, setShowCarousel] = useState(false);

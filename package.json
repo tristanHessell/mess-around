@@ -48,6 +48,7 @@
     "react-dom": "^16.8.6",
     "react-modal": "^3.8.1",
     "react-responsive-carousel": "^3.1.49",
+    "react-router-dom": "^5.0.0",
     "react-virtualized": "^9.21.1",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",

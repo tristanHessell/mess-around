@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import { Route, Link } from 'react-router-dom';
 
-import * as api from './api';
 import PlaylistView from './PlaylistView';
 
 const AppContainer = styled.div`
@@ -13,45 +12,26 @@ const AppContainer = styled.div`
 
 // TODO add react-router
 
-
 // TODO connect to spotify
 // TODO connect to a DB
 // TODO landing page
 // TODO list of playlists
 function App() {
-  const [playlist, setPlaylist] = useState();
-  const [comments, setComments] = useState();
-
-  const onClickSaveComments = (changes) => {
-    setComments({
-      ...comments,
-      ...changes,
-    });
-  };
-
-  useEffect(() => {
-    async function getPlaylist () {
-      const [newPlaylist, newComments] = await Promise.all([api.getPlaylist(), api.getComments()]);
-      ReactDOM.unstable_batchedUpdates(() => {
-        setPlaylist(newPlaylist);
-        setComments(newComments || {});
-      });
-    }
-
-    getPlaylist();
-
-  }, []);
-
+  const id = 'BLAH'
   return (
     <AppContainer>
-      {playlist && <PlaylistView
-        playlistId={playlist.id}
-        name={playlist.name}
-        description={playlist.description}
-        comments={comments}
-        songs={playlist.songs}
-        onSaveComments={onClickSaveComments}
-      />}
+      <div>
+        <Link to="/test">Test</Link> | <Link to={`"/playlist/${id}`}>Playlist</Link>
+      </div>
+      <AppContainer>
+        {/* TODO get ID from playlist */}
+        <Route path="/playlist/:id" render={({match}) => (
+          <PlaylistView
+            playlistId={match.id}
+          />
+        )}
+      />
+      </AppContainer>
     </AppContainer>
   );
 }
