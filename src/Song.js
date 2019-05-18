@@ -24,7 +24,7 @@ const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onCha
       <div>{name}</div>
       <Artists artists={artists} />
       <CommentArea value={comment} onChange={(e) => onChangeComment(songId, e.target.value)} disabled={readOnly}/>
-      { !readOnly && hasChanged && 'changed'}
+      {!readOnly && hasChanged && 'changed'}
       {hasChanged && <button onClick={() => onUndo(songId)}>Undo</button>}
       {hasChanged && <button onClick={() => onSave(songId)}>Save</button>}
     </SongContainer>

@@ -11,6 +11,9 @@ const AppContainer = styled.div`
   height:100%;
 `;
 
+// TODO add react-router
+
+
 // TODO connect to spotify
 // TODO connect to a DB
 // TODO landing page
