@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Route, Link } from 'react-router-dom';
+
+import ReadOnlyContext from './ReadOnlyContext';
 
 import PlaylistView from './PlaylistView';
 
@@ -10,8 +12,6 @@ const AppContainer = styled.div`
   height:100%;
 `;
 
-// TODO add react-router
-
 // TODO connect to spotify
 // TODO connect to a DB
 // TODO landing page
@@ -20,18 +20,19 @@ function App() {
   const id = 'BLAH'
   return (
     <AppContainer>
-      <div>
-        <Link to="/test">Test</Link> | <Link to={`"/playlist/${id}`}>Playlist</Link>
-      </div>
-      <AppContainer>
-        {/* TODO get ID from playlist */}
-        <Route path="/playlist/:id" render={({match}) => (
-          <PlaylistView
-            playlistId={match.id}
-          />
-        )}
-      />
-      </AppContainer>
+      <ReadOnlyContext.Provider value={false}>
+        <div>
+          <Link to="/">Home</Link> | <Link to={`/playlist/${id}`}>Playlist</Link>
+        </div>
+        <AppContainer>
+          <Route path="/playlist/:id" render={({match}) => (
+            <PlaylistView
+              playlistId={match.id}
+            />
+          )}
+        />
+        </AppContainer>
+      </ReadOnlyContext.Provider>
     </AppContainer>
   );
 }

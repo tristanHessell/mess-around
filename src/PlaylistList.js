@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { List, AutoSizer } from 'react-virtualized';
 import styled from 'styled-components';
 
+import ReadOnlyContext from './ReadOnlyContext';
 import Song from './Song';
 
 const PlaylistContainer = styled.div`
@@ -15,7 +16,8 @@ const AutoSizerContainer = styled.div`
   flex: 1 1 auto;
 `;
 
-function PlaylistList({comments, songs, onClickSave, onClickSaveAll, onClickSong, onChangeComment, onClickUndo, hasCommentChanged, readOnly}) {
+function PlaylistList({comments, songs, onSaveSong, onClickSong, onChangeComment, hasCommentChanged}) {
+  const readOnly = useContext(ReadOnlyContext);
 
   function rowRenderer ({index, style}) {
     const song = songs[index];
@@ -32,8 +34,7 @@ function PlaylistList({comments, songs, onClickSave, onClickSaveAll, onClickSong
           hasChanged={hasChanged}
           onClick={() => onClickSong(song.id)}
           readOnly={readOnly}
-          onUndo={onClickUndo}
-          onSave={onClickSave}
+          onSave={onSaveSong}
         />
       </div>
     );
@@ -54,7 +55,7 @@ function PlaylistList({comments, songs, onClickSave, onClickSaveAll, onClickSong
           )}
         </AutoSizer>
       </AutoSizerContainer>
-      {!readOnly && <button onClick={() => onClickSaveAll()}>Save All</button>}
+      {!readOnly && <button onClick={() => onSaveSong()}>Save All</button>}
     </PlaylistContainer>
   );
 }

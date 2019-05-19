@@ -1,4 +1,4 @@
-import React, { useReducer, useCallback, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
@@ -8,12 +8,43 @@ import * as api from './api';
 import PlaylistList from './PlaylistList';
 import PlaylistCarousel from './PlaylistCarousel';
 
-function reducer(state, {type, songId, comment}) {
-  return {
-    ...state,
-    [songId]: comment
+function newCommentsReducer (state, action) {
+  switch(action.type) {
+    case 'SET_COMMENTS': {
+      return {
+        ...state,
+        canonical: action.comments ? { ...action.comments } : {},
+        changes: action.comments ? { ...action.comments } : {},
+      };
+    }
+    case 'SAVE_COMMENTS' : {
+      // TODO this should talk to the backend
+      return {
+        ...state,
+        canonical: {
+          ...state.canonical,
+          ...state.changes,
+        },
+      };
+    }
+    case 'UPDATE_CHANGES': {
+      const { songId, change } = action;
+      const newChange = change === null || change === undefined ? state.canonical[songId] : change;
+
+      return {
+        ...state,
+        changes: {
+          ...state.changes,
+          [songId]: newChange,
+        },
+      };
+    }
+    default: {
+      //
+    }
   };
 }
+
 
 const PlaylistContainer = styled.div`
   display:flex;
@@ -22,47 +53,27 @@ const PlaylistContainer = styled.div`
 `;
 
 // TODO write tests
-//TODO move playlist stuff from App.js to here
-function Playlist({playlistId}) {
+function PlaylistView ({playlistId}) {
   const [playlist, setPlaylist] = useState();
-  const [comments, setComments] = useState();
-
-  const onClickSaveComments = (changes) => {
-    setComments({
-      ...comments,
-      ...changes,
-    });
-  };
-
-  useEffect(() => {
-    async function getPlaylist () {
-      const [newPlaylist, newComments] = await Promise.all([api.getPlaylist(), api.getComments()]);
-      ReactDOM.unstable_batchedUpdates(() => {
-        setPlaylist(newPlaylist);
-        setComments(newComments || {});
-      });
-    }
-
-    getPlaylist();
-
-  }, []);
-  // TODO changes is a shit name
-  const [changes, setChanges] = useReducer(reducer, comments);
   const [showCarousel, setShowCarousel] = useState(false);
   const [selectedSongId, setSelectedSongId] = useState(false);
-  const onChangeComment = useCallback((songId, comment) => setChanges({type: 'CHANGE', songId, comment}), [setChanges]);
 
-  const onClickUndo = (songId) => onChangeComment(songId, comments[songId]);
-  const onClickSaveAll = () => onSaveComments(changes);
-  const onClickSave = (songId) => onSaveComments({[songId]: changes[songId]});
+  const [comments, setComments] = useReducer(newCommentsReducer, { comments: {}, changes: {}});
 
+  const onChangeComment = (songId, change) => {
+    setComments({type: 'UPDATE_CHANGES', songId, change });
+  };
+
+  const onSaveComment = () => {
+    setComments({type: 'SAVE_COMMENTS'});
+  };
   const toggleShowCarousel = () => {
     setShowCarousel(!showCarousel);
   }
 
   const hasCommentChanged = (songId) => {
-    const change = changes[songId];
-    const comment = comments[songId];
+    const change = comments.changes[songId];
+    const comment = comments.canonical[songId];
 
     if (!change && !comment) {
       return false;
@@ -71,10 +82,26 @@ function Playlist({playlistId}) {
     return change !== comment;
   };
 
+  useEffect(() => {
+    async function getPlaylist () {
+      const [newPlaylist, comments] = await Promise.all([
+        api.getPlaylist(playlistId),
+        api.getComments(playlistId),
+      ]);
+
+      ReactDOM.unstable_batchedUpdates(() => {
+        setPlaylist(newPlaylist);
+        setComments({type: 'SET_COMMENTS', comments});
+      });
+    }
+
+    getPlaylist();
+  }, [playlistId]);
+
   return (
-    <PlaylistContainer>
-      <h1>{name}</h1>
-      <p>{description}</p>
+    playlist ? <PlaylistContainer>
+      <h1>{playlist.name}</h1>
+      <p>{playlist.description}</p>
 
       <Modal
         isOpen={showCarousel}
@@ -83,11 +110,9 @@ function Playlist({playlistId}) {
         }}
       >
         <PlaylistCarousel
-          songs={songs}
-          comments={changes}
-          onClickUndo={onClickUndo}
-          onClickSaveAll={onClickSaveAll}
-          onClickSave={onClickSave}
+          songs={playlist.songs}
+          comments={comments.changes}
+          onSaveSong={onSaveComment}
           onClickSong={(id) => {
             setSelectedSongId(id);
           }}
@@ -98,11 +123,9 @@ function Playlist({playlistId}) {
       </Modal>
 
       <PlaylistList
-        songs={songs}
-        comments={changes}
-        onClickUndo={onClickUndo}
-        onClickSaveAll={onClickSaveAll}
-        onClickSave={onClickSave}
+        songs={playlist.songs}
+        comments={comments.changes}
+        onSaveSong={onSaveComment}
         onClickSong={(id) => {
           toggleShowCarousel();
           setSelectedSongId(id);
@@ -110,8 +133,8 @@ function Playlist({playlistId}) {
         onChangeComment={onChangeComment}
         hasCommentChanged={hasCommentChanged}
       />
-    </PlaylistContainer>
+    </PlaylistContainer> : 'Loading...'
   );
 }
 
-export default Playlist;
+export default PlaylistView;

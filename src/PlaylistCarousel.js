@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 
+import ReadOnlyContext from './ReadOnlyContext';
 import Song from './Song';
 
 const PlaylistCarouselContainer = styled.div`
   /*  */
 `;
 
-const PlaylistCarousel = React.memo(({songs, comments, onClickSong, onChangeComment, onClickUndo, onClickSave, onClickSaveAll, hasCommentChanged, selectedSongId, readOnly}) => {
+const PlaylistCarousel = React.memo(({songs, comments, onClickSong, onChangeComment, onSaveSong, hasCommentChanged, selectedSongId}) => {
+  const readOnly = useContext(ReadOnlyContext);
+
   return (
     <PlaylistCarouselContainer>
       <Carousel
@@ -32,15 +35,14 @@ const PlaylistCarousel = React.memo(({songs, comments, onClickSong, onChangeComm
                 hasChanged={hasChanged}
                 onClick={() => onClickSong(song.id)}
                 readOnly={readOnly}
-                onUndo={onClickUndo}
-                onSave={onClickSave}
+                onSave={onSaveSong}
               />
 
             </div>
           );
         })}
       </Carousel>
-      {!readOnly && <button onClick={() => onClickSaveAll()}>Save All</button>}
+      {!readOnly && <button onClick={() => onSaveSong()}>Save All</button>}
     </PlaylistCarouselContainer>
   );
 });
