@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import ReadOnlyContext from './ReadOnlyContext';
 
@@ -19,21 +20,23 @@ const AppContainer = styled.div`
 function App() {
   const id = 'BLAH'
   return (
-    <AppContainer>
-      <ReadOnlyContext.Provider value={false}>
-        <div>
-          <Link to="/">Home</Link> | <Link to={`/playlist/${id}`}>Playlist</Link>
-        </div>
-        <AppContainer>
-          <Route path="/playlist/:id" render={({match}) => (
-            <PlaylistView
-              playlistId={match.id}
-            />
-          )}
-        />
-        </AppContainer>
-      </ReadOnlyContext.Provider>
-    </AppContainer>
+    <Router>
+      <AppContainer>
+        <ReadOnlyContext.Provider value={false}>
+          <div>
+            <Link to="/">Home</Link> | <Link to={`/playlist/${id}`}>Playlist</Link>
+          </div>
+          <AppContainer>
+            <Route path="/playlist/:id" render={({match}) => (
+              <PlaylistView
+                playlistId={match.id}
+              />
+            )}
+          />
+          </AppContainer>
+        </ReadOnlyContext.Provider>
+      </AppContainer>
+    </Router>
   );
 }
 
