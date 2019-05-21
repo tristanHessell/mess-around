@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { List, AutoSizer } from 'react-virtualized';
 import styled from 'styled-components';
 
-import ReadOnlyContext from './ReadOnlyContext';
-import Song from './Song';
+import ReadOnlyContext from '../ReadOnlyContext';
+import Song from '../song/Song';
 
 const PlaylistContainer = styled.div`
   display:flex;

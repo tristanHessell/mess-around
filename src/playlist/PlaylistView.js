@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
-import * as api from './api';
+import * as api from '../api';
 
 import PlaylistList from './PlaylistList';
 import PlaylistCarousel from './PlaylistCarousel';
@@ -72,14 +72,7 @@ function PlaylistView ({playlistId}) {
   }
 
   const hasCommentChanged = (songId) => {
-    const change = comments.changes[songId];
-    const comment = comments.canonical[songId];
-
-    if (!change && !comment) {
-      return false;
-    }
-  
-    return change !== comment;
+    return comments.changes[songId] !== comments.canonical[songId];
   };
 
   useEffect(() => {

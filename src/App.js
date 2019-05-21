@@ -4,7 +4,7 @@ import { Route, Link } from 'react-router-dom';
 
 import ReadOnlyContext from './ReadOnlyContext';
 
-import PlaylistView from './PlaylistView';
+import PlaylistView from './playlist/PlaylistView';
 
 const AppContainer = styled.div`
   display:flex;

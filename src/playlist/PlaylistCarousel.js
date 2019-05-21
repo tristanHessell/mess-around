@@ -2,8 +2,8 @@ import React, {useContext} from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 
-import ReadOnlyContext from './ReadOnlyContext';
-import Song from './Song';
+import ReadOnlyContext from '../ReadOnlyContext';
+import Song from '../song/Song';
 
 const PlaylistCarouselContainer = styled.div`
   /*  */

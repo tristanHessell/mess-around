@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components';
 
-import ReadOnlyContext from './ReadOnlyContext';
-import Artists from './Artists';
+import ReadOnlyContext from '../ReadOnlyContext';
+import Artists from '../artists/Artists';
 
 const SongContainer = styled.div`
   /*  */
