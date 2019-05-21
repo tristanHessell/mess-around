@@ -1,50 +1,19 @@
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import { useSelector, useDispatch } from 'react-redux'
 
-import * as api from '../api';
+import {
+  fetchComments,
+  storeComments,
+  updateComments,
+  commentsSelector, // TODO move all the redux stuff to their own places
+  playlistSelector, // TODO move all the redux stuff to their own places
+  fetchPlaylist,
+} from '../actions';
 
 import PlaylistList from './PlaylistList';
 import PlaylistCarousel from './PlaylistCarousel';
-
-function newCommentsReducer (state, action) {
-  switch(action.type) {
-    case 'SET_COMMENTS': {
-      return {
-        ...state,
-        canonical: action.comments ? { ...action.comments } : {},
-        changes: action.comments ? { ...action.comments } : {},
-      };
-    }
-    case 'SAVE_COMMENTS' : {
-      // TODO this should talk to the backend
-      return {
-        ...state,
-        canonical: {
-          ...state.canonical,
-          ...state.changes,
-        },
-      };
-    }
-    case 'UPDATE_CHANGES': {
-      const { songId, change } = action;
-      const newChange = change === null || change === undefined ? state.canonical[songId] : change;
-
-      return {
-        ...state,
-        changes: {
-          ...state.changes,
-          [songId]: newChange,
-        },
-      };
-    }
-    default: {
-      //
-    }
-  };
-}
-
 
 const PlaylistContainer = styled.div`
   display:flex;
@@ -54,18 +23,19 @@ const PlaylistContainer = styled.div`
 
 // TODO write tests
 function PlaylistView ({playlistId}) {
-  const [playlist, setPlaylist] = useState();
   const [showCarousel, setShowCarousel] = useState(false);
   const [selectedSongId, setSelectedSongId] = useState(false);
 
-  const [comments, setComments] = useReducer(newCommentsReducer, { comments: {}, changes: {}});
+  const comments = useSelector(commentsSelector);
+  const { canonical: playlist } = useSelector(playlistSelector);
+  const dispatch = useDispatch();
 
   const onChangeComment = (songId, change) => {
-    setComments({type: 'UPDATE_CHANGES', songId, change });
+    dispatch(updateComments(songId, change));
   };
 
   const onSaveComment = () => {
-    setComments({type: 'SAVE_COMMENTS'});
+    dispatch(storeComments());
   };
   const toggleShowCarousel = () => {
     setShowCarousel(!showCarousel);
@@ -77,22 +47,17 @@ function PlaylistView ({playlistId}) {
 
   useEffect(() => {
     async function getPlaylist () {
-      const [newPlaylist, comments] = await Promise.all([
-        api.getPlaylist(playlistId),
-        api.getComments(playlistId),
+      await Promise.all([
+        dispatch(fetchPlaylist(playlistId)),
+        dispatch(fetchComments(playlistId)),
       ]);
-
-      ReactDOM.unstable_batchedUpdates(() => {
-        setPlaylist(newPlaylist);
-        setComments({type: 'SET_COMMENTS', comments});
-      });
     }
 
     getPlaylist();
-  }, [playlistId]);
+  }, [playlistId, dispatch]);
 
   return (
-    playlist ? <PlaylistContainer>
+    !playlist.isLoading && !comments.isLoading ? <PlaylistContainer>
       <h1>{playlist.name}</h1>
       <p>{playlist.description}</p>
 

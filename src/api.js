@@ -33,8 +33,7 @@ export function getComments (playlistId) {
   });
 };
 
-// savePlaylist
-export function savePlaylist (playlist, comments) {
+export function saveComments (comments) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve();
