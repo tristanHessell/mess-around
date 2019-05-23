@@ -1,32 +1,39 @@
-import React, {useContext} from 'react';
+import React, {useContext, useRef} from 'react';
 import styled from 'styled-components';
 
 import ReadOnlyContext from '../ReadOnlyContext';
 import Artists from '../artists/Artists';
 
 const SongContainer = styled.div`
-  /*  */
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 `;
 
 const CommentArea = styled.textarea`
   color: ${(props) => props.disabled ? 'red': 'blue'};
+  /* height: ${(props) => props.expanded ? '400px' : 'auto'}; */
+  flex: 1;
 `;
-const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick, onSave, }) => {
-  const readOnly = useContext(ReadOnlyContext)
+const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick, expanded}) => {
+  const readOnly = useContext(ReadOnlyContext);
+  const songContainerRef = useRef(null);
 
   const onClickSong = (e) => {
-    if (onClick) {
+    if (e.target.type !== 'textarea' && e.target.type !== 'a' && onClick) {
       onClick(songId);
-    } 
+    }
   };
 
   return (
-    <SongContainer onDoubleClick={onClickSong}>
-      <div>{name}</div>
-      <Artists artists={artists} />
-      <CommentArea value={comment} onChange={(e) => onChangeComment(songId, e.target.value)} disabled={readOnly}/>
-      {!readOnly && hasChanged && 'changed'}
-      {hasChanged && <button onClick={() => onChangeComment(songId)}>Undo</button>}
+    <SongContainer onDoubleClick={onClickSong} ref={songContainerRef}>
+      <div>
+        <div>{name}</div>
+        <Artists artists={artists} />
+        {!readOnly && hasChanged && 'changed'}
+        {hasChanged && <button onClick={() => onChangeComment(songId)}>Undo</button>}
+      </div>
+      <CommentArea value={comment} onChange={(e) => onChangeComment(songId, e.target.value)} disabled={readOnly} expanded={expanded}/>
     </SongContainer>
   );
 });
