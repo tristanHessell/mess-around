@@ -2,7 +2,7 @@ import React, {useContext, useRef} from 'react';
 import styled from 'styled-components';
 
 import ReadOnlyContext from '../ReadOnlyContext';
-import Artists from '../artists/Artists';
+import Artists from './Artists';
 
 const SongContainer = styled.div`
   display: flex;

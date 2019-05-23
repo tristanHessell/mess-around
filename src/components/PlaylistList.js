@@ -3,7 +3,7 @@ import { List, AutoSizer } from 'react-virtualized';
 import styled from 'styled-components';
 
 import ReadOnlyContext from '../ReadOnlyContext';
-import Song from '../song/Song';
+import Song from './Song';
 
 const PlaylistContainer = styled.div`
   display:flex;

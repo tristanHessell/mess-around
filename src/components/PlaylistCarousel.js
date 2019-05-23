@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 
 import ReadOnlyContext from '../ReadOnlyContext';
-import Song from '../song/Song';
+import Song from './Song';
 
 import './playlistCarousel.css';
 

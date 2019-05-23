@@ -4,17 +4,20 @@ import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux'
 
 import {
+  commentsSelector,
   fetchComments,
   storeComments,
   updateComments,
-  commentsSelector, // TODO move all the redux stuff to their own places
-  playlistSelector, // TODO move all the redux stuff to their own places
-  fetchPlaylist,
-} from './actions';
+} from './redux/modules/comments';
 
-import PlaylistList from './playlist/PlaylistList';
-import PlaylistCarousel from './playlist/PlaylistCarousel';
-import User from './user/User'
+import {
+  playlistSelector,
+  fetchPlaylist,
+} from './redux/modules/playlist';
+
+import PlaylistList from './components/PlaylistList';
+import PlaylistCarousel from './components/PlaylistCarousel';
+import User from './components/User'
 
 const PlaylistContainer = styled.div`
   display:flex;
