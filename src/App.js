@@ -21,8 +21,8 @@ function App() {
   const id = 'BLAH'
   return (
     <Router>
-      <AppContainer>
-        <ReadOnlyContext.Provider value={false}>
+      <ReadOnlyContext.Provider value={false}>
+        <AppContainer>
           <div>
             <Link to="/">Home</Link> | <Link to={`/playlist/${id}`}>Playlist</Link>
           </div>
@@ -34,8 +34,8 @@ function App() {
             )}
           />
           </AppContainer>
-        </ReadOnlyContext.Provider>
-      </AppContainer>
+        </AppContainer>
+      </ReadOnlyContext.Provider>
     </Router>
   );
 }
