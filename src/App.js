@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import ReadOnlyContext from './ReadOnlyContext';
 
-import PlaylistView from './playlist/PlaylistView';
+import PlaylistView from './PlaylistView';
 
 const AppContainer = styled.div`
   display:flex;
@@ -24,10 +24,10 @@ function App() {
       <ReadOnlyContext.Provider value={false}>
         <AppContainer>
           <div>
-            <Link to="/">Home</Link> | <Link to={`/playlist/${id}`}>Playlist</Link>
+            <Link to="/">Home</Link> | <Link to={`/playlists/${id}`}>Playlist</Link>
           </div>
           <AppContainer>
-            <Route path="/playlist/:id" render={({match}) => (
+            <Route path="/playlists/:id" render={({match}) => (
               <PlaylistView
                 playlistId={match.id}
               />

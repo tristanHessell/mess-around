@@ -10,16 +10,21 @@ import {
   commentsSelector, // TODO move all the redux stuff to their own places
   playlistSelector, // TODO move all the redux stuff to their own places
   fetchPlaylist,
-} from '../actions';
+} from './actions';
 
-import PlaylistList from './PlaylistList';
-import PlaylistCarousel from './PlaylistCarousel';
+import PlaylistList from './playlist/PlaylistList';
+import PlaylistCarousel from './playlist/PlaylistCarousel';
+import User from './user/User'
 
 const PlaylistContainer = styled.div`
   display:flex;
   flex-direction: column;
   height:100%;
 `;
+
+const user = {
+  name: 'ALI BABA'
+};
 
 // TODO write tests
 function PlaylistView ({playlistId}) {
@@ -58,8 +63,13 @@ function PlaylistView ({playlistId}) {
 
   return (
     !playlist.isLoading && !comments.isLoading ? <PlaylistContainer>
-      <h1>{playlist.name}</h1>
-      <p>{playlist.description}</p>
+      <div>
+        <h1>{playlist.name}</h1>
+        <p>{playlist.description}</p>
+        Written by <User
+          name={user.name}
+        />
+      </div>
 
       <Modal
         isOpen={showCarousel}
