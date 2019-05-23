@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 
 import ReadOnlyContext from './ReadOnlyContext';
 import PlaylistView from './PlaylistView';
+import Playlists from './components/Playlists';
 
 const AppContainer = styled.div`
   display:flex;
@@ -24,6 +25,9 @@ function App() {
           <Link to="/">Home</Link> | <Link to={`/playlists/${id}`}>Playlist</Link>
         </div>
         <AppContainer>
+          <Playlists
+            // playlistId={}
+          />
           <Route path="/playlists/:id" render={({match}) => (
             <PlaylistView
               playlistId={match.id}

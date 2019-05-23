@@ -12,8 +12,8 @@ const SongContainer = styled.div`
 
 const CommentArea = styled.textarea`
   color: ${(props) => props.disabled ? 'red': 'blue'};
-  /* height: ${(props) => props.expanded ? '400px' : 'auto'}; */
   flex: 1;
+  resize: none;
 `;
 const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick, expanded}) => {
   const readOnly = useContext(ReadOnlyContext);

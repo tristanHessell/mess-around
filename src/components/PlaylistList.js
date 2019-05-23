@@ -8,7 +8,7 @@ import Song from './Song';
 const PlaylistContainer = styled.div`
   display:flex;
   flex-direction: column;
-  height:100%;
+  flex: 1;
 `;
 
 // https://github.com/bvaughn/react-virtualized/blob/master/docs/usingAutoSizer.md#can-i-use-autosizer-within-a-flex-container
