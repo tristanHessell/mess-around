@@ -19,6 +19,9 @@ export default function reducer (state = DEFAULT_PLAYLIST, action) {
     case LOADING_PLAYLIST: {
       return {
         ...state,
+        canonical: undefined,
+        changes: undefined,
+        isLoading: true,
       };
     }
     default: {
@@ -36,8 +39,15 @@ export function getPlaylist (playlist) {
   };
 }
 
+export function loadingPlaylist () {
+  return {
+    type: LOADING_PLAYLIST,
+  };
+}
+
 export function fetchPlaylist (playlistId) {
   return async (dispatch) => {
+    dispatch(loadingPlaylist());
     const playlist = await api.getPlaylist(playlistId);
     return dispatch(getPlaylist(playlist));
   }

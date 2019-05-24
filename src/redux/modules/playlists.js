@@ -10,7 +10,7 @@ export default function reducer (state = DEFAULT_PLAYLISTS, action) {
     case GET_PLAYLISTS: {
       return {
         ...state,
-        playlists: {...action.playlists},
+        playlists: [...action.playlists],
         isLoading: false,
       };
     }

@@ -23,6 +23,7 @@ const PlaylistContainer = styled.div`
   display:flex;
   flex-direction: column;
   height:100%;
+  flex: 1;
 `;
 
 const user = {
@@ -35,7 +36,7 @@ function PlaylistView ({playlistId}) {
   const [selectedSongId, setSelectedSongId] = useState(false);
 
   const comments = useSelector(commentsSelector);
-  const { canonical: playlist } = useSelector(playlistSelector);
+  const { canonical: playlist, isLoading: playlistIsLoading } = useSelector(playlistSelector);
   const dispatch = useDispatch();
 
   const onChangeComment = (songId, change) => {
@@ -65,7 +66,7 @@ function PlaylistView ({playlistId}) {
   }, [playlistId, dispatch]);
 
   return (
-    !playlist.isLoading && !comments.isLoading ? <PlaylistContainer>
+    !playlistIsLoading && !comments.isLoading ? <PlaylistContainer>
       <div>
         <h1>{playlist.name}</h1>
         <p>{playlist.description}</p>

@@ -18,6 +18,7 @@ src/
 
 
 TODOs
+Check if changes in comments before changing url
 Application Structure
 Testing
   Components

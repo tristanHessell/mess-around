@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import {
   playlistsSelector,
   fetchPlaylists,
 } from '../redux/modules/playlists';
 
+// TODO play around with css animations
 const PlaylistsContainer = styled.div`
-  color: ${(props) => props.isOpen ? 'red' : 'blue' };
+  display: flex;
+  /* position: relative; */
+  flex-direction: column;
+  width: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
-const Playlists = React.memo(({}) => {
+const Playlists = React.memo(({ isOpen }) => {
   const { playlists, isLoading } = useSelector(playlistsSelector);
   const dispatch = useDispatch();
-  const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
     async function getPlaylist () {
@@ -26,10 +32,11 @@ const Playlists = React.memo(({}) => {
 
   return (
     <PlaylistsContainer isOpen={isOpen}>
-      <button onClick={() => setIsOpen(!isOpen)}>OPEN/CLOSE</button>
-      { !isLoading ? <div>
-        {JSON.stringify(playlists)}
-      </div> : 'loading...'}
+      { !isLoading ?
+        playlists.map((playlist) => (
+          <Link key={playlist.id} to={`/playlists/${playlist.id}`}>{playlist.name}</Link>
+        ))
+      : 'loading...'}
     </PlaylistsContainer>
   );
 });
