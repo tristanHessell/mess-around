@@ -1,0 +1,36 @@
+
+/* These all need to be here as react-responsive-carousel isn't allowing me to change it! */
+
+.playlist-carousel {
+  flex: 1;
+  background-color: red;
+}
+
+.playlist-carousel > .carousel {
+  height:100%;
+}
+
+.playlist-carousel > .carousel > .slider-wrapper {
+  height:100%;
+}
+
+.playlist-carousel > .carousel > .slider-wrapper > .slider.animated {
+  height:100%;
+}
+
+.playlist-carousel > .carousel > .control-arrow {
+  background-color: black;
+}
+
+.playlist-carousel > .carousel > .control-arrow::before {
+  border-left-color: red;
+}
+
+.playlist-carousel > .carousel > .control-arrow::before {
+  border-right-color: red;
+}
+
+.playlist-carousel > .carousel > .slider-wrapper > .slider.animated > .slide {
+  background-color: white;
+  display: flex;
+}

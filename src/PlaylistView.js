@@ -1,54 +1,79 @@
-import React, { useReducer, useCallback, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import { useSelector, useDispatch } from 'react-redux'
 
-import PlaylistList from './PlaylistList';
-import PlaylistCarousel from './PlaylistCarousel';
+import {
+  commentsSelector,
+  fetchComments,
+  storeComments,
+  updateComments,
+} from './redux/modules/comments';
 
-function reducer(state, {type, songId, comment}) {
-  return {
-    ...state,
-    [songId]: comment
-  };
-}
+import {
+  playlistSelector,
+  fetchPlaylist,
+} from './redux/modules/playlist';
+
+import PlaylistList from './components/PlaylistList';
+import PlaylistCarousel from './components/PlaylistCarousel';
+import User from './components/User'
 
 const PlaylistContainer = styled.div`
   display:flex;
   flex-direction: column;
   height:100%;
+  flex: 1;
 `;
 
+const user = {
+  name: 'ALI BABA'
+};
+
 // TODO write tests
-function Playlist({name, description, comments, songs, onSaveComments}) {
-  // TODO changes is a shit name
-  const [changes, setChanges] = useReducer(reducer, comments);
+function PlaylistView ({playlistId}) {
   const [showCarousel, setShowCarousel] = useState(false);
   const [selectedSongId, setSelectedSongId] = useState(false);
-  const onChangeComment = useCallback((songId, comment) => setChanges({type: 'CHANGE', songId, comment}), [setChanges]);
 
-  const onClickUndo = (songId) => onChangeComment(songId, comments[songId]);
-  const onClickSaveAll = () => onSaveComments(changes);
-  const onClickSave = (songId) => onSaveComments({[songId]: changes[songId]});
+  const comments = useSelector(commentsSelector);
+  const { canonical: playlist, isLoading: playlistIsLoading } = useSelector(playlistSelector);
+  const dispatch = useDispatch();
 
+  const onChangeComment = (songId, change) => {
+    dispatch(updateComments(songId, change));
+  };
+
+  const onSaveComment = () => {
+    dispatch(storeComments());
+  };
   const toggleShowCarousel = () => {
     setShowCarousel(!showCarousel);
   }
 
   const hasCommentChanged = (songId) => {
-    const change = changes[songId];
-    const comment = comments[songId];
-
-    if (!change && !comment) {
-      return false;
-    }
-  
-    return change !== comment;
+    return comments.changes[songId] !== comments.canonical[songId];
   };
 
+  useEffect(() => {
+    async function getPlaylist () {
+      await Promise.all([
+        dispatch(fetchPlaylist(playlistId)),
+        dispatch(fetchComments(playlistId)),
+      ]);
+    }
+
+    getPlaylist();
+  }, [playlistId, dispatch]);
+
   return (
-    <PlaylistContainer>
-      <h1>{name}</h1>
-      <p>{description}</p>
+    !playlistIsLoading && !comments.isLoading ? <PlaylistContainer>
+      <div>
+        <h1>{playlist.name}</h1>
+        <p>{playlist.description}</p>
+        Written by <User
+          name={user.name}
+        />
+      </div>
 
       <Modal
         isOpen={showCarousel}
@@ -57,11 +82,9 @@ function Playlist({name, description, comments, songs, onSaveComments}) {
         }}
       >
         <PlaylistCarousel
-          songs={songs}
-          comments={changes}
-          onClickUndo={onClickUndo}
-          onClickSaveAll={onClickSaveAll}
-          onClickSave={onClickSave}
+          songs={playlist.songs}
+          comments={comments.changes}
+          onSaveSong={onSaveComment}
           onClickSong={(id) => {
             setSelectedSongId(id);
           }}
@@ -72,11 +95,9 @@ function Playlist({name, description, comments, songs, onSaveComments}) {
       </Modal>
 
       <PlaylistList
-        songs={songs}
-        comments={changes}
-        onClickUndo={onClickUndo}
-        onClickSaveAll={onClickSaveAll}
-        onClickSave={onClickSave}
+        songs={playlist.songs}
+        comments={comments.changes}
+        onSaveSong={onSaveComment}
         onClickSong={(id) => {
           toggleShowCarousel();
           setSelectedSongId(id);
@@ -84,8 +105,8 @@ function Playlist({name, description, comments, songs, onSaveComments}) {
         onChangeComment={onChangeComment}
         hasCommentChanged={hasCommentChanged}
       />
-    </PlaylistContainer>
+    </PlaylistContainer> : 'Loading...'
   );
 }
 
-export default Playlist;
+export default PlaylistView;
