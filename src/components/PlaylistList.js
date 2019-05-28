@@ -16,12 +16,12 @@ const AutoSizerContainer = styled.div`
   flex: 1 1 auto;
 `;
 
-function PlaylistList({comments, songs, onSaveSong, onClickSong, onChangeComment, hasCommentChanged}) {
+function PlaylistList({songs, onSaveSong, onClickSong, onChangeComment, getComment}) {
   const readOnly = useContext(ReadOnlyContext);
 
   function rowRenderer ({index, style}) {
     const song = songs[index];
-    const hasChanged = hasCommentChanged(song.id);
+    const { comment, hasChanged } = getComment(song.id);
 
     return (
       <div key={song.id} style={style}>
@@ -30,7 +30,7 @@ function PlaylistList({comments, songs, onSaveSong, onClickSong, onChangeComment
           name={song.name}
           artists={song.artists}
           onChangeComment={onChangeComment}
-          comment={comments[song.id]}
+          comment={comment}
           hasChanged={hasChanged}
           onClick={() => onClickSong(song.id)}
           readOnly={readOnly}

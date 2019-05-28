@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import {
   commentsSelector,
+  commentChangesSelector, // TODO rename
   fetchComments,
   storeComments,
   updateComments,
@@ -50,9 +51,7 @@ function PlaylistView ({playlistId}) {
     setShowCarousel(!showCarousel);
   }
 
-  const hasCommentChanged = (songId) => {
-    return comments.changes[songId] !== comments.canonical[songId];
-  };
+  const getComment = commentChangesSelector(comments);
 
   useEffect(() => {
     async function getPlaylist () {
@@ -83,27 +82,25 @@ function PlaylistView ({playlistId}) {
       >
         <PlaylistCarousel
           songs={playlist.songs}
-          comments={comments.changes}
+          getComment={getComment}
           onSaveSong={onSaveComment}
           onClickSong={(id) => {
             setSelectedSongId(id);
           }}
           onChangeComment={onChangeComment}
-          hasCommentChanged={hasCommentChanged}
           selectedSongId={selectedSongId}
         />
       </Modal>
 
       <PlaylistList
         songs={playlist.songs}
-        comments={comments.changes}
+        getComment={getComment}
         onSaveSong={onSaveComment}
         onClickSong={(id) => {
           toggleShowCarousel();
           setSelectedSongId(id);
         }}
         onChangeComment={onChangeComment}
-        hasCommentChanged={hasCommentChanged}
       />
     </PlaylistContainer> : 'Loading...'
   );

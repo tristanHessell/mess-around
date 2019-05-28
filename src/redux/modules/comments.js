@@ -14,7 +14,7 @@ export default function reducer (state = DEFAULT_COMMENTS, action) {
       return {
         ...state,
         canonical: action.comments ? { ...action.comments } : {},
-        changes: action.comments ? { ...action.comments } : {},
+        changes: {},
         isSaving: false,
         isLoading: false,
       };
@@ -43,7 +43,7 @@ export default function reducer (state = DEFAULT_COMMENTS, action) {
     }
     case UPDATE_COMMENTS: {
       const { songId, change } = action;
-      const newChange = change === null || change === undefined ? state.canonical[songId] : change;
+      const newChange = (change === null || change === undefined) ? state.canonical[songId] : change;
 
       return {
         ...state,
@@ -60,6 +60,29 @@ export default function reducer (state = DEFAULT_COMMENTS, action) {
 }
 
 export const commentsSelector = (state) => state.comments;
+
+/**
+ * not to be used with redux/useSelector.
+ * 
+ * Just experimenting!
+ * */
+export const commentChangesSelector = (comments) => (songId) => {
+  if (!comments || !songId) {
+    return;
+  }
+
+  const { canonical, changes } = comments;
+  const canonicalComment = canonical[songId];
+  const changedComment = changes[songId];
+
+  const hasChanged = (changedComment !== undefined && changedComment !== null) && changedComment !== canonicalComment;
+  const comment = hasChanged ? changedComment : canonicalComment;
+
+  return {
+    comment,
+    hasChanged,
+  };
+} 
 
 export function getComments (comments) {
   return {
