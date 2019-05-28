@@ -23,7 +23,9 @@ const PLAYLIST = {
   }],
 };
 
-const COMMENTS = {'01': 'badas'}
+const COMMENTS = {'01': `badassadsa _d_
+
+asd`}
 
 
 export function getPlaylists () {

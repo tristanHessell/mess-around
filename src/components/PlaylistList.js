@@ -11,12 +11,16 @@ const PlaylistContainer = styled.div`
   flex: 1;
 `;
 
+const RowContainer = styled.div`
+  display: flex;
+`;
+
 // https://github.com/bvaughn/react-virtualized/blob/master/docs/usingAutoSizer.md#can-i-use-autosizer-within-a-flex-container
 const AutoSizerContainer = styled.div`
   flex: 1 1 auto;
 `;
 
-function PlaylistList({songs, onSaveSong, onClickSong, onChangeComment, getComment}) {
+function PlaylistList({songs, onSaveSong, onClickSong, onChangeComment, getComment, preview}) {
   const readOnly = useContext(ReadOnlyContext);
 
   function rowRenderer ({index, style}) {
@@ -24,7 +28,7 @@ function PlaylistList({songs, onSaveSong, onClickSong, onChangeComment, getComme
     const { comment, hasChanged } = getComment(song.id);
 
     return (
-      <div key={song.id} style={style}>
+      <RowContainer key={song.id} style={style}>
         <Song
           songId={song.id}
           name={song.name}
@@ -35,8 +39,9 @@ function PlaylistList({songs, onSaveSong, onClickSong, onChangeComment, getComme
           onClick={() => onClickSong(song.id)}
           readOnly={readOnly}
           onSave={onSaveSong}
+          preview={preview}
         />
-      </div>
+      </RowContainer>
     );
   }
 

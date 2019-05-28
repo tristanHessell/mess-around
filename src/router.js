@@ -9,10 +9,12 @@ import { matchPath } from 'react-router-dom';
 export function getParam (history, path) {
   const paramId = path.split(':')[1];
 
-  return matchPath(history.location.pathname, {
+  const match = matchPath(history.location.pathname, {
     path,
     exact: false,
     strict: false,
-  }).params[paramId];
+  });
+  
+  return match && match.params && match.params[paramId];
 }
 

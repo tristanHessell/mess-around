@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import {
   commentsSelector,
-  commentChangesSelector, // TODO rename
+  commentChangesSelector,
   fetchComments,
   storeComments,
   updateComments,
@@ -35,6 +35,7 @@ const user = {
 function PlaylistView ({playlistId}) {
   const [showCarousel, setShowCarousel] = useState(false);
   const [selectedSongId, setSelectedSongId] = useState(false);
+  const [previewMode, setPreviewMode] = useState(true);
 
   const comments = useSelector(commentsSelector);
   const { canonical: playlist, isLoading: playlistIsLoading } = useSelector(playlistSelector);
@@ -72,6 +73,7 @@ function PlaylistView ({playlistId}) {
         Written by <User
           name={user.name}
         />
+        <button onClick={() => setPreviewMode(!previewMode)}>Toggle Preview</button>
       </div>
 
       <Modal
@@ -89,6 +91,7 @@ function PlaylistView ({playlistId}) {
           }}
           onChangeComment={onChangeComment}
           selectedSongId={selectedSongId}
+          preview={previewMode}
         />
       </Modal>
 
@@ -101,6 +104,7 @@ function PlaylistView ({playlistId}) {
           setSelectedSongId(id);
         }}
         onChangeComment={onChangeComment}
+        preview={previewMode}
       />
     </PlaylistContainer> : 'Loading...'
   );

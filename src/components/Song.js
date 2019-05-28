@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import ReadOnlyContext from '../ReadOnlyContext';
 import Artists from './Artists';
+import Comment from './Comment';
 
 const SongContainer = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const CommentArea = styled.textarea`
   flex: 1;
   resize: none;
 `;
-const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick, expanded}) => {
+const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick, preview}) => {
   const readOnly = useContext(ReadOnlyContext);
   const songContainerRef = useRef(null);
 
@@ -33,7 +34,7 @@ const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onCha
         {!readOnly && hasChanged && 'changed'}
         {hasChanged && <button onClick={() => onChangeComment(songId)}>Undo</button>}
       </div>
-      <CommentArea value={comment} onChange={(e) => onChangeComment(songId, e.target.value)} disabled={readOnly} expanded={expanded}/>
+      <Comment comment={comment} onChange={(comment) => onChangeComment(songId, comment)} disabled={readOnly} preview={preview}/>
     </SongContainer>
   );
 });

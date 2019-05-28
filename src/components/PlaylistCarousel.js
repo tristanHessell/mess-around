@@ -13,10 +13,9 @@ const PlaylistCarouselContainer = styled.div`
   flex-direction: column;
 `;
 
-const PlaylistCarousel = React.memo(({songs, comments, onClickSong, onChangeComment, onSaveSong, hasCommentChanged, selectedSongId}) => {
+const PlaylistCarousel = React.memo(({songs, onClickSong, onChangeComment, onSaveSong, getComment, selectedSongId, preview}) => {
   const readOnly = useContext(ReadOnlyContext);
   const selectedItem = songs.findIndex((song) => song.id === selectedSongId);
-
 
   return (
     <PlaylistCarouselContainer>
@@ -29,7 +28,7 @@ const PlaylistCarousel = React.memo(({songs, comments, onClickSong, onChangeComm
         onChange={(index) => onClickSong(songs[index].id)}
       >
         {songs.map((song) =>{
-          const hasChanged = hasCommentChanged(song.id);
+          const { comment, hasChanged } = getComment(song.id);
 
           return (
             <Song
@@ -38,11 +37,12 @@ const PlaylistCarousel = React.memo(({songs, comments, onClickSong, onChangeComm
               name={song.name}
               artists={song.artists}
               onChangeComment={onChangeComment}
-              comment={comments[song.id]}
+              comment={comment}
               hasChanged={hasChanged}
               onClick={() => onClickSong(song.id)}
               readOnly={readOnly}
               onSave={onSaveSong}
+              preview={preview}
               expanded
             />
           );
