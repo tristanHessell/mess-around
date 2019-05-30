@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext, useState} from 'react';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
@@ -28,19 +28,33 @@ const CommentArea = styled.textarea`
   border: none;
 `;
 
-// TODO make preview mode toggle when you double click on the preview
-const Comment = React.memo(({comment, onChange, preview}) => {
+const Comment = React.memo(({comment, onChange}) => {
   const readOnly = useContext(ReadOnlyContext);
+  const [isEditable, setEditable] = useState(false);
+
+  const onClickContainer = () => {
+    !isEditable && setEditable(true);
+  };
+
+  const onChangeComment = (e) => {
+    onChange && onChange(e.target.value);
+  };
+
+  const onBlurCommentBox = () => {
+    setEditable(false);
+  };
 
   return (
-    <CommentContainer>
-      { preview ?
+    <CommentContainer onClick={onClickContainer}>
+      { !isEditable ?
         <ReactMarkdown
           source={comment}
         /> :
         <CommentArea
+          autoFocus
           value={comment}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={onChangeComment}
+          onBlur={onBlurCommentBox}
           disabled={readOnly}
         />
       }

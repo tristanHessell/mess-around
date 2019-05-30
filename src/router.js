@@ -14,7 +14,6 @@ export function getParam (history, path) {
     exact: false,
     strict: false,
   });
-  
+
   return match && match.params && match.params[paramId];
 }
-

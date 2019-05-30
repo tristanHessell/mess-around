@@ -20,7 +20,7 @@ const AutoSizerContainer = styled.div`
   flex: 1 1 auto;
 `;
 
-function PlaylistList({songs, onSaveSong, onClickSong, onChangeComment, getComment, preview}) {
+function PlaylistList({songs, onSaveSong, onClickSong, onChangeComment, getComment}) {
   const readOnly = useContext(ReadOnlyContext);
 
   function rowRenderer ({index, style}) {
@@ -39,7 +39,6 @@ function PlaylistList({songs, onSaveSong, onClickSong, onChangeComment, getComme
           onClick={() => onClickSong(song.id)}
           readOnly={readOnly}
           onSave={onSaveSong}
-          preview={preview}
         />
       </RowContainer>
     );

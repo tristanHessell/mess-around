@@ -1,4 +1,4 @@
-import React, {useContext, useRef} from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 
 import ReadOnlyContext from '../ReadOnlyContext';
@@ -11,15 +11,10 @@ const SongContainer = styled.div`
   flex-direction: column;
 `;
 
-const CommentArea = styled.textarea`
-  color: ${(props) => props.disabled ? 'red': 'blue'};
-  flex: 1;
-  resize: none;
-`;
 const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick, preview}) => {
   const readOnly = useContext(ReadOnlyContext);
-  const songContainerRef = useRef(null);
 
+  // TODO add comments explaining the hackery
   const onClickSong = (e) => {
     if (e.target.type !== 'textarea' && e.target.type !== 'a' && onClick) {
       onClick(songId);
@@ -27,7 +22,7 @@ const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onCha
   };
 
   return (
-    <SongContainer onDoubleClick={onClickSong} ref={songContainerRef}>
+    <SongContainer onDoubleClick={onClickSong}>
       <div>
         <div>{name}</div>
         <Artists artists={artists} />
