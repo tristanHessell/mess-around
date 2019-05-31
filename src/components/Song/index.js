@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components';
 
-import ReadOnlyContext from '../ReadOnlyContext';
-import Artists from './Artists';
-import Comment from './Comment';
+import ReadOnlyContext from '../../ReadOnlyContext';
+import Artists from '../Artists';
+import Comment from '../Comment';
 
 const SongContainer = styled.div`
   display: flex;

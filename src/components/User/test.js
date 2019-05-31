@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import User from './User';
+import User from '.';
 
 //TODO
 it('renders without crashing', () => {

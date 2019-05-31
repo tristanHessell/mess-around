@@ -2,7 +2,7 @@ import React, { useContext, useState} from 'react';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
-import ReadOnlyContext from '../ReadOnlyContext';
+import ReadOnlyContext from '../../ReadOnlyContext';
 
 const CommentContainer = styled.div`
   display: flex;

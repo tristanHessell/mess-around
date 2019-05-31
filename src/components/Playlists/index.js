@@ -4,17 +4,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import { getParam } from '../router';
+import { getParam } from '../../router';
 
 import {
   playlistsSelector,
   fetchPlaylists,
-} from '../redux/modules/playlists';
+} from '../../redux/modules/playlists';
 
 import {
   commentsSelector,
   storeComments,
-} from '../redux/modules/comments';
+} from '../../redux/modules/comments';
 
 // TODO play around with css animations
 const PlaylistsContainer = styled.div`
