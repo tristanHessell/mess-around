@@ -16,7 +16,6 @@ import {
   storeComments,
 } from '../../redux/modules/comments';
 
-// TODO play around with css animations
 const PlaylistsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,8 +29,20 @@ const PlaylistButton = styled.div`
   color: ${(props) => props.selected ? 'red' : 'black'};
 `;
 
-// TODO move modal & pending playlist stuff to redux ui area
-// TODO or change to using Prompt (react-router)
+const LeaveWarningModal = React.memo(({ isOpen, onClose, onClickYes, onClickNo }) => {
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onClose}
+    >
+      You have unsaved changes. Do you want to save your changes before leaving?
+      <button onClick={onClickYes}>Yes</button>
+      <button onClick={onClickNo}>No</button>
+      <button onClick={onClose}>Cancel</button>
+    </Modal>
+  );
+})
+
 const Playlists = React.memo(({ isOpen, history }) => {
   const [pendingChangePlaylist, setPendingChangePlaylist] = useState();
   const { playlists, isLoading } = useSelector(playlistsSelector);
@@ -70,22 +81,14 @@ const Playlists = React.memo(({ isOpen, history }) => {
     setPendingChangePlaylist();
   };
 
-  const onClickCancel = () => {
-    setPendingChangePlaylist();
-  };
-
   return (
     <PlaylistsContainer isOpen={isOpen}>
-      <Modal
+      <LeaveWarningModal
         isOpen={!!pendingChangePlaylist}
-        onRequestClose={() => {
-          setPendingChangePlaylist(false);
-        }}
-      >
-        <button onClick={onClickYes}>Yes</button>
-        <button onClick={onClickNo}>No</button>
-        <button onClick={onClickCancel}>Cancel</button>
-      </Modal>
+        onClose={() => setPendingChangePlaylist()}
+        onClickYes={onClickYes}
+        onClickNo={onClickNo}
+      />
       { !isLoading ?
         playlists.map((playlist) => {
           const isSelected = getParam(history, `/playlists/:id`) === playlist.id;

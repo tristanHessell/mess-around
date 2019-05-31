@@ -38,6 +38,7 @@ export default function reducer (state = DEFAULT_COMMENTS, action) {
           ...state.canonical,
           ...state.changes,
         },
+        changes: {},
         isSaving: false,
       };
     }

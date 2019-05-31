@@ -8,14 +8,21 @@ The redux side of this application is organised a la Ducks[https://github.com/er
 Application Structure
 src/
   components/
-    ComponentName.js
-    ComponentName.test.js
+    ComponentName/
+      index.js
+      test.js
   redux/
-    stateName.js
-    stateName.test.js
+    modules/
+      stateName.js
+      stateName.test.js
   index.js
   api.js
 
+
+// TODO connect to spotify
+// TODO connect to a DB
+// TODO landing page
+// TODO list of playlists
 
 TODOs
 Check if changes in comments before changing url

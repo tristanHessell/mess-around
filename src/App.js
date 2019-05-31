@@ -39,11 +39,6 @@ const ViewContainer = styled.div`
   transition-timing-function: ease;
 `;
 
-
-// TODO connect to spotify
-// TODO connect to a DB
-// TODO landing page
-// TODO list of playlists
 function App() {
   const [isOpen, setIsOpen] = useState(true);
   return (

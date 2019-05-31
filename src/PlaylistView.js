@@ -31,7 +31,6 @@ const user = {
   name: 'ALI BABA'
 };
 
-// TODO write tests
 function PlaylistView ({playlistId}) {
   const [showCarousel, setShowCarousel] = useState(false);
   const [selectedSongId, setSelectedSongId] = useState(false);
