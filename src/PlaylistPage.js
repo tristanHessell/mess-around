@@ -33,7 +33,7 @@ const user = {
   name: 'ALI BABA'
 };
 
-function PlaylistView ({playlistId}) {
+function PlaylistPage ({playlistId}) {
   const [showCarousel, setShowCarousel] = useState(false);
   const [selectedSongId, setSelectedSongId] = useState(false);
 
@@ -109,4 +109,4 @@ function PlaylistView ({playlistId}) {
   );
 }
 
-export default PlaylistView;
+export default PlaylistPage;

@@ -29,15 +29,15 @@ const PlaylistButton = styled.div`
   color: ${(props) => props.selected ? 'red' : 'black'};
 `;
 
-const LeaveWarningModal = React.memo(({ isOpen, onClose, onClickYes, onClickNo }) => {
+const LeaveWarningModal = React.memo(({ playlistId, isOpen, onClose, onClickYes, onClickNo }) => {
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
     >
       You have unsaved changes. Do you want to save your changes before leaving?
-      <button onClick={onClickYes}>Yes</button>
-      <button onClick={onClickNo}>No</button>
+      <button onClick={() => { onClickYes(playlistId); onClose();}}>Yes</button>
+      <button onClick={() => { onClickNo(playlistId); onClose();}}>No</button>
       <button onClick={onClose}>Cancel</button>
     </Modal>
   );
@@ -62,33 +62,31 @@ const Playlists = React.memo(({ isOpen, history }) => {
     if (getParam(history, `/playlists/:id`) === playlistId) {
       return;
     }
+
     if (Object.keys(comments.changes).length) {
       setPendingChangePlaylist(playlistId);
       return;
     }
 
     // this will still add on history even if its the same playlist (although earlier code prevents this)
-    history.push(`/playlists/${playlistId}`);
+    changePlaylist(playlistId);
   }
 
-  const onClickYes = async () => {
-    await dispatch(storeComments());
-    history.push(`/playlists/${pendingChangePlaylist}`);
-    setPendingChangePlaylist();
-  };
-
-  const onClickNo = () => {
-    history.push(`/playlists/${pendingChangePlaylist}`);
-    setPendingChangePlaylist();
+  const changePlaylist = (playlistId) => {
+    history.push(`/playlists/${playlistId}`);
   };
 
   return (
     <PlaylistsContainer>
       <LeaveWarningModal
+        playlistId={pendingChangePlaylist}
         isOpen={!!pendingChangePlaylist}
         onClose={() => setPendingChangePlaylist()}
-        onClickYes={onClickYes}
-        onClickNo={onClickNo}
+        onClickYes={async (playlistId) => {
+          await dispatch(storeComments(playlistId));
+          changePlaylist(playlistId);
+        }}
+        onClickNo={changePlaylist}
       />
       { !isLoading ?
         playlists.map((playlist) => {

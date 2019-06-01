@@ -47,15 +47,12 @@ export default function reducer (state = DEFAULT, action) {
     }
     case UPDATE_COMMENTS: {
       const { songId, change } = action;
-      // if there is no change, represent that by using the canonical
-      // TODO I think this can be improved
-      const newChange = (change === null || change === undefined) ? state.canonical[songId] : change;
 
       return {
         ...state,
         changes: {
           ...state.changes,
-          [songId]: newChange,
+          [songId]: change,
         },
       };
     }
@@ -155,7 +152,7 @@ export function fetchComments (playlistId) {
 }
 
 // store - save to outside app
-export function storeComments (){
+export function storeComments (playlistId){
   return async (dispatch, getState) => {
     await dispatch(savingComments());
 
@@ -165,7 +162,7 @@ export function storeComments (){
       ...comments.changes,
     };
 
-    await api.saveComments(changes);
+    await api.saveComments(playlistId, changes);
     return dispatch(saveComments());
   }
 }

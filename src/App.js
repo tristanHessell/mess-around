@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { Route, Link } from 'react-router-dom';
 
 import ReadOnlyContext from './ReadOnlyContext';
-import PlaylistView from './PlaylistView';
+import PlaylistPage from './PlaylistPage';
 import Playlists from './components/Playlists';
+import LandingPage from './LandingPage';
 
 const AppContainer = styled.div`
   display:flex;
@@ -54,8 +55,11 @@ function App() {
             <Playlists/>
           </SideBarContainer>
           <ViewContainer isOpen={isOpen}>
+            <Route path="/" exact
+              component={LandingPage}
+            />
             <Route path="/playlists/:id" render={({match}) => (
-                <PlaylistView
+                <PlaylistPage
                   playlistId={match.params.id}
                 />
               )}
