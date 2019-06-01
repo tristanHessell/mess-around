@@ -6,29 +6,32 @@ const UPDATE_COMMENTS = 'spotify-list/comments/UPDATE_COMMENTS';
 const SAVING_COMMENTS = 'spotify-list/comments/SAVING_COMMENT';
 const LOADING_COMMENTS = 'spotify-list/comments/LOADING_COMMENTS';
 
-const DEFAULT_COMMENTS = { canonical: {}, changes: {}, isSaving: false, isLoading: true};
+const DEFAULT = { playlistId: undefined, canonical: {}, changes: {}, saving: false, loading: undefined };
 
-export default function reducer (state = DEFAULT_COMMENTS, action) {
+export default function reducer (state = DEFAULT, action) {
   switch(action.type) {
     case GET_COMMENTS: {
       return {
         ...state,
         canonical: action.comments ? { ...action.comments } : {},
         changes: {},
-        isSaving: false,
-        isLoading: false,
+        saving: false,
+        loading: undefined,
       };
     }
     case SAVING_COMMENTS : {
       return {
         ...state,
-        isSaving: true,
+        saving: true,
       };
     }
     case LOADING_COMMENTS : {
       return {
         ...state,
-        isLoading: true,
+        playlistId: action.playlistId,
+        loading: {
+          abort: action.abort,
+        },
       };
     }
     case SAVE_COMMENTS : {
@@ -39,11 +42,13 @@ export default function reducer (state = DEFAULT_COMMENTS, action) {
           ...state.changes,
         },
         changes: {},
-        isSaving: false,
+        saving: false,
       };
     }
     case UPDATE_COMMENTS: {
       const { songId, change } = action;
+      // if there is no change, represent that by using the canonical
+      // TODO I think this can be improved
       const newChange = (change === null || change === undefined) ? state.canonical[songId] : change;
 
       return {
@@ -92,6 +97,14 @@ export function getComments (comments) {
   };
 }
 
+export function loadingComments (playlistId, { abort }) {
+  return {
+    type: LOADING_COMMENTS,
+    playlistId,
+    abort,
+  };
+}
+
 export function saveComments () {
   return {
     type: SAVE_COMMENTS,
@@ -114,9 +127,29 @@ export function updateComment (songId, change) {
 
 // fetch - take from outside app
 export function fetchComments (playlistId) {
-  return async (dispatch) => {
-    const comments = await api.getComments(playlistId);
+  return async (dispatch, getState) => {
+    const state = commentsSelector(getState()); 
 
+    // if we are trying to request the current playlist, dont do anything
+    if (state.playlistId === playlistId) {
+      return;
+    }
+
+    // if there is a pending request for comments at the moment, cancel that one and then do our own
+    if (state.loading) {
+      state.loading.abort();
+    }
+
+    // make the request to get the comments
+    const { payload, abort } = api.getComments(playlistId);
+
+    // update the state to show we are requesting
+    await dispatch(loadingComments(playlistId, {abort}));
+
+    // get the actual comments
+    const comments = await payload;
+
+    // update the redux store with the comments
     return dispatch(getComments(comments));
   }
 }

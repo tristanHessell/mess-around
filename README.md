@@ -19,13 +19,16 @@ src/
   api.js
 
 
-// TODO connect to spotify
-// TODO connect to a DB
-// TODO landing page
-// TODO list of playlists
-
 TODOs
+Move to redux-saga (which internally handles cancelling actions)
+Add a loading modal (with a custom message), show it when you load the playlists or save the comments
+
+Go full redux - to try it out
+
 Check if changes in comments before changing url
+connect to spotify
+connect to a DB
+landing page
 Application Structure
 Testing
   Components

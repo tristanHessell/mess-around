@@ -24,7 +24,7 @@ const SideBarContainer = styled.div`
   position: fixed;
   height:100%;
   width: 200px;
-  transform: ${(props) => props.isOpen && 'translateX(-200px)'};
+  transform: ${(props) => !props.isOpen && 'translateX(-200px)'};
   transition-property: transform;
   transition-duration: 0.15s;
   transition-timing-function: ease;
@@ -33,7 +33,7 @@ const SideBarContainer = styled.div`
 // shit naming
 const ViewContainer = styled.div`
   height:100%;
-  transform: ${(props) => !props.isOpen && 'translateX(200px)'};
+  transform: ${(props) => props.isOpen && 'translateX(200px)'};
   transition-property: transform;
   transition-duration: 0.15s;
   transition-timing-function: ease;

@@ -44,17 +44,18 @@ const LeaveWarningModal = React.memo(({ isOpen, onClose, onClickYes, onClickNo }
 })
 
 const Playlists = React.memo(({ isOpen, history }) => {
+  // TODO i dont like this pending state here
   const [pendingChangePlaylist, setPendingChangePlaylist] = useState();
   const { playlists, isLoading } = useSelector(playlistsSelector);
   const comments = useSelector(commentsSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function getPlaylist () {
+    async function getPlaylists () {
       await dispatch(fetchPlaylists());
     }
 
-    getPlaylist();
+    getPlaylists();
   }, [dispatch]);
 
   const onClickPlaylist = async (playlistId) => {
@@ -82,7 +83,7 @@ const Playlists = React.memo(({ isOpen, history }) => {
   };
 
   return (
-    <PlaylistsContainer isOpen={isOpen}>
+    <PlaylistsContainer>
       <LeaveWarningModal
         isOpen={!!pendingChangePlaylist}
         onClose={() => setPendingChangePlaylist()}
@@ -102,7 +103,7 @@ const Playlists = React.memo(({ isOpen, history }) => {
             </PlaylistButton>
           );
         })
-      : 'loading...'}
+      : '...Loading'}
     </PlaylistsContainer>
   );
 });

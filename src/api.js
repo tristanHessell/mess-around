@@ -6,6 +6,9 @@ const PLAYLISTS = [{
 },{
   id: 'BLAH2',
   name: 'PLAYLIST_2',
+}, {
+  id: 'BLAH3',
+  name: 'PLAYLIST_3',
 }];
 
 const PLAYLIST = {
@@ -23,9 +26,11 @@ const PLAYLIST = {
   }],
 };
 
-const COMMENTS = {'01': `badassadsa _d_
-
-asd`}
+const COMMENTS = {
+  BLAH: {'01': `BLAH1`},
+  BLAH2: {'01': `BLAH2`},
+  BLAH3: {'01': `BLAH3`},
+}
 
 
 export function getPlaylists () {
@@ -40,16 +45,26 @@ export function getPlaylist (playlistId) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(PLAYLIST);
-    }, 500)
+    }, 1000)
   });
 };
 
 export function getComments (playlistId) {
-  return new Promise((resolve, reject) => {
+  const abortController = new AbortController();
+  const signal = abortController.signal;
+
+  const payload = new Promise(async (resolve, reject) => {
+    await fetch('www.google.com', {signal});
     setTimeout(() => {
-      resolve(COMMENTS);
+      resolve(COMMENTS[playlistId]);
     }, 500)
   });
+
+  return {
+    payload,
+    // need to bind as the `abort` function depends on some prototype stuff
+    abort: abortController.abort.bind(abortController),
+  };
 };
 
 export function saveComments (comments) {

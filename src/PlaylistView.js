@@ -16,6 +16,8 @@ import {
   fetchPlaylist,
 } from './redux/modules/playlist';
 
+import LoadingModal from './components/LoadingModal';
+
 import PlaylistList from './components/PlaylistList';
 import PlaylistCarousel from './components/PlaylistCarousel';
 import User from './components/User'
@@ -36,7 +38,7 @@ function PlaylistView ({playlistId}) {
   const [selectedSongId, setSelectedSongId] = useState(false);
 
   const comments = useSelector(commentsSelector);
-  const { canonical: playlist, isLoading: playlistIsLoading } = useSelector(playlistSelector);
+  const playlist = useSelector(playlistSelector);
   const dispatch = useDispatch();
 
   const onChangeComment = (songId, change) => {
@@ -60,14 +62,16 @@ function PlaylistView ({playlistId}) {
       ]);
     }
 
+
     getPlaylist();
   }, [playlistId, dispatch]);
 
   return (
-    !playlistIsLoading && !comments.isLoading ? <PlaylistContainer>
+    // TODO i dont enjoy having these double checks
+    !playlist.isLoading && !comments.loading ? <PlaylistContainer>
       <div>
-        <h1>{playlist.name}</h1>
-        <p>{playlist.description}</p>
+        <h1>{playlist.canonical.name}</h1>
+        <p>{playlist.canonical.description}</p>
         Written by <User
           name={user.name}
         />
@@ -80,7 +84,7 @@ function PlaylistView ({playlistId}) {
         }}
       >
         <PlaylistCarousel
-          songs={playlist.songs}
+          songs={playlist.canonical.songs}
           getComment={getComment}
           onSaveSong={onSaveComment}
           onClickSong={(id) => {
@@ -92,7 +96,7 @@ function PlaylistView ({playlistId}) {
       </Modal>
 
       <PlaylistList
-        songs={playlist.songs}
+        songs={playlist.canonical.songs}
         getComment={getComment}
         onSaveSong={onSaveComment}
         onClickSong={(id) => {
@@ -101,7 +105,7 @@ function PlaylistView ({playlistId}) {
         }}
         onChangeComment={onChangeComment}
       />
-    </PlaylistContainer> : 'Loading...'
+    </PlaylistContainer> : <LoadingModal/>
   );
 }
 
