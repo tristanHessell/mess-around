@@ -62,9 +62,9 @@ function PlaylistPage ({playlistId}) {
       ]);
     }
 
-
     getPlaylist();
   }, [playlistId, dispatch]);
+
 
   return (
     // TODO i dont enjoy having these double checks

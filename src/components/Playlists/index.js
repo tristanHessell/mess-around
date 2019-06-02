@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { navigate } from '@reach/router';
 import Modal from 'react-modal';
 
-import { getParam } from '../../router';
+import {
+  playlistSelector,
+} from '../../redux/modules/playlist';
 
 import {
   playlistsSelector,
@@ -43,10 +45,10 @@ const LeaveWarningModal = React.memo(({ playlistId, isOpen, onClose, onClickYes,
   );
 })
 
-const Playlists = React.memo(({ isOpen, history }) => {
-  // TODO i dont like this pending state here
+const Playlists = React.memo(() => {
   const [pendingChangePlaylist, setPendingChangePlaylist] = useState();
   const { playlists, isLoading } = useSelector(playlistsSelector);
+  const playlist = useSelector(playlistSelector);
   const comments = useSelector(commentsSelector);
   const dispatch = useDispatch();
 
@@ -58,8 +60,8 @@ const Playlists = React.memo(({ isOpen, history }) => {
     getPlaylists();
   }, [dispatch]);
 
-  const onClickPlaylist = async (playlistId) => {
-    if (getParam(history, `/playlists/:id`) === playlistId) {
+  const onClickPlaylist = async (currentPlaylistId, playlistId) => {
+    if (currentPlaylistId === playlistId) {
       return;
     }
 
@@ -73,7 +75,7 @@ const Playlists = React.memo(({ isOpen, history }) => {
   }
 
   const changePlaylist = (playlistId) => {
-    history.push(`/playlists/${playlistId}`);
+    navigate(`/playlists/${playlistId}`);
   };
 
   return (
@@ -88,16 +90,21 @@ const Playlists = React.memo(({ isOpen, history }) => {
         }}
         onClickNo={changePlaylist}
       />
+      <div>
+        Playlists
+      </div>
       { !isLoading ?
-        playlists.map((playlist) => {
-          const isSelected = getParam(history, `/playlists/:id`) === playlist.id;
+        playlists.map((playlistSummary) => {
+          const currentPlaylistId = playlist && playlist.id;
+          const isSelected = currentPlaylistId === playlistSummary.id;
+
           return (
             <PlaylistButton
-              key={playlist.id}
-              onClick={() => onClickPlaylist(playlist.id)}
+              key={playlistSummary.id}
+              onClick={() => onClickPlaylist(currentPlaylistId, playlistSummary.id)}
               selected={isSelected}
             >
-              {playlist.name}
+              {playlistSummary.name}
             </PlaylistButton>
           );
         })
@@ -106,4 +113,4 @@ const Playlists = React.memo(({ isOpen, history }) => {
   );
 });
 
-export default withRouter(Playlists);
+export default Playlists;

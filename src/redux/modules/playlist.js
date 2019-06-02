@@ -3,7 +3,7 @@ import * as api from '../../api';
 const GET_PLAYLIST = 'spotify-list/playlist/GET_PLAYLIST';
 const LOADING_PLAYLIST = 'spotify-list/playlist/LOADING_PLAYLIST';
 
-const DEFAULT_PLAYLIST = { canonical: {}, changes: {}, isSaving: false, isLoading: true};
+const DEFAULT_PLAYLIST = { id: undefined, canonical: {}, changes: {}, isSaving: false, isLoading: true};
 
 export default function reducer (state = DEFAULT_PLAYLIST, action) {
   switch(action.type) {
@@ -22,6 +22,7 @@ export default function reducer (state = DEFAULT_PLAYLIST, action) {
         canonical: undefined,
         changes: undefined,
         isLoading: true,
+        id: action.id,
       };
     }
     default: {
@@ -39,15 +40,16 @@ export function getPlaylist (playlist) {
   };
 }
 
-export function loadingPlaylist () {
+export function loadingPlaylist (id) {
   return {
     type: LOADING_PLAYLIST,
+    id,
   };
 }
 
 export function fetchPlaylist (playlistId) {
   return async (dispatch) => {
-    dispatch(loadingPlaylist());
+    dispatch(loadingPlaylist(playlistId));
     const playlist = await api.getPlaylist(playlistId);
     return dispatch(getPlaylist(playlist));
   }

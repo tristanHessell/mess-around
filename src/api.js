@@ -44,7 +44,10 @@ export function getPlaylists () {
 export function getPlaylist (playlistId) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(PLAYLIST);
+      resolve({
+        ...PLAYLIST,
+        id: playlistId,
+      });
     }, 1000)
   });
 };

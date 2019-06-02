@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Route, Link } from 'react-router-dom';
+import { Router, Link } from '@reach/router';
 
 import ReadOnlyContext from './ReadOnlyContext';
 import PlaylistPage from './PlaylistPage';
@@ -17,6 +17,10 @@ const AppContainer = styled.div`
 const ViewPortContainer = styled.div`
   height:100%;
   overflow: hidden;
+`;
+
+const HeadBarContainer = styled.div`
+  /*  */
 `;
 
 const SideBarContainer = styled.div`
@@ -38,6 +42,12 @@ const ViewContainer = styled.div`
   transition-property: transform;
   transition-duration: 0.15s;
   transition-timing-function: ease;
+
+  /* https://github.com/reach/router/issues/63 */
+  div[role="group"][tabindex] {
+    height:100%;
+    // Other rules that don't break a11y 😊
+  }
 `;
 
 function App() {
@@ -45,25 +55,19 @@ function App() {
   return (
     <ReadOnlyContext.Provider value={false}>
       <AppContainer>
-        {/* TODO make this a top bar of some sort */}
-        <div> 
+        <HeadBarContainer> 
           <button onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'IS OPEN' : ' ISCLOSE'}</button>
-          <Link to="/">Home</Link> |
-        </div>
+          <Link to="/">Home</Link>|
+        </HeadBarContainer>
         <ViewPortContainer>
           <SideBarContainer isOpen={isOpen}>
             <Playlists/>
           </SideBarContainer>
           <ViewContainer isOpen={isOpen}>
-            <Route path="/" exact
-              component={LandingPage}
-            />
-            <Route path="/playlists/:id" render={({match}) => (
-                <PlaylistPage
-                  playlistId={match.params.id}
-                />
-              )}
-            />
+            <Router>
+              <LandingPage path="/" />
+              <PlaylistPage path="/playlists/:playlistId"/>
+            </Router>
           </ViewContainer>
         </ViewPortContainer>
       </AppContainer>
