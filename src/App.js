@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Router, Link } from '@reach/router';
 
+import ModalRoot from './components/Modal';
 import ReadOnlyContext from './ReadOnlyContext';
 import PlaylistPage from './PlaylistPage';
 import Playlists from './components/Playlists';
@@ -46,7 +47,6 @@ const ViewContainer = styled.div`
   /* https://github.com/reach/router/issues/63 */
   div[role="group"][tabindex] {
     height:100%;
-    // Other rules that don't break a11y 😊
   }
 `;
 
@@ -54,6 +54,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(true);
   return (
     <ReadOnlyContext.Provider value={false}>
+      <ModalRoot />
       <AppContainer>
         <HeadBarContainer> 
           <button onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'IS OPEN' : ' ISCLOSE'}</button>

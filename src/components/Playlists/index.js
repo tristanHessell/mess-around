@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
-import Modal from 'react-modal';
 
 import {
   playlistSelector,
@@ -15,8 +14,11 @@ import {
 
 import {
   commentsSelector,
-  storeComments,
 } from '../../redux/modules/comments';
+
+import {
+  showModal,
+} from '../../redux/modules/modal';
 
 const PlaylistsContainer = styled.div`
   display: flex;
@@ -31,22 +33,7 @@ const PlaylistButton = styled.div`
   color: ${(props) => props.selected ? 'red' : 'black'};
 `;
 
-const LeaveWarningModal = React.memo(({ playlistId, isOpen, onClose, onClickYes, onClickNo }) => {
-  return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onClose}
-    >
-      You have unsaved changes. Do you want to save your changes before leaving?
-      <button onClick={() => { onClickYes(playlistId); onClose();}}>Yes</button>
-      <button onClick={() => { onClickNo(playlistId); onClose();}}>No</button>
-      <button onClick={onClose}>Cancel</button>
-    </Modal>
-  );
-})
-
 const Playlists = React.memo(() => {
-  const [pendingChangePlaylist, setPendingChangePlaylist] = useState();
   const { playlists, isLoading } = useSelector(playlistsSelector);
   const playlist = useSelector(playlistSelector);
   const comments = useSelector(commentsSelector);
@@ -66,30 +53,24 @@ const Playlists = React.memo(() => {
     }
 
     if (Object.keys(comments.changes).length) {
-      setPendingChangePlaylist(playlistId);
+      dispatch(showModal({
+        modalType: 'SAVE_WARNING_MODAL',
+        modalProps: {
+          message: "You have unsaved changes. Do you want to save your changes before leaving?",
+          currentPlaylistId,
+          playlistId,
+        },
+      }));
+
       return;
     }
 
     // this will still add on history even if its the same playlist (although earlier code prevents this)
-    changePlaylist(playlistId);
-  }
-
-  const changePlaylist = (playlistId) => {
     navigate(`/playlists/${playlistId}`);
-  };
+  }
 
   return (
     <PlaylistsContainer>
-      <LeaveWarningModal
-        playlistId={pendingChangePlaylist}
-        isOpen={!!pendingChangePlaylist}
-        onClose={() => setPendingChangePlaylist()}
-        onClickYes={async (playlistId) => {
-          await dispatch(storeComments(playlistId));
-          changePlaylist(playlistId);
-        }}
-        onClickNo={changePlaylist}
-      />
       <div>
         Playlists
       </div>
