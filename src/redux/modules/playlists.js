@@ -3,7 +3,12 @@ import * as api from '../../api';
 const GET_PLAYLISTS = 'spotify-list/playlists/GET_PLAYLISTS';
 const LOADING_PLAYLISTS = 'spotify-list/playlists/LOADING_PLAYLISTS';
 
-const DEFAULT_PLAYLISTS = { playlists: {}, isLoading: true};
+export const types = {
+  GET_PLAYLISTS,
+  LOADING_PLAYLISTS,
+};
+
+const DEFAULT_PLAYLISTS = { playlists: [], isLoading: false};
 
 export default function reducer (state = DEFAULT_PLAYLISTS, action) {
   switch(action.type) {
@@ -17,6 +22,7 @@ export default function reducer (state = DEFAULT_PLAYLISTS, action) {
     case LOADING_PLAYLISTS: {
       return {
         ...state,
+        isLoading: true,
       };
     }
     default: {
@@ -29,7 +35,7 @@ export const playlistsSelector = (state) => state.playlists;
 
 export function getPlaylists (playlists) {
   return {
-    type: GET_PLAYLISTS,
+    type: types.GET_PLAYLISTS,
     playlists,
   };
 }
