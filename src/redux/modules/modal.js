@@ -1,21 +1,23 @@
-const SHOW_MODAL = 'spotify-list/modal/SHOW_MODAL';
-const HIDE_MODAL = 'spotify-list/modal/HIDE_MODAL';
+export const types = {
+  SHOW_MODAL: 'spotify-list/modal/SHOW_MODAL',
+  HIDE_MODAL: 'spotify-list/modal/HIDE_MODAL',
+};
 
-const DEFAULT = {
+const DEFAULT_STATE = {
   modalType: undefined,
   modalProps: {},
 };
 
-export default function reducer (state = DEFAULT, action) {
+export default function reducer (state = DEFAULT_STATE, action) {
   switch(action.type) {
-    case SHOW_MODAL: {
+    case types.SHOW_MODAL: {
       return {
         modalType: action.modalType,
         modalProps: action.modalProps,
       };
     }
-    case HIDE_MODAL: {
-      return DEFAULT;
+    case types.HIDE_MODAL: {
+      return DEFAULT_STATE;
     }
     default: {
       return state;
@@ -27,7 +29,7 @@ export const modalSelector = (state) => state.modal;
 
 export function showModal ({modalType, modalProps}) {
   return {
-    type: SHOW_MODAL,
+    type: types.SHOW_MODAL,
     modalType,
     modalProps,
   };
@@ -35,6 +37,6 @@ export function showModal ({modalType, modalProps}) {
 
 export function hideModal () {
   return {
-    type: HIDE_MODAL,
+    type: types.HIDE_MODAL,
   };
 }

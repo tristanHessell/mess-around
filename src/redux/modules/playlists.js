@@ -1,25 +1,22 @@
 import * as api from '../../api';
 
-const GET_PLAYLISTS = 'spotify-list/playlists/GET_PLAYLISTS';
-const LOADING_PLAYLISTS = 'spotify-list/playlists/LOADING_PLAYLISTS';
-
 export const types = {
-  GET_PLAYLISTS,
-  LOADING_PLAYLISTS,
+  GET_PLAYLISTS: 'spotify-list/playlists/GET_PLAYLISTS',
+  LOADING_PLAYLISTS: 'spotify-list/playlists/LOADING_PLAYLISTS',
 };
 
-const DEFAULT_PLAYLISTS = { playlists: [], isLoading: false};
+const DEFAULT_STATE = { playlists: [], isLoading: false};
 
-export default function reducer (state = DEFAULT_PLAYLISTS, action) {
+export default function reducer (state = DEFAULT_STATE, action) {
   switch(action.type) {
-    case GET_PLAYLISTS: {
+    case types.GET_PLAYLISTS: {
       return {
         ...state,
         playlists: [...action.playlists],
         isLoading: false,
       };
     }
-    case LOADING_PLAYLISTS: {
+    case types.LOADING_PLAYLISTS: {
       return {
         ...state,
         isLoading: true,

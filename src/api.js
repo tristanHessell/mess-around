@@ -53,21 +53,11 @@ export function getPlaylist (playlistId) {
 };
 
 export function getComments (playlistId) {
-  const abortController = new AbortController();
-  const signal = abortController.signal;
-
-  const payload = new Promise(async (resolve, reject) => {
-    await fetch('www.google.com', {signal});
+  return new Promise(async (resolve, reject) => {
     setTimeout(() => {
       resolve(COMMENTS[playlistId]);
     }, 500)
   });
-
-  return {
-    payload,
-    // need to bind as the `abort` function depends on some prototype stuff
-    abort: abortController.abort.bind(abortController),
-  };
 };
 
 export function saveComments (comments) {
