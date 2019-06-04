@@ -56,7 +56,7 @@ const Playlists = React.memo(() => {
       dispatch(showModal({
         modalType: 'SAVE_WARNING_MODAL',
         modalProps: {
-          message: "You have unsaved changes. Do you want to save your changes before leaving?",
+          message: 'You have unsaved changes. Do you want to save your changes before leaving?',
           currentPlaylistId,
           playlistId,
         },

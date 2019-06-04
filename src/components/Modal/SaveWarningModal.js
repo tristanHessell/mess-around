@@ -17,7 +17,6 @@ const SaveWarningModal = React.memo(({ message, playlistId, currentPlaylistId })
   const onClose = () => {
     dispatch(hideModal());
   };
-
   const onClickYes = async () => {
     await dispatch(storeComments(currentPlaylistId));
     navigate(`/playlists/${playlistId}`);
@@ -36,7 +35,5 @@ const SaveWarningModal = React.memo(({ message, playlistId, currentPlaylistId })
     </Modal>
   );
 })
-
-
 
 export default SaveWarningModal;
