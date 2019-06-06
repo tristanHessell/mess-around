@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import reducer, {
-  getPlaylists, // TODO test
+  getPlaylists,
   fetchPlaylists,
   types,
 } from './playlists';
