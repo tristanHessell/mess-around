@@ -17,7 +17,7 @@ SAVE/GET/UPDATE ETC
 Its API is far more useful than `react-router` & v5 of `react-router` will be more similar to `reach/router` than `react-router`
 
 ## Why use `redux-saga`?
-`redux-saga` provides everything that `redux-thunk` does, in addition to the ability to cancel actions.
+`redux-saga` provides everything that `redux-thunk` does, in addition to the ability to cancel actions built-in.
 
 ## Why have you structured modals in the way you have?
 - See this[https://stackoverflow.com/questions/35623656/how-can-i-display-a-modal-dialog-in-redux-that-performs-asynchronous-actions/35641680]
@@ -38,6 +38,10 @@ src/
 
 
 TODOs
+TODO change components to have their own named files
+TODO create pages folder
+
+
 TODO consolidate action naming convention
 Write reducer tests
 Write tests with redux-thunk
@@ -45,7 +49,6 @@ Move to redux-saga (which internally handles cancelling actions)
 Change tests to redux-saga
 Move to rxjs
 Change tests to rxjs
-
 
 Figure out how to handle unsaved changes properly
   Save unsaved changes to session storage? - show indication that changes have been made in playlist list?

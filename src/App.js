@@ -4,9 +4,10 @@ import { Router, Link } from '@reach/router';
 
 import ModalRoot from './components/Modal';
 import ReadOnlyContext from './ReadOnlyContext';
-import PlaylistPage from './PlaylistPage';
 import Playlists from './components/Playlists';
-import LandingPage from './LandingPage';
+
+import LandingPage from './pages/LandingPage';
+import PlaylistPage from './pages/PlaylistPage';
 
 const AppContainer = styled.div`
   display:flex;
