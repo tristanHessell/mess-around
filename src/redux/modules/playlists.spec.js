@@ -27,9 +27,11 @@ describe('Redux: playlists', () => {
         { type: actionTypes.GET_PLAYLISTS, playlists: ['irrelevant-to-test'] },
       ];
 
-      const store = mockStore({ playlists: {
-        playlists:[],
-      }});
+      const store = mockStore({
+        playlists: {
+          playlists:[],
+        }
+      });
       api.getPlaylists.mockResolvedValue(['irrelevant-to-test']);
 
       await store.dispatch(fetchPlaylists('DUMMY_ID'));

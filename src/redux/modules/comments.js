@@ -17,7 +17,7 @@ export default function reducer (state = DEFAULT_STATE, action) {
     case actionTypes.GET_COMMENTS: {
 
       // if the request hasn't been overwritten by another action, save the comments to the store
-      if (state.requestId !== action.requestId) {
+      if (state.requestId && state.requestId !== action.requestId) {
         return state;
       }
 
@@ -85,27 +85,26 @@ export default function reducer (state = DEFAULT_STATE, action) {
 
 export const commentsSelector = (state) => state.comments;
 
-/**
- * not to be used with redux/useSelector.
- * 
- * Just experimenting!
- * */
-export const commentChangesSelector = (state) => (songId) => {
-  if (!state || !songId) {
-    return;
+export const commentChangesSelector = (allState) => {
+  const state = commentsSelector(allState);
+
+  return (songId) => {
+    if (!state || !songId) {
+      return;
+    }
+
+    const { canonical, changes } = state;
+    const canonicalComment = canonical[songId];
+    const changedComment = changes[songId];
+
+    const hasChanged = (changedComment !== undefined && changedComment !== null);
+    const comment = hasChanged ? changedComment : canonicalComment;
+
+    return {
+      comment,
+      hasChanged,
+    };
   }
-
-  const { canonical, changes } = state;
-  const canonicalComment = canonical[songId];
-  const changedComment = changes[songId];
-
-  const hasChanged = (changedComment !== undefined && changedComment !== null);
-  const comment = hasChanged ? changedComment : canonicalComment;
-
-  return {
-    comment,
-    hasChanged,
-  };
 }
 
 export function getComments (comments, requestId) {

@@ -153,6 +153,7 @@ describe('Redux: comments', () => {
     it('should handle GET_COMMENTS with no request in progress', async () => {
       expect(reducer({}, {
         type: actionTypes.GET_COMMENTS,
+        requestId: '1234',
         comments: { comment1: 'la la la' },
       })).toEqual({
         canonical: { comment1: 'la la la' },
@@ -285,30 +286,42 @@ describe('Redux: comments', () => {
 
   describe('Custom', () => {
     describe('commentChangesSelector', () => {
-      it('should return undefined if there are no comments', async () => {
-        const state = undefined;
-
-        const selector = commentChangesSelector(state);
-
-        expect(selector('songId')).toEqual(undefined);
-      });
-
       it('should return undefined if there is no song specified', async () => {
-        const state = {};
+        const state = {
+          comments: {
+            changes: {},
+            canonical: {},
+          }
+        };
 
         const selector = commentChangesSelector(state);
 
         expect(selector()).toEqual(undefined);
       });
 
+      it('should return empty comment if there is none for specifed id', async () => {
+        const state = {
+          comments: {
+            changes: {},
+            canonical: {},
+          }
+        };
+
+        const selector = commentChangesSelector(state);
+
+        expect(selector('songId')).toEqual({comment: undefined, hasChanged: false});
+      });
+
       it('should get the change if it exists', async () => {
         const state = {
-          changes: {
-            changeId: '123',
-          },
-          canonical: {
-            changeId: 'OLD',
-          },
+          comments: {
+            changes: {
+              changeId: '123',
+            },
+            canonical: {
+              changeId: 'OLD',
+            },
+          }
         };
 
         const selector = commentChangesSelector(state);
@@ -321,12 +334,14 @@ describe('Redux: comments', () => {
 
       it('should return the canonical if there are no changes', async () => {
         const state = {
-          changes: {
-            notRelevantId: 'ABC',
-          },
-          canonical: {
-            notChangeId: '123',
-          },
+          comments: {
+            changes: {
+              notRelevantId: 'ABC',
+            },
+            canonical: {
+              notChangeId: '123',
+            },
+          }
         };
 
         const selector = commentChangesSelector(state);
