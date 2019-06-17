@@ -21,7 +21,9 @@ const SaveWarningModal = React.memo(({ message, playlistId, currentPlaylistId })
     await dispatch(storeComments(currentPlaylistId));
     navigate(`/playlists/${playlistId}`);
   };
-  const onClickNo = () => {navigate(`/playlists/${playlistId}`);};
+  const onClickNo = () => {
+    navigate(`/playlists/${playlistId}`);
+  };
 
   return (
     <Modal

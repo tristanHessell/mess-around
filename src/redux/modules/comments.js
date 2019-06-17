@@ -2,8 +2,8 @@ import uuid from 'uuid/v4';
 
 import * as api from '../../api';
 
-export const types = {
-  SAVE_COMMENTS: 'spotify-list/comments/SAVE_COMMENTS',
+export const actionTypes = {
+  SAVE_COMMENTS: 'spotify-list/comments/SAVE_COMMENTS', //TODO rename this to SAVE_CHANGES
   GET_COMMENTS: 'spotify-list/comments/GET_COMMENTS',
   UPDATE_COMMENTS: 'spotify-list/comments/UPDATE_COMMENTS',
   SAVING_COMMENTS: 'spotify-list/comments/SAVING_COMMENT',
@@ -13,9 +13,14 @@ export const types = {
 const DEFAULT_STATE = { playlistId: undefined, canonical: {}, changes: {}, saving: false, loading: undefined };
 
 export default function reducer (state = DEFAULT_STATE, action) {
-  console.log(action.type)
   switch(action.type) {
-    case types.GET_COMMENTS: {
+    case actionTypes.GET_COMMENTS: {
+
+      // if the request hasn't been overwritten by another action, save the comments to the store
+      if (state.requestId !== action.requestId) {
+        return state;
+      }
+
       return {
         ...state,
         canonical: action.comments ? { ...action.comments } : {},
@@ -24,13 +29,13 @@ export default function reducer (state = DEFAULT_STATE, action) {
         loading: undefined,
       };
     }
-    case types.SAVING_COMMENTS : {
+    case actionTypes.SAVING_COMMENTS : {
       return {
         ...state,
         saving: true,
       };
     }
-    case types.LOADING_COMMENTS : {
+    case actionTypes.LOADING_COMMENTS : {
       return {
         ...state,
         playlistId: action.playlistId,
@@ -39,7 +44,7 @@ export default function reducer (state = DEFAULT_STATE, action) {
         },
       };
     }
-    case types.SAVE_COMMENTS : {
+    case actionTypes.SAVE_COMMENTS : {
       return {
         ...state,
         canonical: {
@@ -50,8 +55,19 @@ export default function reducer (state = DEFAULT_STATE, action) {
         saving: false,
       };
     }
-    case types.UPDATE_COMMENTS: {
+    case actionTypes.UPDATE_COMMENTS: {
       const { songId, change } = action;
+
+      // if there is no change (if `undo` is pressed) or the change is no different to the canonical,
+      // clear the changes for that song
+      if (!change || state.canonical[songId] === change) {
+        const { [songId]: unusedValue, ...changes} = state.changes; 
+
+        return {
+          ...state,
+          changes,
+        };
+      }
 
       return {
         ...state,
@@ -74,34 +90,35 @@ export const commentsSelector = (state) => state.comments;
  * 
  * Just experimenting!
  * */
-export const commentChangesSelector = (comments) => (songId) => {
-  if (!comments || !songId) {
+export const commentChangesSelector = (state) => (songId) => {
+  if (!state || !songId) {
     return;
   }
 
-  const { canonical, changes } = comments;
+  const { canonical, changes } = state;
   const canonicalComment = canonical[songId];
   const changedComment = changes[songId];
 
-  const hasChanged = (changedComment !== undefined && changedComment !== null) && changedComment !== canonicalComment;
+  const hasChanged = (changedComment !== undefined && changedComment !== null);
   const comment = hasChanged ? changedComment : canonicalComment;
 
   return {
     comment,
     hasChanged,
   };
-} 
+}
 
-export function getComments (comments) {
+export function getComments (comments, requestId) {
   return {
-    type: types.GET_COMMENTS,
+    type: actionTypes.GET_COMMENTS,
     comments,
+    requestId,
   };
 }
 
 export function loadingComments (playlistId, { requestId }) {
   return {
-    type: types.LOADING_COMMENTS,
+    type: actionTypes.LOADING_COMMENTS,
     playlistId,
     requestId,
   };
@@ -109,19 +126,19 @@ export function loadingComments (playlistId, { requestId }) {
 
 export function saveComments () {
   return {
-    type: types.SAVE_COMMENTS,
+    type: actionTypes.SAVE_COMMENTS,
   };
 }
 
 export function savingComments () {
   return {
-    type: types.SAVING_COMMENTS,
+    type: actionTypes.SAVING_COMMENTS,
   };
 }
 
 export function updateComment (songId, change) {
   return {
-    type: types.UPDATE_COMMENTS,
+    type: actionTypes.UPDATE_COMMENTS,
     songId,
     change,
   };
@@ -145,10 +162,8 @@ export function fetchComments (playlistId) {
     // make the request to get the comments
     const comments = await api.getComments(playlistId);
 
-    if (commentsSelector(getState()).loading.requestId === requestId) {
-      // update the redux store with the comments
-      return dispatch(getComments(comments));
-    }
+    // update the redux store with the comments
+    return dispatch(getComments(comments, requestId));
   }
 }
 

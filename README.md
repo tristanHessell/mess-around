@@ -2,7 +2,14 @@ This is a project where I am playling with react
 
 Most things here wont be particularly good code or structure.
 
-The redux side of this application is organised a la Ducks[https://github.com/erikras/ducks-modular-redux]
+
+##Redux
+The redux side of this application is organised a la Ducks[https://github.com/erikras/ducks-modular-redux].
+
+The actions are following
+TODO BLAH_PENDING ETC
+SAVE/GET/UPDATE ETC
+
 
 # Questions you might have
 

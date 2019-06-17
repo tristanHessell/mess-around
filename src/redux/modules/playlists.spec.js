@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import reducer, {
   getPlaylists,
   fetchPlaylists,
-  types,
+  actionTypes,
 } from './playlists';
 
 import * as api from '../../api';
@@ -14,21 +14,23 @@ jest.mock('../../api')
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('Redux playlists', () => {
+describe('Redux: playlists', () => {
   describe('Action Creators', () => {
     it('creates an action to save playlists to store', async () => {
-      const expectedAction = { type: types.GET_PLAYLISTS, playlists: []};
+      const expectedAction = { type: actionTypes.GET_PLAYLISTS, playlists: []};
 
       expect(getPlaylists([])).toEqual(expectedAction);
     });
 
     it('creates GET_PLAYLISTS when fetching playlists', async () => {
       const expectedActions = [
-        { type: types.GET_PLAYLISTS, playlists: []},
+        { type: actionTypes.GET_PLAYLISTS, playlists: ['irrelevant-to-test'] },
       ];
 
-      const store = mockStore({ playlists: []});
-      api.getPlaylists.mockResolvedValue([]);
+      const store = mockStore({ playlists: {
+        playlists:[],
+      }});
+      api.getPlaylists.mockResolvedValue(['irrelevant-to-test']);
 
       await store.dispatch(fetchPlaylists('DUMMY_ID'));
       expect(store.getActions()).toEqual(expectedActions);
@@ -47,7 +49,7 @@ describe('Redux playlists', () => {
       expect(reducer({
         playlists: [],
       }, {
-        type: types.GET_PLAYLISTS,
+        type: actionTypes.GET_PLAYLISTS,
         playlists: ['test'],
       })).toEqual({
         playlists: ['test'],
@@ -57,11 +59,11 @@ describe('Redux playlists', () => {
 
     it('should handle LOADING_PLAYLISTS', async () => {
       expect(reducer({
-        playlists: ['not-used-here']
+        playlists: ['irrelevant-to-test']
       }, {
-        type: types.LOADING_PLAYLISTS,
+        type: actionTypes.LOADING_PLAYLISTS,
       })).toEqual({
-        playlists: ['not-used-here'],
+        playlists: ['irrelevant-to-test'],
         isLoading: true,
       });
     });

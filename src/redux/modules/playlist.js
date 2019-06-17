@@ -1,6 +1,6 @@
 import * as api from '../../api';
 
-export const types = {
+export const actionTypes = {
   GET_PLAYLIST: 'spotify-list/playlist/GET_PLAYLIST',
   LOADING_PLAYLIST: 'spotify-list/playlist/LOADING_PLAYLIST',
 };
@@ -9,7 +9,7 @@ const DEFAULT_STATE = { id: undefined, canonical: {}, changes: {}, isSaving: fal
 
 export default function reducer (state = DEFAULT_STATE, action) {
   switch(action.type) {
-    case types.GET_PLAYLIST: {
+    case actionTypes.GET_PLAYLIST: {
       return {
         ...state,
         canonical: {...action.playlist},
@@ -18,7 +18,7 @@ export default function reducer (state = DEFAULT_STATE, action) {
         isLoading: false,
       };
     }
-    case types.LOADING_PLAYLIST: {
+    case actionTypes.LOADING_PLAYLIST: {
       return {
         ...state,
         canonical: undefined,
@@ -37,14 +37,14 @@ export const playlistSelector = (state) => state.playlist;
 
 export function getPlaylist (playlist) {
   return {
-    type: types.GET_PLAYLIST,
+    type: actionTypes.GET_PLAYLIST,
     playlist,
   };
 }
 
 export function loadingPlaylist (id) {
   return {
-    type: types.LOADING_PLAYLIST,
+    type: actionTypes.LOADING_PLAYLIST,
     id,
   };
 }
