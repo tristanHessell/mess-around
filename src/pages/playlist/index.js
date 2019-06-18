@@ -7,7 +7,7 @@ import {
   commentsSelector,
   commentChangesSelector,
   fetchComments,
-  storeComments,
+  saveComments,
   updateComment,
 } from '../../redux/modules/comments';
 
@@ -47,7 +47,7 @@ function PlaylistPage ({playlistId}) {
   };
 
   const onSaveComment = () => {
-    dispatch(storeComments());
+    dispatch(saveComments());
   };
   const toggleShowCarousel = () => {
     setShowCarousel(!showCarousel);

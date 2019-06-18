@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
 
 import {
-  storeComments,
+  saveComments,
 } from '../../redux/modules/comments';
 
 import {
@@ -18,7 +18,7 @@ const SaveWarningModal = React.memo(({ message, playlistId, currentPlaylistId })
     dispatch(hideModal());
   };
   const onClickYes = async () => {
-    await dispatch(storeComments(currentPlaylistId));
+    await dispatch(saveComments(currentPlaylistId));
     navigate(`/playlists/${playlistId}`);
   };
   const onClickNo = () => {

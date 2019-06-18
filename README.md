@@ -10,27 +10,22 @@ The redux side of this application is organised a la Ducks[<https://github.com/e
 
 ### Action Type Naming Convention
 
-TODO
+The actions should be structured as follows:
 
-The actions are following
-
-- **REQUEST
-- **FAILURE
-- **SUCCESS
-
-Example:
-FETCH_COMMENTS_REQUEST
-FETCH_COMMENTS_FAILURE
-FETCH_COMMENTS_SUCCESS
+|Action Suffix|Description|Example|
+|-|-|-|
+|REQUEST|TODO|FETCH_COMMENTS_REQUEST|
+|FAILURE|TODO|FETCH_COMMENTS_FAILURE|
+|SUCCESS|TODO|FETCH_COMMENTS_SUCCESS|
 
 ### Action Creator Naming Convention
 
-- fetch - get from an external service
-- save - save to an external service
+|Action Creator Prefix|Description|Example|
+|-|-|-|
+|fetch|TODO|fetchComments|
+|save|TODO|saveComments|
 
 ## Questions you might have
-
-TODO
 
 ### Why use `reach/router`?
 
@@ -45,7 +40,7 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 - See this[<https://stackoverflow.com/questions/35623656/how-can-i-display-a-modal-dialog-in-redux-that-performs-asynchronous-actions/35641680>]
 - Also making that redux is serializable (meaning we can't store functions)
 
-## Application Structure
+## Application Structure TODO
 
 src/
   components/
@@ -59,15 +54,14 @@ src/
   index.js
   api.js
 
-TODOs
-TODO change components to have their own named files
-TODO create pages folder
+## TODO
 
-TODO consolidate action naming convention
 Write reducer tests
 Write tests with redux-thunk
+
 Move to redux-saga (which internally handles cancelling actions)
 Change tests to redux-saga
+
 Move to rxjs
 Change tests to rxjs
 
