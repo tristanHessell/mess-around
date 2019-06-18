@@ -8,7 +8,7 @@ import {
   commentChangesSelector,
   fetchComments,
   storeComments,
-  updateComments,
+  updateComment,
 } from '../../redux/modules/comments';
 
 import {
@@ -43,7 +43,7 @@ function PlaylistPage ({playlistId}) {
   const dispatch = useDispatch();
 
   const onChangeComment = (songId, change) => {
-    dispatch(updateComments(songId, change));
+    dispatch((songId, change));
   };
 
   const onSaveComment = () => {

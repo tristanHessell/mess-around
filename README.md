@@ -1,29 +1,52 @@
+# Spotify-list (Proper name to come)
+
 This is a project where I am playling with react
 
 Most things here wont be particularly good code or structure.
 
+## Redux
 
-##Redux
-The redux side of this application is organised a la Ducks[https://github.com/erikras/ducks-modular-redux].
+The redux side of this application is organised a la Ducks[<https://github.com/erikras/ducks-modular-redux>].
+
+### Action Type Naming Convention
+
+TODO
 
 The actions are following
-TODO BLAH_PENDING ETC
-SAVE/GET/UPDATE ETC
 
+- **REQUEST
+- **FAILURE
+- **SUCCESS
 
-# Questions you might have
+Example:
+FETCH_COMMENTS_REQUEST
+FETCH_COMMENTS_FAILURE
+FETCH_COMMENTS_SUCCESS
 
-## Why use `reach/router`
+### Action Creator Naming Convention
+
+- fetch - get from an external service
+- save - save to an external service
+
+## Questions you might have
+
+TODO
+
+### Why use `reach/router`?
+
 Its API is far more useful than `react-router` & v5 of `react-router` will be more similar to `reach/router` than `react-router`
 
-## Why use `redux-saga`?
+### Why use `redux-saga`?
+
 `redux-saga` provides everything that `redux-thunk` does, in addition to the ability to cancel actions built-in.
 
-## Why have you structured modals in the way you have?
-- See this[https://stackoverflow.com/questions/35623656/how-can-i-display-a-modal-dialog-in-redux-that-performs-asynchronous-actions/35641680]
+### Why have you structured modals in the way you have?
+
+- See this[<https://stackoverflow.com/questions/35623656/how-can-i-display-a-modal-dialog-in-redux-that-performs-asynchronous-actions/35641680>]
 - Also making that redux is serializable (meaning we can't store functions)
 
-# Application Structure
+## Application Structure
+
 src/
   components/
     ComponentName/
@@ -36,11 +59,9 @@ src/
   index.js
   api.js
 
-
 TODOs
 TODO change components to have their own named files
 TODO create pages folder
-
 
 TODO consolidate action naming convention
 Write reducer tests
