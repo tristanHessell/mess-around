@@ -6,8 +6,8 @@ import ModalRoot from './components/Modal';
 import ReadOnlyContext from './ReadOnlyContext';
 import Playlists from './components/Playlists';
 
-import LandingPage from './pages/LandingPage';
-import PlaylistPage from './pages/PlaylistPage';
+import LandingPage from './pages/landing';
+import PlaylistPage from './pages/playlist/PlaylistPage';
 
 const AppContainer = styled.div`
   display:flex;

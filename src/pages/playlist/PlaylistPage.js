@@ -9,18 +9,18 @@ import {
   fetchComments,
   storeComments,
   updateComments,
-} from '../redux/modules/comments';
+} from '../../redux/modules/comments';
 
 import {
   playlistSelector,
   fetchPlaylist,
-} from '../redux/modules/playlist';
+} from '../../redux/modules/playlist';
 
-import LoadingModal from '../components/LoadingModal';
+import LoadingModal from '../../components/LoadingModal';
 
-import PlaylistList from '../components/PlaylistList';
-import PlaylistCarousel from '../components/PlaylistCarousel';
-import User from '../components/User'
+import PlaylistList from '../../components/PlaylistList';
+import PlaylistCarousel from '../../components/PlaylistCarousel';
+import User from '../../components/User/User'
 
 const PlaylistContainer = styled.div`
   display:flex;
