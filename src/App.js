@@ -7,7 +7,7 @@ import ReadOnlyContext from './ReadOnlyContext';
 import Playlists from './components/Playlists';
 
 import LandingPage from './pages/landing';
-import PlaylistPage from './pages/playlist/PlaylistPage';
+import PlaylistPage from './pages/playlist';
 
 const AppContainer = styled.div`
   display:flex;
@@ -53,6 +53,7 @@ const ViewContainer = styled.div`
 
 function App() {
   const [isOpen, setIsOpen] = useState(true);
+
   return (
     <ReadOnlyContext.Provider value={false}>
       <ModalRoot />
@@ -61,6 +62,7 @@ function App() {
           <button onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'IS OPEN' : ' ISCLOSE'}</button>
           <Link to="/">Home</Link>|
         </HeadBarContainer>
+
         <ViewPortContainer>
           <SideBarContainer isOpen={isOpen}>
             <Playlists/>

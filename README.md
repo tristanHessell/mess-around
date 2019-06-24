@@ -63,6 +63,8 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
+Write snapshot tests for components
+
 Move to redux-saga (which internally handles cancelling actions)
 Change tests to redux-saga
 
