@@ -5,11 +5,11 @@ import { navigate } from '@reach/router';
 
 import {
   saveComments,
-} from '../../redux/modules/comments';
+} from '../../redux/comments/comments';
 
 import {
   hideModal,
-} from '../../redux/modules/modal';
+} from '../../redux/modal/modal';
 
 const SaveWarningModal = React.memo(({ message, playlistId, currentPlaylistId }) => {
   const dispatch = useDispatch();

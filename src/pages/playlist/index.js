@@ -9,12 +9,12 @@ import {
   fetchComments,
   saveComments,
   updateComment,
-} from '../../redux/modules/comments';
+} from '../../redux/comments/comments';
 
 import {
   playlistSelector,
   fetchPlaylist,
-} from '../../redux/modules/playlist';
+} from '../../redux/playlist/playlist';
 
 import LoadingModal from '../../components/LoadingModal';
 

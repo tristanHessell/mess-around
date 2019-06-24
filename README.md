@@ -6,7 +6,7 @@ Most things here wont be particularly good code or structure.
 
 ## Redux
 
-The redux side of this application is organised a la Ducks[<https://github.com/erikras/ducks-modular-redux>].
+The redux side of this application is organised a la [Ducks](<https://github.com/erikras/ducks-modular-redux>).
 
 ### Action Type Naming Convention
 
@@ -37,7 +37,7 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ### Why have you structured modals in the way you have?
 
-- See this[<https://stackoverflow.com/questions/35623656/how-can-i-display-a-modal-dialog-in-redux-that-performs-asynchronous-actions/35641680>]
+- See [this](<https://stackoverflow.com/questions/35623656/how-can-i-display-a-modal-dialog-in-redux-that-performs-asynchronous-actions/35641680>)
 - Also making that redux is serializable (meaning we can't store functions)
 
 ## Application Structure TODO

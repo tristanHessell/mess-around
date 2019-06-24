@@ -5,20 +5,20 @@ import { navigate } from '@reach/router';
 
 import {
   playlistSelector,
-} from '../../redux/modules/playlist';
+} from '../../redux/playlist';
 
 import {
   playlistsSelector,
   fetchPlaylists,
-} from '../../redux/modules/playlists';
+} from '../../redux/playlists';
 
 import {
   commentsSelector,
-} from '../../redux/modules/comments';
+} from '../../redux/comments';
 
 import {
   showModal,
-} from '../../redux/modules/modal';
+} from '../../redux/modal';
 
 const PlaylistsContainer = styled.div`
   display: flex;
