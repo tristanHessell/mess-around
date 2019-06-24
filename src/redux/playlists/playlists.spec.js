@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 
 import reducer from './index';
 import {
-  getPlaylists,
+  getPlaylistsSuccess,
   fetchPlaylists,
 } from './actions';
 import * as actionTypes from './types';
@@ -18,14 +18,14 @@ const mockStore = configureMockStore(middlewares);
 describe('Redux: playlists', () => {
   describe('Action Creators', () => {
     it('creates an action to save playlists to store', async () => {
-      const expectedAction = { type: actionTypes.GET_PLAYLISTS, playlists: []};
+      const expectedAction = { type: actionTypes.GET_PLAYLISTS_SUCCESS, playlists: []};
 
-      expect(getPlaylists([])).toEqual(expectedAction);
+      expect(getPlaylistsSuccess([])).toEqual(expectedAction);
     });
 
     it('creates GET_PLAYLISTS when fetching playlists', async () => {
       const expectedActions = [
-        { type: actionTypes.GET_PLAYLISTS, playlists: ['irrelevant-to-test'] },
+        { type: actionTypes.GET_PLAYLISTS_SUCCESS, playlists: ['irrelevant-to-test'] },
       ];
 
       const store = mockStore({
@@ -52,7 +52,7 @@ describe('Redux: playlists', () => {
       expect(reducer({
         playlists: [],
       }, {
-        type: actionTypes.GET_PLAYLISTS,
+        type: actionTypes.GET_PLAYLISTS_SUCCESS,
         playlists: ['test'],
       })).toEqual({
         playlists: ['test'],
@@ -64,7 +64,7 @@ describe('Redux: playlists', () => {
       expect(reducer({
         playlists: ['irrelevant-to-test']
       }, {
-        type: actionTypes.LOADING_PLAYLISTS,
+        type: actionTypes.GET_PLAYLISTS_REQUEST,
       })).toEqual({
         playlists: ['irrelevant-to-test'],
         isLoading: true,

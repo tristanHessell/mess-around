@@ -1,6 +1,12 @@
 import * as actionTypes from './types';
 
-const DEFAULT_STATE = { id: undefined, canonical: {}, changes: {}, isSaving: false, isLoading: true};
+const DEFAULT_STATE = {
+  id: undefined,
+  canonical: {},
+  changes: {},
+  isSaving: false,
+  isLoading: true,
+};
 
 export default function reducer (state = DEFAULT_STATE, action) {
   switch(action.type) {
@@ -8,8 +14,8 @@ export default function reducer (state = DEFAULT_STATE, action) {
       return {
         ...state,
         canonical: {...action.playlist},
-        changes: {...action.playlist},
-        isSaving: false,
+        changes: {...action.playlist}, // TODO this is lazy
+        isSaving: false, // TODO unused
         isLoading: false,
       };
     }

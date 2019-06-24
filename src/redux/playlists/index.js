@@ -4,14 +4,14 @@ const DEFAULT_STATE = { playlists: [], isLoading: false};
 
 export default function reducer (state = DEFAULT_STATE, action) {
   switch(action.type) {
-    case actionTypes.GET_PLAYLISTS: {
+    case actionTypes.GET_PLAYLISTS_SUCCESS: {
       return {
         ...state,
         playlists: [...action.playlists],
         isLoading: false,
       };
     }
-    case actionTypes.LOADING_PLAYLISTS: {
+    case actionTypes.GET_PLAYLISTS_REQUEST: {
       return {
         ...state,
         isLoading: true,

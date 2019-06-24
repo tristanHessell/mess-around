@@ -63,9 +63,6 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Write reducer tests
-Write tests with redux-thunk
-
 Move to redux-saga (which internally handles cancelling actions)
 Change tests to redux-saga
 
