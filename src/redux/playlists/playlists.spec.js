@@ -1,11 +1,12 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import reducer, {
+import reducer from './index';
+import {
   getPlaylists,
   fetchPlaylists,
-  actionTypes,
-} from './playlists';
+} from './actions';
+import * as actionTypes from './types';
 
 import * as api from '../../api';
 

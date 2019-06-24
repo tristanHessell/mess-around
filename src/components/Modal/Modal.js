@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import {
   modalSelector,
-} from '../../redux/modal'
+} from '../../redux/modal/selectors'
 
 import SaveWarningModal from './SaveWarningModal';
 

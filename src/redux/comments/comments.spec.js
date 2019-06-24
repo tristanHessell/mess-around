@@ -3,8 +3,15 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import reducer, {
-  actionTypes,
+import * as api from '../../api';
+import uuid from 'uuid/v4';
+
+import reducer from './index';
+import * as actionTypes from './types';
+import {
+  commentChangesSelector,
+} from './selectors';
+import {
   getCommentsRequest,
   getCommentsSuccess,
   saveCommentsRequest,
@@ -12,11 +19,7 @@ import reducer, {
   updateComment,
   fetchComments,
   saveComments,
-  commentChangesSelector,
-} from './comments.js';
-
-import * as api from '../../api';
-import uuid from 'uuid/v4';
+} from './actions';
 
 jest.mock('../../api');
 jest.mock('uuid/v4');

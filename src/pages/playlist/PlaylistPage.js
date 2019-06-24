@@ -4,17 +4,23 @@ import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux'
 
 import {
-  commentsSelector,
-  commentChangesSelector,
   fetchComments,
   saveComments,
   updateComment,
-} from '../../redux/comments/comments';
+} from '../../redux/comments/actions';
+
+import {
+  commentsSelector,
+  commentChangesSelector,
+} from '../../redux/comments/selectors';
+
+import {
+  fetchPlaylist,
+} from '../../redux/playlist/actions';
 
 import {
   playlistSelector,
-  fetchPlaylist,
-} from '../../redux/playlist/playlist';
+} from '../../redux/playlist/selectors';
 
 import LoadingModal from '../../components/LoadingModal';
 
