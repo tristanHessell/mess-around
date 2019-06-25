@@ -20,7 +20,7 @@ const AutoSizerContainer = styled.div`
   flex: 1 1 auto;
 `;
 
-function PlaylistList({songs, onSaveSong, onClickSong, onChangeComment, getComment}) {
+function PlaylistList({songs, comments, onSaveSong, onClickSong, onChangeComment, getComment}) {
   const readOnly = useContext(ReadOnlyContext);
 
   function rowRenderer ({index, style}) {
@@ -59,7 +59,7 @@ function PlaylistList({songs, onSaveSong, onClickSong, onChangeComment, getComme
           )}
         </AutoSizer>
       </AutoSizerContainer>
-      {!readOnly && <button onClick={() => onSaveSong()}>Save All</button>}
+      {!readOnly && <button disabled={!Object.keys(comments.changes).length} onClick={() => onSaveSong() }>Save All</button>}
     </PlaylistContainer>
   );
 }

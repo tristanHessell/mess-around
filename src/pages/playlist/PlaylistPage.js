@@ -22,6 +22,11 @@ import {
   playlistSelector,
 } from '../../redux/playlist/selectors';
 
+import {
+  showModal,
+  hideModal,
+} from '../../redux/modal/actions';
+
 import LoadingModal from '../../components/LoadingModal';
 
 import PlaylistList from '../../components/PlaylistList';
@@ -52,8 +57,17 @@ function PlaylistPage ({playlistId}) {
     dispatch(updateComment(songId, change));
   };
 
-  const onSaveComment = () => {
-    dispatch(saveComments());
+  const onSaveComment = async () => {
+    dispatch(showModal({
+      modalType: 'SAVING_MODAL',
+      modalProps: {
+        message: 'Saving Now',
+      },
+    }));
+
+    await dispatch(saveComments());
+
+    dispatch(hideModal());
   };
   const toggleShowCarousel = () => {
     setShowCarousel(!showCarousel);
@@ -90,6 +104,7 @@ function PlaylistPage ({playlistId}) {
       >
         <PlaylistCarousel
           songs={playlist.canonical.songs}
+          comments={comments}
           getComment={getComment}
           onSaveSong={onSaveComment}
           onClickSong={(id) => {
@@ -102,6 +117,7 @@ function PlaylistPage ({playlistId}) {
 
       <PlaylistList
         songs={playlist.canonical.songs}
+        comments={comments}
         getComment={getComment}
         onSaveSong={onSaveComment}
         onClickSong={(id) => {

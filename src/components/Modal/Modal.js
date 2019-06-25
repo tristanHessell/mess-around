@@ -6,9 +6,11 @@ import {
 } from '../../redux/modal/selectors'
 
 import SaveWarningModal from './SaveWarningModal';
+import SavingModal from './SavingModal';
 
 const MODALS = {
   SAVE_WARNING_MODAL: SaveWarningModal,
+  SAVING_MODAL: SavingModal,
 };
 
 const ModalRoot = React.memo(() => {

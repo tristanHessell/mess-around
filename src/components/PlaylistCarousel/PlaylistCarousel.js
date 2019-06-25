@@ -13,7 +13,7 @@ const PlaylistCarouselContainer = styled.div`
   flex-direction: column;
 `;
 
-const PlaylistCarousel = React.memo(({songs, onClickSong, onChangeComment, onSaveSong, getComment, selectedSongId}) => {
+const PlaylistCarousel = React.memo(({songs, comments, onClickSong, onChangeComment, onSaveSong, getComment, selectedSongId}) => {
   const readOnly = useContext(ReadOnlyContext);
   const selectedItem = songs.findIndex((song) => song.id === selectedSongId);
 
@@ -47,7 +47,7 @@ const PlaylistCarousel = React.memo(({songs, onClickSong, onChangeComment, onSav
           );
         })}
       </Carousel>
-      {!readOnly && <button onClick={() => onSaveSong()}>Save All</button>}
+      {!readOnly && <button disabled={!Object.keys(comments.changes).length} onClick={() => onSaveSong()}>Save All</button>}
     </PlaylistCarouselContainer>
   );
 });
