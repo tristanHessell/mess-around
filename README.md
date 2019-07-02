@@ -63,10 +63,9 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Write snapshot tests for components
+Write snapshot tests for (some) components
 
-Move to redux-saga (which internally handles cancelling actions)
-Change tests to redux-saga
+Write integration tests that test everything together (enzyme)
 
 Move to rxjs
 Change tests to rxjs
@@ -82,4 +81,5 @@ landing page
 Application Structure
 Testing
   Components
-  Redux
+
+put save all button somewhere reasonable

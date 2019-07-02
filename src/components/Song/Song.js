@@ -14,17 +14,16 @@ const SongContainer = styled.div`
 const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick, preview}) => {
   const readOnly = useContext(ReadOnlyContext);
 
-  // TODO add comments explaining the hackery
   const onClickSong = (e) => {
-    if (e.target.type !== 'textarea' && e.target.type !== 'a' && onClick) {
-      onClick(songId);
-    }
+    // if (e.target.type !== 'textarea' && e.target.type !== 'a') {
+      onClick && onClick(songId);
+    // }
   };
 
   return (
     <SongContainer onDoubleClick={onClickSong}>
       <div>
-        <div>{name}</div>
+        <div className="name">{name}</div>
         <Artists artists={artists} />
         {!readOnly && hasChanged && 'changed'}
         {hasChanged && <button onClick={() => onChangeComment(songId)}>Undo</button>}
