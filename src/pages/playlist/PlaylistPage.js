@@ -86,7 +86,7 @@ function PlaylistPage ({playlistId}) {
 
 
   return (
-    !playlist.isLoading ? <PlaylistContainer>
+    playlist && !playlist.isLoading ? <PlaylistContainer>
       <div>
         <h1>{playlist.canonical.name}</h1>
         <p>{playlist.canonical.description}</p>

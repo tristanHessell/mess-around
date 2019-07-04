@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, useStore } from 'react-redux';
 import { navigate } from '@reach/router';
 
 import {
@@ -36,11 +36,26 @@ const PlaylistButton = styled.div`
   color: ${(props) => props.selected ? 'red' : 'black'};
 `;
 
+function areaDispatch (store, area) {
+  return (action) => {
+    if (typeof action === 'function') {
+      return action(areaDispatch(store, area))
+    }
+
+    store.dispatch({
+      ...action,
+      area,
+    });
+  }
+}
+
 const Playlists = React.memo(() => {
-  const { playlists, isLoading } = useSelector(playlistsSelector);
+  const { playlists, isLoading } = useSelector(playlistsSelector('billing.home.entries'));
   const playlist = useSelector(playlistSelector);
   const comments = useSelector(commentsSelector);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const store = useStore();
+  const dispatch = useMemo(() => areaDispatch(store, 'billing.home.entries'), [store]);
 
   useEffect(() => {
     async function getPlaylists () {

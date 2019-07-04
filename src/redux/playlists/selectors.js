@@ -1,1 +1,1 @@
-export const playlistsSelector = (state) => state.playlists;
+export const playlistsSelector = (area) => (state) => state[area].playlists;

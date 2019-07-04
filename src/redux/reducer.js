@@ -9,5 +9,21 @@ export default combineReducers({
   modal,
   comments,
   playlist,
-  playlists,
+  'billing.home.entries': createArea('billing.home.entries', combineReducers({playlists, comments})),
+  'billing.entries': createArea('billing.entries', combineReducers({playlists})),
+  // playlists,
 });
+
+function createArea (reducerArea, reducer) {
+  return (state, action) => {
+    const { area } = action;
+
+    const isInitializationCall = state === undefined
+
+    if (area !== reducerArea && !isInitializationCall) {
+      return state;
+    }
+
+    return reducer(state, action);
+  }
+}
