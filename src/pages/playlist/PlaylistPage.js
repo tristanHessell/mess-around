@@ -86,8 +86,7 @@ function PlaylistPage ({playlistId}) {
 
 
   return (
-    // TODO i dont enjoy having these double checks
-    !playlist.isLoading && !comments.loading ? <PlaylistContainer>
+    !playlist.isLoading ? <PlaylistContainer>
       <div>
         <h1>{playlist.canonical.name}</h1>
         <p>{playlist.canonical.description}</p>
@@ -96,36 +95,39 @@ function PlaylistPage ({playlistId}) {
         />
       </div>
 
-      <Modal
-        isOpen={showCarousel}
-        onRequestClose={() => {
-          toggleShowCarousel();
-        }}
-      >
-        <PlaylistCarousel
+      {!comments.loading && <>
+        <Modal
+          isOpen={showCarousel}
+          onRequestClose={() => {
+            toggleShowCarousel();
+          }}
+        >
+          <PlaylistCarousel
+            songs={playlist.canonical.songs}
+            comments={comments}
+            getComment={getComment}
+            onSaveSong={onSaveComment}
+            onClickSong={(id) => {
+              setSelectedSongId(id);
+            }}
+            onChangeComment={onChangeComment}
+            selectedSongId={selectedSongId}
+          />
+        </Modal>
+
+        <PlaylistList
           songs={playlist.canonical.songs}
           comments={comments}
           getComment={getComment}
           onSaveSong={onSaveComment}
           onClickSong={(id) => {
+            toggleShowCarousel();
             setSelectedSongId(id);
           }}
           onChangeComment={onChangeComment}
-          selectedSongId={selectedSongId}
         />
-      </Modal>
-
-      <PlaylistList
-        songs={playlist.canonical.songs}
-        comments={comments}
-        getComment={getComment}
-        onSaveSong={onSaveComment}
-        onClickSong={(id) => {
-          toggleShowCarousel();
-          setSelectedSongId(id);
-        }}
-        onChangeComment={onChangeComment}
-      />
+        </>
+      }
     </PlaylistContainer> : <LoadingModal/>
   );
 }

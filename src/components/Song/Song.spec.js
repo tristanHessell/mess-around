@@ -1,18 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-// import sinon from 'sinon';
+import sinon from 'sinon';
 import Song from './Song';
+import { SongContainer } from './styles';
 
 describe('<Song />', () => {
-  it('renders a song name', () => {
-    const song = shallow(<Song name="SONG NAME"/>);
-    expect(song.find('.name').text()).toEqual('SONG NAME');
-  });
+  it('simulates DOM events', () => {
+    const onButtonClick = sinon.spy();
+    const song = shallow(<Song onClick={onButtonClick} />);
 
-  // it('simulates click events', () => {
-  //   const onButtonClick = sinon.spy();
-  //   const wrapper = shallow(<Foo onButtonClick={onButtonClick} />);
-  //   wrapper.find('button').simulate('click');
-  //   expect(onButtonClick).to.have.property('callCount', 1);
-  // });
+    song.find(SongContainer).simulate('doubleClick');
+
+    expect(onButtonClick.callCount).toEqual(1);
+  });
 });

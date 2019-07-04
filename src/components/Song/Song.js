@@ -1,15 +1,9 @@
 import React, {useContext} from 'react';
-import styled from 'styled-components';
 
 import ReadOnlyContext from '../../ReadOnlyContext';
 import Artists from '../Artists';
 import Comment from '../Comment';
-
-const SongContainer = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-`;
+import { SongContainer } from './styles';
 
 const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick, preview}) => {
   const readOnly = useContext(ReadOnlyContext);
@@ -23,7 +17,7 @@ const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onCha
   return (
     <SongContainer onDoubleClick={onClickSong}>
       <div>
-        <div className="name">{name}</div>
+        <div>{name}</div>
         <Artists artists={artists} />
         {!readOnly && hasChanged && 'changed'}
         {hasChanged && <button onClick={() => onChangeComment(songId)}>Undo</button>}

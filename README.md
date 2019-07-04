@@ -28,8 +28,9 @@ src/
   components/
     ComponentName/
       index.js
-      ComponentName.js
-      ComponentName.test.js
+      styles.js // will only contain styled components
+      component.js
+      componet.test.js
   pages/
     urlName/
       UrlNamePage.js
