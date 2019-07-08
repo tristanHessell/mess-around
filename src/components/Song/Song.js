@@ -1,12 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
-import ReadOnlyContext from '../../ReadOnlyContext';
 import Artists from '../Artists';
 import Comment from '../Comment';
 import { SongContainer } from './styles';
 
 const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onChangeComment, onClick, preview}) => {
-  const readOnly = useContext(ReadOnlyContext);
 
   const onClickSong = (e) => {
     // if (e.target.type !== 'textarea' && e.target.type !== 'a') {
@@ -19,10 +17,10 @@ const Song = React.memo(({songId, name, artists, comment = '', hasChanged, onCha
       <div>
         <div>{name}</div>
         <Artists artists={artists} />
-        {!readOnly && hasChanged && 'changed'}
+        {hasChanged && 'changed'}
         {hasChanged && <button onClick={() => onChangeComment(songId)}>Undo</button>}
       </div>
-      <Comment comment={comment} onChange={(comment) => onChangeComment(songId, comment)} disabled={readOnly} preview={preview}/>
+      <Comment comment={comment} onChange={(comment) => onChangeComment(songId, comment)} preview={preview}/>
     </SongContainer>
   );
 });

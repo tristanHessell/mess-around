@@ -68,6 +68,8 @@ Write snapshot tests for (some) components
 
 Write integration tests that test everything together (enzyme)
 
+Write end-to-end tests that test EVERYTHING (cypress)
+
 Move to rxjs
 Change tests to rxjs
 
