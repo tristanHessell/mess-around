@@ -66,7 +66,7 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 Write snapshot tests for (some) components
 
-Write integration tests that test everything together (enzyme)
+Write integration tests that test everything FE together (enzyme)
 
 Write end-to-end tests that test EVERYTHING (cypress)
 
