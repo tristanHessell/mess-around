@@ -64,7 +64,7 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Write snapshot tests for (some) components
+Set up prettier correctly (needed to include prettier for snapshot testing)
 
 Write integration tests that test everything FE together (enzyme)
 
@@ -86,3 +86,7 @@ Testing
   Components
 
 put save all button somewhere reasonable
+
+## Notes
+
+<https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf>

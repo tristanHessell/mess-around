@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const ArtistContainer = styled.div`
-  /*  */
-`;
+import { ArtistContainer } from './styles';
 
 const Artists = React.memo(({artists}) => {
+  if (!artists) {
+    return null;
+  }
+
   return (
     <ArtistContainer>
       {artists.map((artist, index) => (
