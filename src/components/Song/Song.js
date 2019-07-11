@@ -41,4 +41,6 @@ const Song = React.memo(
   },
 );
 
+Song.displayName = 'Song';
+
 export default Song;

@@ -8,8 +8,10 @@ const LandingPageContainer = styled.div`
   flex: 1;
 `;
 
-function LandingPage() {
+const LandingPage = React.memo(() => {
   return <LandingPageContainer>LANDING</LandingPageContainer>;
-}
+});
+
+LandingPage.displayName = 'LandingPage';
 
 export default LandingPage;

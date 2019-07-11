@@ -37,4 +37,6 @@ const Comment = React.memo(({ comment, onChange }) => {
   );
 });
 
+Comment.displayName = 'Comment';
+
 export default Comment;

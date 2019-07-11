@@ -69,4 +69,6 @@ const PlaylistCarousel = React.memo(
   },
 );
 
+PlaylistCarousel.displayName = 'PlaylistCarousel';
+
 export default PlaylistCarousel;

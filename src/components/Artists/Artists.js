@@ -19,4 +19,6 @@ const Artists = React.memo(({ artists }) => {
   );
 });
 
+Artists.displayName = 'Artists';
+
 export default Artists;

@@ -13,4 +13,6 @@ const User = React.memo(({ name }) => {
   );
 });
 
+User.displayName = 'User';
+
 export default User;

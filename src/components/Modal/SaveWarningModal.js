@@ -47,4 +47,6 @@ const SaveWarningModal = React.memo(
   },
 );
 
+SaveWarningModal.displayName = 'SaveWarningModal';
+
 export default SaveWarningModal;

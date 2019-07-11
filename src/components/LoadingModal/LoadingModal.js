@@ -12,4 +12,6 @@ const LoadingModal = React.memo(() => {
   return <LoadingModalContainer>LoadingMODAL...</LoadingModalContainer>;
 });
 
+LoadingModal.displayName = 'LoadingModal';
+
 export default LoadingModal;

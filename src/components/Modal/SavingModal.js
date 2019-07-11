@@ -6,7 +6,7 @@ import { hideModal } from '../../redux/modal/actions';
 
 // TODO actually try to cancel if they click cancel?
 
-const SaveWarningModal = React.memo(({ message }) => {
+const SavingModal = React.memo(({ message }) => {
   const dispatch = useDispatch();
 
   const onClose = () => {
@@ -21,4 +21,6 @@ const SaveWarningModal = React.memo(({ message }) => {
   );
 });
 
-export default SaveWarningModal;
+SavingModal.displayName = 'SavingModal';
+
+export default SavingModal;

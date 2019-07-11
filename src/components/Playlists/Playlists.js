@@ -90,4 +90,6 @@ const Playlists = React.memo(() => {
   );
 });
 
+Playlists.displayName = 'Playlists';
+
 export default Playlists;

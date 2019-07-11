@@ -23,4 +23,6 @@ const ModalRoot = React.memo(() => {
   return <SpecificModal {...modalProps} />;
 });
 
+ModalRoot.displayName = 'ModalRoot';
+
 export default ModalRoot;

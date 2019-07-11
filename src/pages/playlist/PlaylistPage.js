@@ -37,7 +37,7 @@ const user = {
   name: 'ALI BABA',
 };
 
-function PlaylistPage({ playlistId }) {
+const PlaylistPage = React.memo(({ playlistId }) => {
   const [showCarousel, setShowCarousel] = useState(false);
   const [selectedSongId, setSelectedSongId] = useState(false);
 
@@ -125,6 +125,8 @@ function PlaylistPage({ playlistId }) {
   ) : (
     <LoadingModal />
   );
-}
+});
+
+PlaylistPage.displayName = 'PlaylistPage';
 
 export default PlaylistPage;
