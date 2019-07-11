@@ -1,16 +1,17 @@
-import React from "react";
-import renderer from "react-test-renderer";
+/* eslint-env jest */
+import React from 'react';
+import renderer from 'react-test-renderer';
 
-import Artists from "./Artists";
+import Artists from './Artists';
 
-describe("<Artists />", () => {
-  it("renders nothing if no artists are supplied", () => {
+describe('<Artists />', () => {
+  it('renders nothing if no artists are supplied', () => {
     const tree = renderer.create(<Artists />).toJSON();
 
     expect(tree).toMatchInlineSnapshot(`null`);
   });
 
-  it("renders an empty container if there are no artists", () => {
+  it('renders an empty container if there are no artists', () => {
     const tree = renderer.create(<Artists artists={[]} />).toJSON();
 
     expect(tree).toMatchInlineSnapshot(
@@ -23,21 +24,21 @@ describe("<Artists />", () => {
                     },
                     "type": "div",
                   }
-            `
+            `,
     );
   });
 
-  it("renders with a single artist", () => {
+  it('renders with a single artist', () => {
     const tree = renderer
       .create(
         <Artists
           artists={[
             {
-              id: "id",
-              name: "name"
-            }
+              id: 'id',
+              name: 'name',
+            },
           ]}
-        />
+        />,
       )
       .toJSON();
 
@@ -57,25 +58,25 @@ describe("<Artists />", () => {
               },
               "type": "div",
             }
-        `
+        `,
     );
   });
 
-  it("renders with a single artist", () => {
+  it('renders with a single artist', () => {
     const tree = renderer
       .create(
         <Artists
           artists={[
             {
-              id: "id1",
-              name: "name1"
+              id: 'id1',
+              name: 'name1',
             },
             {
-              id: "id2",
-              name: "name2"
-            }
+              id: 'id2',
+              name: 'name2',
+            },
           ]}
-        />
+        />,
       )
       .toJSON();
 
@@ -103,7 +104,7 @@ describe("<Artists />", () => {
         },
         "type": "div",
       }
-    `
+    `,
     );
   });
 });

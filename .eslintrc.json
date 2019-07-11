@@ -1,10 +1,19 @@
 {
+  "env": {
+    "es6": true
+  },
   "extends": ["eslint:recommended","plugin:prettier/recommended", "plugin:react/recommended"],
   "parserOptions": {
     "ecmaVersion": 10,
     "sourceType": "module"
   },
   "rules": {
-    "prettier/prettier": ["error", {"singleQuote": true, "trailingComma": "all", "arrowParens": "always"}]
+    "prettier/prettier": ["error", {"singleQuote": true, "trailingComma": "all", "arrowParens": "always"}],
+    "no-unused-vars": ["error", { "varsIgnorePattern": "UNUSED"}]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

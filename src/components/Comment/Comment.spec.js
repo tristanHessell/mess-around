@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import React from 'react';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
@@ -9,13 +10,13 @@ import ReactMarkdown from 'react-markdown';
 
 describe('<Comment />', () => {
   it('defaults to showing markdown box', () => {
-    const comment = mount(<Comment/>);
+    const comment = mount(<Comment />);
 
     expect(comment.find(ReactMarkdown).length).toEqual(1);
   });
 
   it('shows the editable box when clicked', () => {
-    const comment = mount(<Comment/>);
+    const comment = mount(<Comment />);
 
     comment.find(CommentContainer).simulate('click');
 
@@ -23,7 +24,7 @@ describe('<Comment />', () => {
   });
 
   it('shows the markdown box when the comment area is blurred', () => {
-    const comment = mount(<Comment/>);
+    const comment = mount(<Comment />);
 
     comment.find(CommentContainer).simulate('click');
     expect(comment.find(CommentArea).length).toEqual(1);
@@ -35,7 +36,7 @@ describe('<Comment />', () => {
   it('fires onChange when the comment is changed', () => {
     const onChange = sinon.spy();
 
-    const comment = mount(<Comment onChange={onChange}/>);
+    const comment = mount(<Comment onChange={onChange} />);
 
     comment.find(CommentContainer).simulate('click');
     expect(comment.find(CommentArea).length).toEqual(1);

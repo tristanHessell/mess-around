@@ -1,13 +1,10 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import ReadOnlyContext from '../../ReadOnlyContext';
-import {
-  CommentArea,
-  CommentContainer
-} from './styles';
+import { CommentArea, CommentContainer } from './styles';
 
-const Comment = React.memo(({comment, onChange}) => {
+const Comment = React.memo(({ comment, onChange }) => {
   const readOnly = useContext(ReadOnlyContext);
   const [isEditable, setEditable] = useState(false);
 
@@ -25,10 +22,9 @@ const Comment = React.memo(({comment, onChange}) => {
 
   return (
     <CommentContainer onClick={onClickContainer}>
-      { !isEditable ?
-        <ReactMarkdown
-          source={comment}
-        /> :
+      {!isEditable ? (
+        <ReactMarkdown source={comment} />
+      ) : (
         <CommentArea
           autoFocus
           value={comment}
@@ -36,7 +32,7 @@ const Comment = React.memo(({comment, onChange}) => {
           onBlur={onBlurCommentBox}
           disabled={readOnly}
         />
-      }
+      )}
     </CommentContainer>
   );
 });

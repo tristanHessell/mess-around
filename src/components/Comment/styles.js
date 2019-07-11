@@ -18,7 +18,7 @@ export const CommentContainer = styled.div`
 `;
 
 export const CommentArea = styled.textarea`
-  color: ${(props) => props.disabled ? 'red': 'blue'};
+  color: ${(props) => (props.disabled ? 'red' : 'blue')};
   flex: 1;
   resize: none;
   border: none;

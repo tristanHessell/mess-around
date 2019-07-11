@@ -6,7 +6,7 @@ import ReadOnlyContext from '../../ReadOnlyContext';
 import Song from '../Song';
 
 const PlaylistContainer = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
   flex: 1;
 `;
@@ -20,10 +20,17 @@ const AutoSizerContainer = styled.div`
   flex: 1 1 auto;
 `;
 
-function PlaylistList({songs, comments, onSaveSong, onClickSong, onChangeComment, getComment}) {
+function PlaylistList({
+  songs,
+  comments,
+  onSaveSong,
+  onClickSong,
+  onChangeComment,
+  getComment,
+}) {
   const readOnly = useContext(ReadOnlyContext);
 
-  function rowRenderer ({index, style}) {
+  function rowRenderer({ index, style }) {
     const song = songs[index];
     const { comment, hasChanged } = getComment(song.id);
 
@@ -48,7 +55,7 @@ function PlaylistList({songs, comments, onSaveSong, onClickSong, onChangeComment
     <PlaylistContainer>
       <AutoSizerContainer>
         <AutoSizer>
-          {({width, height}) => (
+          {({ width, height }) => (
             <List
               width={width}
               height={height}
@@ -59,7 +66,14 @@ function PlaylistList({songs, comments, onSaveSong, onClickSong, onChangeComment
           )}
         </AutoSizer>
       </AutoSizerContainer>
-      {!readOnly && <button disabled={!Object.keys(comments.changes).length} onClick={() => onSaveSong() }>Save All</button>}
+      {!readOnly && (
+        <button
+          disabled={!Object.keys(comments.changes).length}
+          onClick={() => onSaveSong()}
+        >
+          Save All
+        </button>
+      )}
     </PlaylistContainer>
   );
 }

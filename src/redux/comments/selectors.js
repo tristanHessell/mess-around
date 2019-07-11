@@ -12,12 +12,12 @@ export const commentChangesSelector = (allState) => {
     const canonicalComment = canonical[songId];
     const changedComment = changes[songId];
 
-    const hasChanged = (changedComment !== undefined && changedComment !== null);
+    const hasChanged = changedComment !== undefined && changedComment !== null;
     const comment = hasChanged ? changedComment : canonicalComment;
 
     return {
       comment,
       hasChanged,
     };
-  }
-}
+  };
+};

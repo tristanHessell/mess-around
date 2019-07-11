@@ -2,9 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
 
-import {
-  hideModal,
-} from '../../redux/modal/actions';
+import { hideModal } from '../../redux/modal/actions';
 
 // TODO actually try to cancel if they click cancel?
 
@@ -16,14 +14,11 @@ const SaveWarningModal = React.memo(({ message }) => {
   };
 
   return (
-    <Modal
-      isOpen
-      onRequestClose={onClose}
-    >
+    <Modal isOpen onRequestClose={onClose}>
       SAVING MODAL
       {message}
     </Modal>
   );
-})
+});
 
 export default SaveWarningModal;

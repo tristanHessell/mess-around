@@ -1,9 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
-import {
-  modalSelector,
-} from '../../redux/modal/selectors'
+import { modalSelector } from '../../redux/modal/selectors';
 
 import SaveWarningModal from './SaveWarningModal';
 import SavingModal from './SavingModal';
@@ -22,9 +20,7 @@ const ModalRoot = React.memo(() => {
 
   const SpecificModal = MODALS[modalType];
 
-  return (
-    <SpecificModal {...modalProps} />
-  );
+  return <SpecificModal {...modalProps} />;
 });
 
 export default ModalRoot;

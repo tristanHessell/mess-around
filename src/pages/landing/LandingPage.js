@@ -2,20 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LandingPageContainer = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
-  height:100%;
+  height: 100%;
   flex: 1;
 `;
 
-
-
-function LandingPage ({playlistId}) {
-  return (
-    <LandingPageContainer>
-      LANDING
-    </LandingPageContainer>
-  );
+function LandingPage() {
+  return <LandingPageContainer>LANDING</LandingPageContainer>;
 }
 
 export default LandingPage;

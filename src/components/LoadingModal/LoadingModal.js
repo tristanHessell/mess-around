@@ -9,11 +9,7 @@ const LoadingModalContainer = styled.div`
 
 //TODO actually make a modal
 const LoadingModal = React.memo(() => {
-  return (
-    <LoadingModalContainer>
-      LoadingMODAL...
-    </LoadingModalContainer>
-  );
+  return <LoadingModalContainer>LoadingMODAL...</LoadingModalContainer>;
 });
 
 export default LoadingModal;

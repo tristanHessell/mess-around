@@ -1,9 +1,9 @@
 import * as actionTypes from './types';
 
-const DEFAULT_STATE = { playlists: [], isLoading: false};
+const DEFAULT_STATE = { playlists: [], isLoading: false };
 
-export default function reducer (state = DEFAULT_STATE, action) {
-  switch(action.type) {
+export default function reducer(state = DEFAULT_STATE, action) {
+  switch (action.type) {
     case actionTypes.GET_PLAYLISTS_SUCCESS: {
       return {
         ...state,

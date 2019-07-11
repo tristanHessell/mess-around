@@ -8,13 +8,13 @@ const DEFAULT_STATE = {
   isLoading: true,
 };
 
-export default function reducer (state = DEFAULT_STATE, action) {
-  switch(action.type) {
+export default function reducer(state = DEFAULT_STATE, action) {
+  switch (action.type) {
     case actionTypes.GET_PLAYLIST_SUCCESS: {
       return {
         ...state,
-        canonical: {...action.playlist},
-        changes: {...action.playlist}, // TODO this is lazy
+        canonical: { ...action.playlist },
+        changes: { ...action.playlist }, // TODO this is lazy
         isSaving: false, // TODO unused
         isLoading: false,
       };
@@ -33,6 +33,3 @@ export default function reducer (state = DEFAULT_STATE, action) {
     }
   }
 }
-
-
-

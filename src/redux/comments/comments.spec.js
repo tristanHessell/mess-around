@@ -8,9 +8,7 @@ import uuid from 'uuid/v4';
 
 import reducer from './index';
 import * as actionTypes from './types';
-import {
-  commentChangesSelector,
-} from './selectors';
+import { commentChangesSelector } from './selectors';
 import {
   getCommentsRequest,
   getCommentsSuccess,
@@ -33,13 +31,18 @@ describe('Redux: comments', () => {
       const expectedAction = {
         type: actionTypes.GET_COMMENTS_REQUEST,
         playlistId: 'playlistId',
-        requestId: 'requestId'
+        requestId: 'requestId',
       };
-      expect(getCommentsRequest('playlistId', 'requestId')).toEqual(expectedAction);
+      expect(getCommentsRequest('playlistId', 'requestId')).toEqual(
+        expectedAction,
+      );
     });
 
     it('creates an action when getting comments succeeds', async () => {
-      const expectedAction = { type: actionTypes.GET_COMMENTS_SUCCESS, comments: {}};
+      const expectedAction = {
+        type: actionTypes.GET_COMMENTS_SUCCESS,
+        comments: {},
+      };
       expect(getCommentsSuccess({})).toEqual(expectedAction);
     });
 
@@ -68,8 +71,16 @@ describe('Redux: comments', () => {
 
     it('loads & gets comments when fetching', async () => {
       const expectedActions = [
-        { type: actionTypes.GET_COMMENTS_REQUEST, playlistId: 'new-playlistId', requestId: 'requestId' },
-        { type: actionTypes.GET_COMMENTS_SUCCESS, comments: ['irrelevant-to-test'], requestId: 'requestId' },
+        {
+          type: actionTypes.GET_COMMENTS_REQUEST,
+          playlistId: 'new-playlistId',
+          requestId: 'requestId',
+        },
+        {
+          type: actionTypes.GET_COMMENTS_SUCCESS,
+          comments: ['irrelevant-to-test'],
+          requestId: 'requestId',
+        },
       ];
       const store = mockStore({
         comments: {
@@ -118,13 +129,15 @@ describe('Redux: comments', () => {
     });
 
     // unimplemented - TODO decide on an error case pattern
-    xit('leaves the store unchanged if saving comments fails', async () => {
-
-    });
+    xit('leaves the store unchanged if saving comments fails', async () => {});
 
     it('sends actions when updating comments', async () => {
       const expectedActions = [
-        { type: actionTypes.UPDATE_COMMENT, songId: 'songId', change: 'new comment' },
+        {
+          type: actionTypes.UPDATE_COMMENT,
+          songId: 'songId',
+          change: 'new comment',
+        },
       ];
       const store = mockStore({
         comments: {
@@ -151,11 +164,16 @@ describe('Redux: comments', () => {
     });
 
     it('should handle GET_COMMENTS_SUCCESS with no request in progress', async () => {
-      expect(reducer({}, {
-        type: actionTypes.GET_COMMENTS_SUCCESS,
-        requestId: '1234',
-        comments: { comment1: 'la la la' },
-      })).toEqual({
+      expect(
+        reducer(
+          {},
+          {
+            type: actionTypes.GET_COMMENTS_SUCCESS,
+            requestId: '1234',
+            comments: { comment1: 'la la la' },
+          },
+        ),
+      ).toEqual({
         canonical: { comment1: 'la la la' },
         changes: {},
         saving: false,
@@ -164,31 +182,46 @@ describe('Redux: comments', () => {
     });
 
     it('should handle GET_COMMENTS_SUCCESS with another request in progress', async () => {
-      expect(reducer({
-        requestId: 'secondOne'
-      }, {
-        type: actionTypes.GET_COMMENTS_SUCCESS,
-        comments: { comment1: 'la la la' },
-        requestId: 'firstOne'
-      })).toEqual({
-        requestId: 'secondOne'
+      expect(
+        reducer(
+          {
+            requestId: 'secondOne',
+          },
+          {
+            type: actionTypes.GET_COMMENTS_SUCCESS,
+            comments: { comment1: 'la la la' },
+            requestId: 'firstOne',
+          },
+        ),
+      ).toEqual({
+        requestId: 'secondOne',
       });
     });
 
     it('should handle SAVE_COMMENTS_REQUEST', async () => {
-      expect(reducer({}, {
-        type: actionTypes.SAVE_COMMENTS_REQUEST,
-      })).toEqual({
+      expect(
+        reducer(
+          {},
+          {
+            type: actionTypes.SAVE_COMMENTS_REQUEST,
+          },
+        ),
+      ).toEqual({
         saving: true,
       });
     });
 
     it('should handle GET_COMMENTS_REQUEST', async () => {
-      expect(reducer({}, {
-        type: actionTypes.GET_COMMENTS_REQUEST,
-        playlistId: 'playlistId',
-        requestId: 'requestId',
-      })).toEqual({
+      expect(
+        reducer(
+          {},
+          {
+            type: actionTypes.GET_COMMENTS_REQUEST,
+            playlistId: 'playlistId',
+            requestId: 'requestId',
+          },
+        ),
+      ).toEqual({
         playlistId: 'playlistId',
         loading: {
           requestId: 'requestId',
@@ -197,17 +230,22 @@ describe('Redux: comments', () => {
     });
 
     it('should handle SAVE_COMMENTS_SUCCESS', async () => {
-      expect(reducer({
-        canonical: {
-          song1: 'overwritten comment',
-          song2: 'unchanged comment',
-        },
-        changes: {
-          song1: 'comment that overwrites',
-        },
-      }, {
-        type: actionTypes.SAVE_COMMENTS_SUCCESS,
-      })).toEqual({
+      expect(
+        reducer(
+          {
+            canonical: {
+              song1: 'overwritten comment',
+              song2: 'unchanged comment',
+            },
+            changes: {
+              song1: 'comment that overwrites',
+            },
+          },
+          {
+            type: actionTypes.SAVE_COMMENTS_SUCCESS,
+          },
+        ),
+      ).toEqual({
         canonical: {
           song1: 'comment that overwrites',
           song2: 'unchanged comment',
@@ -218,18 +256,22 @@ describe('Redux: comments', () => {
     });
 
     it('should handle UPDATE_COMMENT with change specified', async () => {
-      expect(reducer({
-        canonical: {
-          song1: 'original comment 1',
-          song2: 'original comment 2',
-        },
-        changes: {
-        },
-      }, {
-        type: actionTypes.UPDATE_COMMENT,
-        songId: 'song1',
-        change: 'changed comment 1',
-      })).toEqual({
+      expect(
+        reducer(
+          {
+            canonical: {
+              song1: 'original comment 1',
+              song2: 'original comment 2',
+            },
+            changes: {},
+          },
+          {
+            type: actionTypes.UPDATE_COMMENT,
+            songId: 'song1',
+            change: 'changed comment 1',
+          },
+        ),
+      ).toEqual({
         canonical: {
           song1: 'original comment 1',
           song2: 'original comment 2',
@@ -241,18 +283,23 @@ describe('Redux: comments', () => {
     });
 
     it('should handle UPDATE_COMMENT with no change specified', async () => {
-      expect(reducer({
-        canonical: {
-          song1: 'original comment 1',
-          song2: 'original comment 2',
-        },
-        changes: {
-          song1: 'changed comment 1',
-        },
-      }, {
-        type: actionTypes.UPDATE_COMMENT,
-        songId: 'song1',
-      })).toEqual({
+      expect(
+        reducer(
+          {
+            canonical: {
+              song1: 'original comment 1',
+              song2: 'original comment 2',
+            },
+            changes: {
+              song1: 'changed comment 1',
+            },
+          },
+          {
+            type: actionTypes.UPDATE_COMMENT,
+            songId: 'song1',
+          },
+        ),
+      ).toEqual({
         canonical: {
           song1: 'original comment 1',
           song2: 'original comment 2',
@@ -262,19 +309,24 @@ describe('Redux: comments', () => {
     });
 
     it('should handle UPDATE_COMMENT with specified change same as canonical', async () => {
-      expect(reducer({
-        canonical: {
-          song1: 'original comment 1',
-          song2: 'original comment 2',
-        },
-        changes: {
-          song1: 'changed comment 1',
-        },
-      }, {
-        type: actionTypes.UPDATE_COMMENT,
-        songId: 'song1',
-        change: 'original comment 1',
-      })).toEqual({
+      expect(
+        reducer(
+          {
+            canonical: {
+              song1: 'original comment 1',
+              song2: 'original comment 2',
+            },
+            changes: {
+              song1: 'changed comment 1',
+            },
+          },
+          {
+            type: actionTypes.UPDATE_COMMENT,
+            songId: 'song1',
+            change: 'original comment 1',
+          },
+        ),
+      ).toEqual({
         canonical: {
           song1: 'original comment 1',
           song2: 'original comment 2',
@@ -291,7 +343,7 @@ describe('Redux: comments', () => {
           comments: {
             changes: {},
             canonical: {},
-          }
+          },
         };
 
         const selector = commentChangesSelector(state);
@@ -304,12 +356,15 @@ describe('Redux: comments', () => {
           comments: {
             changes: {},
             canonical: {},
-          }
+          },
         };
 
         const selector = commentChangesSelector(state);
 
-        expect(selector('songId')).toEqual({comment: undefined, hasChanged: false});
+        expect(selector('songId')).toEqual({
+          comment: undefined,
+          hasChanged: false,
+        });
       });
 
       it('should get the change if it exists', async () => {
@@ -321,7 +376,7 @@ describe('Redux: comments', () => {
             canonical: {
               changeId: 'OLD',
             },
-          }
+          },
         };
 
         const selector = commentChangesSelector(state);
@@ -341,7 +396,7 @@ describe('Redux: comments', () => {
             canonical: {
               notChangeId: '123',
             },
-          }
+          },
         };
 
         const selector = commentChangesSelector(state);
@@ -352,6 +407,5 @@ describe('Redux: comments', () => {
         });
       });
     });
-
   });
-})
+});

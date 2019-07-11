@@ -5,7 +5,7 @@ const UserContainer = styled.div`
   /*  */
 `;
 
-const User = React.memo(({name}) => {
+const User = React.memo(({ name }) => {
   return (
     <UserContainer>
       <div>{name}</div>

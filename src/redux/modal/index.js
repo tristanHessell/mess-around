@@ -5,8 +5,8 @@ const DEFAULT_STATE = {
   modalProps: {},
 };
 
-export default function reducer (state = DEFAULT_STATE, action) {
-  switch(action.type) {
+export default function reducer(state = DEFAULT_STATE, action) {
+  switch (action.type) {
     case actionTypes.SHOW_MODAL: {
       return {
         modalType: action.modalType,
@@ -21,6 +21,3 @@ export default function reducer (state = DEFAULT_STATE, action) {
     }
   }
 }
-
-
-
