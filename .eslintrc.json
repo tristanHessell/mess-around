@@ -1,0 +1,10 @@
+{
+  "extends": ["eslint:recommended","plugin:prettier/recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 10,
+    "sourceType": "module"
+  },
+  "rules": {
+    "prettier/prettier": ["error", {"singleQuote": true, "trailingComma": "all", "arrowParens": "always"}]
+  }
+}
