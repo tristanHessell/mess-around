@@ -64,8 +64,6 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Set up prettier correctly (needed to include prettier for snapshot testing)
-
 Write integration tests that test everything FE together (enzyme)
 
 Write end-to-end tests that test EVERYTHING (cypress)
