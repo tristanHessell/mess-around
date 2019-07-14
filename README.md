@@ -29,8 +29,8 @@ src/
     ComponentName/
       index.js
       styles.js // will only contain styled components
-      component.js
-      componet.test.js
+      ComponentName.js
+      ComponentName.spec.js
   pages/
     urlName/
       UrlNamePage.js
@@ -39,9 +39,14 @@ src/
     modules/
       actions.js // exports named actions
       index.js // default exports the reducer
-      stateName.test.js
+      stateName.spec.js
       selectors.js // exports named selectors
       types.js // exports named action types
+    index.js //
+    reducer.js //
+    store.js //
+  tests/ // for integration/e2e tests
+    // TBD
   App.js
   api.js // contains the code that interacts with the server
   index.js
@@ -64,12 +69,15 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Write integration tests that test everything FE together (enzyme)
-
 Write end-to-end tests that test EVERYTHING (cypress)
 
+Write integration tests that test FE together (enzyme)
+
+- Inspiration: [this](<https://www.ebayinc.com/stories/blogs/tech/integration-testing-with-react-and-enzyme/>)
+
 Move to rxjs
-Change tests to rxjs
+
+- Inspiration: [this](<https://redux-saga.js.org/>)
 
 Figure out how to handle unsaved changes properly
   Save unsaved changes to session storage? - show indication that changes have been made in playlist list?
@@ -79,9 +87,6 @@ Check if changes in comments before changing url
 connect to spotify
 connect to a DB
 landing page
-Application Structure
-Testing
-  Components
 
 put save all button somewhere reasonable
 
