@@ -3,7 +3,7 @@
  * Exists as an initial run through of cypress
  */
 
-describe('Top Level Interactions', function() {
+describe('Playlist Interactions', function() {
   it('can save a comment', function() {
     cy.visit('/');
 

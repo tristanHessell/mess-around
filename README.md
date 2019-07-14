@@ -69,11 +69,29 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Write end-to-end tests that test EVERYTHING (cypress)
+Figure out proper structure regarding cypress files
+
+- Move into src folder
+- explain structure in this readme
 
 Write integration tests that test FE together (enzyme)
 
 - Inspiration: [this](<https://www.ebayinc.com/stories/blogs/tech/integration-testing-with-react-and-enzyme/>)
+- Do same tests as the cypress playlist tests - get a feel for complexity & timing vs Cypress
+
+Write image based snapshot testing
+
+Add ability to light/dark theme page
+
+Connect to spotify (store credentials in front end only)
+
+- Add tests for log-in flow(?)
+- Add fixtures for stubbed data returned from spotify
+
+Simplify Webpack
+
+- remove all the unnecessary stuff from the create-react-app
+- move as much as possible from the package.json
 
 Move to rxjs
 
@@ -84,11 +102,14 @@ Figure out how to handle unsaved changes properly
 
 Add a loading modal (with a custom message), show it when you load the playlists or save the comments
 Check if changes in comments before changing url
-connect to spotify
 connect to a DB
 landing page
 
 put save all button somewhere reasonable
+
+Server-side rendering
+
+Create app as an electron app
 
 ## Notes
 
