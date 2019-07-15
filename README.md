@@ -69,7 +69,12 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Write image based snapshot testing
+Add simple server for saving/retrieving playlists
+
+- Add utility functions for creating test data
+- mock to save/load from files etc
+- update folder structure to have frontend/backend
+- update tests to include stubbing for backend calls (where required)
 
 Write integration tests that test FE together (enzyme)
 
@@ -77,6 +82,8 @@ Write integration tests that test FE together (enzyme)
 - Do same tests as the cypress playlist tests - get a feel for complexity & timing vs Cypress
 
 Add ability to light/dark theme page
+
+Write image based snapshot testing
 
 Connect to spotify (store credentials in front end only)
 
