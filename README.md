@@ -69,11 +69,15 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
+Simplify Webpack
+
+- remove all the unnecessary stuff from the create-react-app
+- move as much as possible from the package.json
+
 Add simple server for saving/retrieving playlists
 
 - Add utility functions for creating test data
 - mock to save/load from files etc
-- update folder structure to have frontend/backend
 - update tests to include stubbing for backend calls (where required)
 
 Write integration tests that test FE together (enzyme)
@@ -90,10 +94,7 @@ Connect to spotify (store credentials in front end only)
 - Add tests for log-in flow(?)
 - Add fixtures for stubbed data returned from spotify
 
-Simplify Webpack
 
-- remove all the unnecessary stuff from the create-react-app
-- move as much as possible from the package.json
 
 Move to rxjs
 
