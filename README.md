@@ -46,7 +46,7 @@ src/
     reducer.js //
     store.js //
   tests/ // for integration/e2e tests
-    // TBD
+    cypress/ // holds the cypres e2e tests & config
   App.js
   api.js // contains the code that interacts with the server
   index.js
@@ -69,17 +69,12 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Figure out proper structure regarding cypress files
-
-- Move into src folder
-- explain structure in this readme
+Write image based snapshot testing
 
 Write integration tests that test FE together (enzyme)
 
 - Inspiration: [this](<https://www.ebayinc.com/stories/blogs/tech/integration-testing-with-react-and-enzyme/>)
 - Do same tests as the cypress playlist tests - get a feel for complexity & timing vs Cypress
-
-Write image based snapshot testing
 
 Add ability to light/dark theme page
 
