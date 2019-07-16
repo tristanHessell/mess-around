@@ -34,6 +34,7 @@ module.exports = {
     'jsx',
     'node',
   ],
+  watchPathIgnorePatterns: ['<rootDir>/src/backend/'],
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
