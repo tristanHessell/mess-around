@@ -70,11 +70,10 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 ## TODO
 
 Stop prettier errors from blocking dev build
+Stop jest from updating when watchAll and the test data/endpoints change
 
 Add simple server for saving/retrieving playlists
 
-- Add utility functions for creating test data
-- mock to save/load from files etc
 - update tests to include stubbing for backend calls (where required)
 
 Write integration tests that test FE together (enzyme)

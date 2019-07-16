@@ -25,7 +25,10 @@ async function getPlaylist(playlistId) {
  *
  */
 async function savePlaylist(playlistId, playlist) {
-  //
+  return writeFile(
+    `${__dirname}/data/playlist/${playlistId}.json`,
+    JSON.stringify(getPlaylist(playlist), undefined, 2),
+  );
 }
 
 /**
@@ -50,5 +53,8 @@ async function getComments(playlistId) {
  *
  */
 async function saveComments(playlistId, comments) {
-  //
+  return writeFile(
+    `${__dirname}/data/comments/${playlistId}.json`,
+    JSON.stringify(comments, undefined, 2),
+  );
 }

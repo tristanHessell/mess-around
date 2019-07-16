@@ -11,9 +11,8 @@ router.get('/:playlistId', async (req, res) => {
 
 router.put('/:playlistId', async (req, res) => {
   const { playlistId } = req.params;
-  const { comments } = req.body;
 
-  await saveComments(playlistId, comments);
+  await saveComments(playlistId, req.body);
 
   res.json({}); // TODO
 });
