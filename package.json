@@ -24,6 +24,7 @@
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-jsx-a11y": "6.2.1",
     "eslint-plugin-react-hooks": "^1.5.0",
+    "express": "^4.17.1",
     "file-loader": "3.0.1",
     "fs-extra": "7.0.1",
     "html-webpack-plugin": "4.0.0-beta.5",
@@ -60,6 +61,7 @@
     "style-loader": "0.23.1",
     "styled-components": "^4.2.0",
     "terser-webpack-plugin": "1.2.3",
+    "typescript": "^3.5.3",
     "url-loader": "1.1.2",
     "uuid": "^3.3.2",
     "webpack": "4.29.6",
@@ -75,18 +77,6 @@
     "test-e2e:run": "cypress run --project ./src/tests/",
     "test-e2e:open": "cypress open --project ./src/tests/",
     "test": "jest --watchAll"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "cypress": "^3.4.0",
