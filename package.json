@@ -71,6 +71,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "start-endpoints": "node ./src/backend/",
     "build": "node scripts/build.js",
     "cover": "jest --coverage",
     "lint": "eslint --fix ./src/",

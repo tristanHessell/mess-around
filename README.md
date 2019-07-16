@@ -84,6 +84,8 @@ Add ability to light/dark theme page
 
 Write image based snapshot testing
 
+Add pact/some sort of contact testing
+
 Connect to spotify (store credentials in front end only)
 
 - Add tests for log-in flow(?)
