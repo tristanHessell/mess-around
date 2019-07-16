@@ -69,6 +69,8 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
+Stop prettier errors from blocking dev build
+
 Add simple server for saving/retrieving playlists
 
 - Add utility functions for creating test data
@@ -94,6 +96,10 @@ Connect to spotify (store credentials in front end only)
 Move to rxjs
 
 - Inspiration: [this](<https://redux-saga.js.org/>)
+
+Handle CORS properly
+
+- [this](<https://expressjs.com/en/resources/middleware/cors.html>)
 
 Simplify Webpack
 

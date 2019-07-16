@@ -60,7 +60,7 @@ const PlaylistPage = React.memo(({ playlistId }) => {
       }),
     );
 
-    await dispatch(saveComments());
+    await dispatch(saveComments(playlistId));
 
     dispatch(hideModal());
   };

@@ -70,9 +70,7 @@ async function getPlaylists() {
  */
 async function getComments(playlistId) {
   return {
-    BLAH: { '01': `BLAH1` },
-    BLAH2: { '01': `BLAH2` },
-    BLAH3: { '01': `BLAH3` },
+    '01': playlistId,
   };
 }
 

@@ -1,25 +1,29 @@
 // this is where talking to servers go
 
 export function getPlaylists() {
-  return new Promise((resolve /* reject*/) => {
-    // TODO
-  });
+  return fetch('http://localhost:5000/playlists').then((response) =>
+    response.json(),
+  );
 }
 
 export function getPlaylist(playlistId) {
-  return new Promise((resolve /* reject*/) => {
-    // TODO
-  });
+  return fetch(`http://localhost:5000/playlist/${playlistId}`).then(
+    (response) => response.json(),
+  );
 }
 
 export function getComments(playlistId) {
-  return new Promise(async (resolve /* reject*/) => {
-    // TODO
-  });
+  return fetch(`http://localhost:5000/comments/${playlistId}`).then(
+    (response) => response.json(),
+  );
 }
 
 export function saveComments(playlistId, comments) {
-  return new Promise((resolve /* reject*/) => {
-    // TODO
-  });
+  return fetch(`http://localhost:5000/comments/${playlistId}`, {
+    method: 'PUT',
+    body: JSON.stringify(comments),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((response) => response.json());
 }

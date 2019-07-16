@@ -15,7 +15,7 @@ router.put('/:playlistId', async (req, res) => {
 
   await saveComments(playlistId, comments);
 
-  res.sendStatus(200); // TODO
+  res.json({}); // TODO
 });
 
 module.exports = router;
