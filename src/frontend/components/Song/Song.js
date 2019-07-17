@@ -13,7 +13,6 @@ const Song = React.memo(
     hasChanged,
     onChangeComment,
     onClick,
-    preview,
   }) => {
     const onClickSong = (/*e*/) => {
       // if (e.target.type !== 'textarea' && e.target.type !== 'a') {
@@ -34,7 +33,6 @@ const Song = React.memo(
         <Comment
           comment={comment}
           onChange={(comment) => onChangeComment(songId, comment)}
-          preview={preview}
         />
       </SongContainer>
     );

@@ -69,6 +69,7 @@ const PlaylistList = React.memo(
         </AutoSizerContainer>
         {!readOnly && (
           <button
+            data-test="save-all-button"
             disabled={!Object.keys(comments.changes).length}
             onClick={() => onSaveSong()}
           >

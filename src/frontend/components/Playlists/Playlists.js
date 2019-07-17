@@ -69,12 +69,13 @@ const Playlists = React.memo(() => {
     <PlaylistsContainer>
       <div>Playlists</div>
       {!isLoading
-        ? playlists.map((playlistSummary) => {
+        ? playlists.map((playlistSummary, index) => {
             const currentPlaylistId = playlist && playlist.id;
             const isSelected = currentPlaylistId === playlistSummary.id;
 
             return (
               <PlaylistButton
+                data-test={`playlist-button-${index}`}
                 key={playlistSummary.id}
                 onClick={() =>
                   onClickPlaylist(currentPlaylistId, playlistSummary.id)
