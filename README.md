@@ -67,6 +67,12 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 - See [this](<https://stackoverflow.com/questions/35623656/how-can-i-display-a-modal-dialog-in-redux-that-performs-asynchronous-actions/35641680>)
 - Also making that redux is serializable (meaning we can't store functions)
 
+## Why did you use `loki` for visual regression testing?
+
+- Because there are many, many tools and I needed to pick one.
+- Its free and plugs into Storybook, a tool that is in use in the project.
+- Link [here](<https://github.com/oblador/loki>)
+
 ## TODO
 
 Write image based snapshot testing
