@@ -1,13 +1,36 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Button } from '@storybook/react/demo';
+import Playlists from './Playlists';
 
-storiesOf('Button', module)
-  .add('with text', () => <Button>Hello Button</Button>)
-  .add('with emoji', () => (
-    <Button>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯 1233
-      </span>
-    </Button>
-  ));
+storiesOf('Playlists', module)
+  .add('No selected playlist', () => {
+    const playlists = [
+      {
+        name: 'Playlist1',
+        id: 0,
+      },
+    ];
+    const onClickPlaylist = () => {};
+    return (
+      <Playlists playlists={playlists} onClickPlaylist={onClickPlaylist} />
+    );
+  })
+  .add('With selected playlist', () => {
+    const playlists = [
+      {
+        name: 'Playlist1',
+        id: 0,
+      },
+    ];
+    const currentPlaylist = {
+      id: 0,
+    };
+    const onClickPlaylist = () => {};
+    return (
+      <Playlists
+        playlists={playlists}
+        currentPlaylist={currentPlaylist}
+        onClickPlaylist={onClickPlaylist}
+      />
+    );
+  });

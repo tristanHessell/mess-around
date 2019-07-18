@@ -77,9 +77,10 @@
     "build": "node scripts/build.js",
     "cover": "jest --coverage",
     "lint": "eslint --fix ./src/",
-    "storybook": "start-storybook --config-dir ./src/frontend/.storybook",
-    "test-v-reg": "loki test --port 46609 --reference ./src/frontend/.loki/reference --current ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",
-    "test-v-reg-approve": "loki approve --port 46609 --reference ./src/frontend/.loki/reference --current ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",
+    "storybook": "start-storybook --config-dir ./src/frontend/.storybook --port 46609",
+    "test-v": "loki test --port 46609 --reference ./src/frontend/.loki/reference --output ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",
+    "test-v-update": "loki update --port 46609 --reference ./src/frontend/.loki/reference --output ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",
+    "test-v-approve": "loki approve --port 46609 --reference ./src/frontend/.loki/reference --output ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",
     "test-e2e-run": "cypress run --project ./src/tests/",
     "test-e2e-open": "cypress open --project ./src/tests/",
     "test": "jest --watchAll"
