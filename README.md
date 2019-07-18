@@ -75,15 +75,17 @@ Write cypress tests that don't suck
 
 - Figure out about mocking fetch
 - Figure out better solution for accessing selectors from a collection
+- Implement the pageObject model [this](<https://martinfowler.com/bliki/PageObject.html>)
 
 Write integration tests that test FE together (enzyme)
 
 - Inspiration: [this](<https://www.ebayinc.com/stories/blogs/tech/integration-testing-with-react-and-enzyme/>)
 - Do same tests as the cypress playlist tests - get a feel for complexity & timing vs Cypress
 
+Add pact/some sort of contact testing
+
 Add ability to light/dark theme page
 
-Add pact/some sort of contact testing
 
 Connect to spotify (store credentials in front end only)
 
