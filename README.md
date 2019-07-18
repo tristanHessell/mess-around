@@ -71,11 +71,14 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 - Because there are many, many tools and I needed to pick one.
 - Its free and plugs into Storybook, a tool that is in use in the project.
+- Note: Loki hangs when run in the VSCode terminal, so only run it from the OS terminal
 - Link [here](<https://github.com/oblador/loki>)
 
 ## TODO
 
 Write image based snapshot testing
+
+- Add some actual tests
 
 Write cypress tests that don't suck
 
@@ -88,10 +91,15 @@ Write integration tests that test FE together (enzyme)
 - Inspiration: [this](<https://www.ebayinc.com/stories/blogs/tech/integration-testing-with-react-and-enzyme/>)
 - Do same tests as the cypress playlist tests - get a feel for complexity & timing vs Cypress
 
+Write actual REST
+
+- Accept, Content-Type headers
+- HATEOAS
+- See [this](<https://martinfowler.com/articles/richardsonMaturityModel.html>)
+
 Add pact/some sort of contact testing
 
 Add ability to light/dark theme page
-
 
 Connect to spotify (store credentials in front end only)
 

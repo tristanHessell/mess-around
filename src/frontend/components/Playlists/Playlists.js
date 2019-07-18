@@ -1,30 +1,14 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
 
 import { playlistSelector } from '../../redux/playlist/selectors';
-
 import { playlistsSelector } from '../../redux/playlists/selectors';
-
 import { fetchPlaylists } from '../../redux/playlists/actions';
-
 import { commentsSelector } from '../../redux/comments/selectors';
-
 import { showModal } from '../../redux/modal/actions';
 
-const PlaylistsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  overflow-y: auto;
-  overflow-x: hidden;
-`;
-
-const PlaylistButton = styled.div`
-  background-color: gray;
-  color: ${(props) => (props.selected ? 'red' : 'black')};
-`;
+import { PlaylistsContainer, PlaylistButton } from './styles';
 
 const Playlists = React.memo(() => {
   const { playlists, isLoading } = useSelector(playlistsSelector);
