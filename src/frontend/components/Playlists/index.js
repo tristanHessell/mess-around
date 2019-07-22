@@ -1,3 +1,3 @@
-import Playlists from './PlaylistsContainer';
+import Playlists from './Playlists.container';
 
 export default Playlists;

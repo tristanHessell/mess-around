@@ -1,10 +1,10 @@
 import React from 'react';
-import { PlaylistsContainer, PlaylistButton } from './styles';
+import { PlaylistsWrapper, PlaylistButton } from './styles';
 
 const Playlists = React.memo(
   ({ isLoading, playlists, currentPlaylist, onClickPlaylist }) => {
     return (
-      <PlaylistsContainer>
+      <PlaylistsWrapper>
         <div>Playlists</div>
         {!isLoading
           ? playlists.map((playlistSummary, index) => {
@@ -25,7 +25,7 @@ const Playlists = React.memo(
               );
             })
           : '...Loading'}
-      </PlaylistsContainer>
+      </PlaylistsWrapper>
     );
   },
 );
