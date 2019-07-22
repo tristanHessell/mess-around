@@ -1,15 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const UserContainer = styled.div`
-  /*  */
-`;
+import { UserWrapper } from './styles';
 
 const User = React.memo(({ name }) => {
   return (
-    <UserContainer>
+    <UserWrapper>
       <div>{name}</div>
-    </UserContainer>
+    </UserWrapper>
   );
 });
 

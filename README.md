@@ -1,8 +1,20 @@
 # Spotify-list (Proper name to come)
 
+## React
+
+The `react` component side of the application is organised/named such that redux-connected components are split into display & container components. There are various reasons for this, one of them being that it is easier to test the display side of the component when there is a seperation of concerns between what is shown vs how it is shown.
+
+### Component Naming Convention
+
+|Naming Convention|Description|Example|
+|-|-|-|
+|*Container|The component connects to redux.|PlaylistsContainer|
+|*Wrapper|The component is the overall containing element that encapsulates a component. `Wrapper` is named as such to avoid overloading `Container`.|PlaylistWrapper|
+|*Page|The component is the top level component for a given URL.|PlaylistPage|
+
 ## Redux
 
-The redux side of this application is organised a la [Ducks](<https://github.com/erikras/ducks-modular-redux>), with a slight difference taken from [here](<https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf#redux-organization--feature_first_ducks>).
+The `redux` side of this application is organised a la [Ducks](<https://github.com/erikras/ducks-modular-redux>), with a slight difference taken from [here](<https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf#redux-organization--feature_first_ducks>).
 
 ### Action Type Naming Convention
 
@@ -27,9 +39,11 @@ The actions should be structured as follows:
 src/
   components/
     ComponentName/
-      index.js
+      index.js // should contain AT LEAST the default export of the primary component
       styles.js // will only contain styled components
       ComponentName.js
+      ComponentName.container.js // if the component connects to redux
+      ComponentName.stories.js // for storybook/visual regression tests
       ComponentName.spec.js
   pages/
     urlName/
@@ -47,6 +61,7 @@ src/
     store.js //
   tests/ // for integration/e2e tests
     cypress/ // holds the cypres e2e tests & config
+    enzyme/ // holds the enzyme FE integration tests
   App.js
   api.js // contains the code that interacts with the server
   index.js
@@ -78,11 +93,13 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 Write image based snapshot testing
 
+- change components to be container/display
+
 - Add some actual tests
 
 Write cypress tests that don't suck
 
-- Figure out about mocking fetch
+- Figure out about mocking fetch (would prefer not to mock at api.js level)
 - Figure out better solution for accessing selectors from a collection
 - Implement the pageObject model [this](<https://martinfowler.com/bliki/PageObject.html>)
 
@@ -100,6 +117,10 @@ Write actual REST
 Add pact/some sort of contact testing
 
 Add ability to light/dark theme page
+
+Research naming standard for components (including styled components)
+
+- Not super happy with what I've chosen so far
 
 Connect to spotify (store credentials in front end only)
 

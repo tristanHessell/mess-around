@@ -1,24 +1,10 @@
 import React, { useContext } from 'react';
 import { List, AutoSizer } from 'react-virtualized';
-import styled from 'styled-components';
 
 import ReadOnlyContext from '../../ReadOnlyContext';
 import Song from '../Song';
 
-const PlaylistContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-`;
-
-const RowContainer = styled.div`
-  display: flex;
-`;
-
-// https://github.com/bvaughn/react-virtualized/blob/master/docs/usingAutoSizer.md#can-i-use-autosizer-within-a-flex-container
-const AutoSizerContainer = styled.div`
-  flex: 1 1 auto;
-`;
+import { SongRow, PlaylistWrapper, AutoSizerWrapper } from './styles';
 
 const PlaylistList = React.memo(
   ({
@@ -36,7 +22,7 @@ const PlaylistList = React.memo(
       const { comment, hasChanged } = getComment(song.id);
 
       return (
-        <RowContainer key={song.id} style={style}>
+        <SongRow key={song.id} style={style}>
           <Song
             songId={song.id}
             name={song.name}
@@ -48,13 +34,13 @@ const PlaylistList = React.memo(
             readOnly={readOnly}
             onSave={onSaveSong}
           />
-        </RowContainer>
+        </SongRow>
       );
     }
 
     return (
-      <PlaylistContainer>
-        <AutoSizerContainer>
+      <PlaylistWrapper>
+        <AutoSizerWrapper>
           <AutoSizer>
             {({ width, height }) => (
               <List
@@ -66,7 +52,7 @@ const PlaylistList = React.memo(
               />
             )}
           </AutoSizer>
-        </AutoSizerContainer>
+        </AutoSizerWrapper>
         {!readOnly && (
           <button
             data-test="save-all-button"
@@ -76,7 +62,7 @@ const PlaylistList = React.memo(
             Save All
           </button>
         )}
-      </PlaylistContainer>
+      </PlaylistWrapper>
     );
   },
 );

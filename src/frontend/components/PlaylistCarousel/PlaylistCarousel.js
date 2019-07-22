@@ -1,17 +1,11 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 
 import ReadOnlyContext from '../../ReadOnlyContext';
 import Song from '../Song';
 
+import { PlaylistCarouselWrapper } from './styles';
 import './playlistCarousel.css';
-
-const PlaylistCarouselContainer = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-`;
 
 const PlaylistCarousel = React.memo(
   ({
@@ -27,7 +21,7 @@ const PlaylistCarousel = React.memo(
     const selectedItem = songs.findIndex((song) => song.id === selectedSongId);
 
     return (
-      <PlaylistCarouselContainer>
+      <PlaylistCarouselWrapper>
         <Carousel
           className="playlist-carousel"
           showThumbs={false}
@@ -64,7 +58,7 @@ const PlaylistCarousel = React.memo(
             Save All
           </button>
         )}
-      </PlaylistCarouselContainer>
+      </PlaylistCarouselWrapper>
     );
   },
 );
