@@ -57,8 +57,8 @@ describe('Redux: playlist', () => {
     it('should return the initial state', async () => {
       expect(reducer(undefined, {})).toEqual({
         id: undefined,
-        canonical: {},
-        changes: {},
+        canonical: undefined,
+        changes: undefined,
         isSaving: false,
         isLoading: true,
       });

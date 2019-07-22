@@ -2,8 +2,8 @@ import * as actionTypes from './types';
 
 const DEFAULT_STATE = {
   id: undefined,
-  canonical: {},
-  changes: {},
+  canonical: undefined,
+  changes: undefined,
   isSaving: false,
   isLoading: true,
 };

@@ -15,12 +15,8 @@ import {
 } from '../../redux/comments/selectors';
 
 import { fetchPlaylist } from '../../redux/playlist/actions';
-
 import { playlistSelector } from '../../redux/playlist/selectors';
-
 import { showModal, hideModal } from '../../redux/modal/actions';
-
-import LoadingModal from '../../components/LoadingModal';
 
 import PlaylistList from '../../components/PlaylistList';
 import PlaylistCarousel from '../../components/PlaylistCarousel';
@@ -70,16 +66,30 @@ const PlaylistPage = React.memo(({ playlistId }) => {
 
   useEffect(() => {
     async function getPlaylist() {
+      await dispatch(
+        showModal({
+          modalType: 'LOADING_MODAL',
+        }),
+      );
       await Promise.all([
         dispatch(fetchPlaylist(playlistId)),
         dispatch(fetchComments(playlistId)),
       ]);
+      await dispatch(
+        hideModal({
+          modalType: 'LOADING_MODAL',
+        }),
+      );
     }
 
     getPlaylist();
   }, [playlistId, dispatch]);
 
-  return !playlist.isLoading ? (
+  if (!playlist || !playlist.canonical || playlist.isLoading) {
+    return null;
+  }
+
+  return (
     <PlaylistContainer>
       <div>
         <h1>{playlist.canonical.name}</h1>
@@ -122,8 +132,6 @@ const PlaylistPage = React.memo(({ playlistId }) => {
         </>
       )}
     </PlaylistContainer>
-  ) : (
-    <LoadingModal />
   );
 });
 

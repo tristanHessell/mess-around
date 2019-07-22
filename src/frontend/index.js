@@ -11,11 +11,11 @@ import App from './App';
 
 const store = configureStore();
 
+Modal.setAppElement('#root');
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root'),
 );
-
-Modal.setAppElement('#root');
