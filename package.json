@@ -95,6 +95,7 @@
     "eslint-plugin-cypress": "^2.2.1",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.12.4",
+    "fetch-mock": "^7.3.9",
     "loki": "^0.17.0",
     "prettier": "1.18.2",
     "react-test-renderer": "^16.8.6",
@@ -115,5 +116,8 @@
         "preset": "iPhone 7"
       }
     }
-  }
+  },
+  "repository": "https://github.com/tristanHessell/spotify-comment.git",
+  "author": "Tristan <tristan.hessell@gmail.com>",
+  "license": "MIT"
 }

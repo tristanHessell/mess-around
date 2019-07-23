@@ -94,7 +94,6 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 Write image based snapshot testing
 
 - change components to be container/display
-
 - Add some actual tests
 
 Write cypress tests that don't suck
@@ -114,7 +113,7 @@ Write actual REST
 - HATEOAS
 - See [this](<https://martinfowler.com/articles/richardsonMaturityModel.html>)
 
-Add pact/some sort of contact testing
+Add pact/some sort of contract testing
 
 Add ability to light/dark theme page
 
