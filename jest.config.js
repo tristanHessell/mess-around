@@ -5,6 +5,7 @@ module.exports = {
   testMatch: [
     '<rootDir>/src/frontend/**/__tests__/**/*.{js,jsx,ts,tsx}',
     '<rootDir>/src/frontend/**/*.{spec,test}.{js,jsx,ts,tsx}',
+    '<rootDir>/src/tests/enzyme/**/*.{spec,test}.{js,jsx,ts,tsx}',
   ],
   testEnvironment: 'jest-environment-jsdom-fourteen',
   transform: {

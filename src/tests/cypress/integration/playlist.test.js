@@ -5,6 +5,7 @@ describe('Playlist Interactions', function() {
     // change the data in the "DB"
     cy.exec('node ../utils/generate-stubs');
   });
+
   it('can save a comment', function() {
     cy.visit('/');
 
@@ -27,7 +28,7 @@ describe('Playlist Interactions', function() {
       .contains('NEW COMMENT');
   });
 
-  it('can undo editting a comment', function() {
+  it('can undo editing a comment', function() {
     cy.visit('/');
 
     cy.get('[data-test=playlist-button-0]').click();

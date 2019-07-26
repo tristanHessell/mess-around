@@ -89,7 +89,19 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 - Note: Loki hangs when run in the VSCode terminal, so only run it from the OS terminal
 - Link [here](<https://github.com/oblador/loki>)
 
+## Why did you use Cypress for E2E & Integration tests
+
+- Terminology: E2E tests will not mock the server interactions, integration tests will.
+- Cypress just works out the box.
+- The limitation of only working in Chrome is something I can handle for now.
+- I played around with using full mounting & enzyme [this](<https://www.ebayinc.com/stories/blogs/tech/integration-testing-with-react-and-enzyme/>), but I found that there was too many work arounds/hacks to make the tests work.
+  - These tests would ideally be the same as cypress tests, except significantly faster.
+
 ## TODO
+
+Remove ariaHideApp={false} from Modals
+
+- Its only there because it was blocking using enzyme
 
 Write image based snapshot testing
 
@@ -101,11 +113,6 @@ Write cypress tests that don't suck
 - Figure out about mocking fetch (would prefer not to mock at api.js level)
 - Figure out better solution for accessing selectors from a collection
 - Implement the pageObject model [this](<https://martinfowler.com/bliki/PageObject.html>)
-
-Write integration tests that test FE together (enzyme)
-
-- Inspiration: [this](<https://www.ebayinc.com/stories/blogs/tech/integration-testing-with-react-and-enzyme/>)
-- Do same tests as the cypress playlist tests - get a feel for complexity & timing vs Cypress
 
 Write actual REST
 
