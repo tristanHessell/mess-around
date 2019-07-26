@@ -97,22 +97,25 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 - I played around with using full mounting & enzyme [this](<https://www.ebayinc.com/stories/blogs/tech/integration-testing-with-react-and-enzyme/>), but I found that there was too many work arounds/hacks to make the tests work.
   - These tests would ideally be the same as cypress tests, except significantly faster.
 
+## Why are you using cypress run in headed mode? (with `--headed`) flag
+
+- Tests were passing when running in chrome (via `open` cli command), but failing with the run command.
+- I continued to use electron for the `run` tests as it comes baked into cypress.
+- See [this](<https://github.com/cypress-io/cypress/issues/1011>)
+
 ## TODO
-
-Remove ariaHideApp={false} from Modals
-
-- Its only there because it was blocking using enzyme
-
-Write image based snapshot testing
-
-- change components to be container/display
-- Add some actual tests
 
 Write cypress tests that don't suck
 
-- Figure out about mocking fetch (would prefer not to mock at api.js level)
-- Figure out better solution for accessing selectors from a collection
 - Implement the pageObject model [this](<https://martinfowler.com/bliki/PageObject.html>)
+  - Structure test directory around this too
+- Figure out better solution for accessing selectors from a collection
+- Include tests that are actually end-to-end (rather than using just fetch-mock)
+  - do this after actual accounts are featured
+
+Write image based snapshot testing
+
+- Add some actual tests
 
 Write actual REST
 
@@ -121,6 +124,8 @@ Write actual REST
 - See [this](<https://martinfowler.com/articles/richardsonMaturityModel.html>)
 
 Add pact/some sort of contract testing
+
+- Cant seem to install it at the moment
 
 Add ability to light/dark theme page
 

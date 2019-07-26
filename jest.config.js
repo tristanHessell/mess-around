@@ -35,7 +35,10 @@ module.exports = {
     'jsx',
     'node',
   ],
-  watchPathIgnorePatterns: ['<rootDir>/src/backend/'],
+  watchPathIgnorePatterns: [
+    '<rootDir>/src/backend/',
+    '<rootDir>/src/tests/cypress/',
+  ],
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
