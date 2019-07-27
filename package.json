@@ -86,6 +86,7 @@
     "test": "jest --watchAll"
   },
   "devDependencies": {
+    "@pact-foundation/pact": "^9.0.1",
     "@storybook/react": "^5.1.9",
     "cypress": "^3.4.0",
     "enzyme": "^3.10.0",
