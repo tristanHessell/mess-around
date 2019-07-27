@@ -61,6 +61,9 @@ src/
     store.js //
   tests/ // for integration/e2e tests
     cypress/ // holds the cypres e2e tests & config
+      test-area/
+        test-area.test.js // the actually cypress test
+        page.js // the PageObject for the given test-area
     enzyme/ // holds the enzyme FE integration tests
   App.js
   api.js // contains the code that interacts with the server
@@ -95,27 +98,29 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 - Cypress just works out the box.
 - The limitation of only working in Chrome is something I can handle for now.
 - I played around with using full mounting & enzyme [this](<https://www.ebayinc.com/stories/blogs/tech/integration-testing-with-react-and-enzyme/>), but I found that there was too many work arounds/hacks to make the tests work.
-  - These tests would ideally be the same as cypress tests, except significantly faster.
+  - These tests would ideally be the same as Cypress tests, except significantly faster.
 
-## Why are you using cypress run in headed mode? (with `--headed`) flag
+## Why are you using Cypress run in headed mode? (with `--headed`) flag
 
 - Tests were passing when running in chrome (via `open` cli command), but failing with the run command.
 - I continued to use electron for the `run` tests as it comes baked into cypress.
 - See [this](<https://github.com/cypress-io/cypress/issues/1011>)
 
+## Why are you using `fetch-mock` and not `cy.server()` in the Cypress tests?
+
+- `cy.server()` does not deal with fetch - only `XMLHttpRequest`'s.
+- Although there are work arounds, using `fetch-mock` seemed the most reasonable.
+
+## `page.js` in the Cypress tests?
+
+- Short for PageObject, this contains abstractions for getting/fiddling with the specifics of the test area at hand.
+- This is a common pattern for tests that interact with UI, its basis coming from [this](<https://martinfowler.com/bliki/PageObject.html>).
+
 ## TODO
 
-Write cypress tests that don't suck
+Add pact for contract testing
 
-- Implement the pageObject model [this](<https://martinfowler.com/bliki/PageObject.html>)
-  - Structure test directory around this too
-- Figure out better solution for accessing selectors from a collection
-- Include tests that are actually end-to-end (rather than using just fetch-mock)
-  - do this after actual accounts are featured
-
-Write image based snapshot testing
-
-- Add some actual tests
+---
 
 Write actual REST
 
@@ -123,9 +128,15 @@ Write actual REST
 - HATEOAS
 - See [this](<https://martinfowler.com/articles/richardsonMaturityModel.html>)
 
-Add pact/some sort of contract testing
+Write cypress tests that don't suck
 
-- Cant seem to install it at the moment
+- Figure out better solution for accessing selectors from a collection
+- Include tests that are actually end-to-end (rather than using just fetch-mock)
+  - do this after actual accounts are featured
+
+Write visual regression snapshot testing
+
+- Add some actual tests
 
 Add ability to light/dark theme page
 

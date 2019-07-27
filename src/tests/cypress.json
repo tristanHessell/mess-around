@@ -1,6 +1,6 @@
 {
   "baseUrl": "http://localhost:3000",
-  "testFiles": "**/*.js",
+  "testFiles": "**/*.test.js",
   "pluginsFile": false,
   "fixturesFolder": false,
   "supportFile": false
