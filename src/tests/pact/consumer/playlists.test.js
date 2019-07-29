@@ -47,7 +47,7 @@ describe('Playlists API', () => {
         },
         willRespondWith: {
           status: 200,
-          headers: { Accept: 'application/json' },
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
           body: EXPECTED_BODY,
         },
       });
@@ -55,7 +55,7 @@ describe('Playlists API', () => {
 
     it('returns a successful body', async () => {
       const playlists = await api.getPlaylists();
-      // expect(playlists).to
+      // TODO
     });
 
     afterEach(() => provider.verify());

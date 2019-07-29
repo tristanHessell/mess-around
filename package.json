@@ -83,7 +83,8 @@
     "test-v-update": "loki update --port 46609 --reference ./src/frontend/.loki/reference --output ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",
     "test-v-approve": "loki approve --port 46609 --reference ./src/frontend/.loki/reference --output ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",
     "test-e2e-run": "cypress run --project ./src/tests/ --headed",
-    "pact": "jest ./src/tests/pact/ --runInBand",
+    "pact-c": "jest ./src/tests/pact/consumer --runInBand",
+    "pact-p": "node ./src/tests/pact/provider/provider.js",
     "test-e2e-open": "cypress open --project ./src/tests/",
     "test": "jest --watchAll"
   },

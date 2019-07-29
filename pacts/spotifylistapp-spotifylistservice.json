@@ -1,0 +1,46 @@
+{
+  "consumer": {
+    "name": "SpotifyListApp"
+  },
+  "provider": {
+    "name": "SpotifyListService"
+  },
+  "interactions": [
+    {
+      "description": "a request for playlists",
+      "providerState": "a list of playlists",
+      "request": {
+        "method": "GET",
+        "path": "/playlists"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": [
+          {
+            "id": "BLAH",
+            "name": "PLAYLIST_NAME",
+            "url": ""
+          },
+          {
+            "id": "BLAH2",
+            "name": "PLAYLIST_2",
+            "url": ""
+          },
+          {
+            "id": "BLAH3",
+            "name": "PLAYLIST_3",
+            "url": ""
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
