@@ -32,6 +32,7 @@
     "html-webpack-plugin": "4.0.0-beta.5",
     "identity-obj-proxy": "3.0.0",
     "is-wsl": "^1.1.0",
+    "isomorphic-fetch": "^2.2.1",
     "jest": "24.7.1",
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-resolve": "24.7.1",
@@ -82,6 +83,7 @@
     "test-v-update": "loki update --port 46609 --reference ./src/frontend/.loki/reference --output ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",
     "test-v-approve": "loki approve --port 46609 --reference ./src/frontend/.loki/reference --output ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",
     "test-e2e-run": "cypress run --project ./src/tests/ --headed",
+    "pact": "jest ./src/tests/pact/ --runInBand",
     "test-e2e-open": "cypress open --project ./src/tests/",
     "test": "jest --watchAll"
   },
