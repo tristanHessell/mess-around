@@ -120,6 +120,10 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 Add pact for contract testing
 
+- Add consumer tests for all endpoint calls
+- Make sure tests actually use expectations
+- Wrap provider tests in something to handle exception on fail
+
 ---
 
 Write actual REST
