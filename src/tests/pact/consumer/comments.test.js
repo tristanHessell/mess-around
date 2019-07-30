@@ -14,7 +14,7 @@ describe('Comments API', () => {
     port: 5000,
     log: path.resolve(process.cwd(), 'logs', 'pact.log'),
     dir: path.resolve(process.cwd(), 'pacts'),
-    logLevel: 'INFO',
+    logLevel: 'ERROR',
     pactfileWriteMode: 'update',
   });
   const EXPECTED_BODY = {
@@ -42,7 +42,9 @@ describe('Comments API', () => {
 
     it('returns a successful body', async () => {
       const comments = await api.getComments('BLAH');
-      // TODO
+      expect(typeof comments).toEqual('object');
+      expect(Array.isArray(comments)).toEqual(false);
+      // body is an object
     });
 
     afterEach(() => provider.verify());

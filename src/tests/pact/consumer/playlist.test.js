@@ -14,15 +14,12 @@ describe('Playlist API', () => {
     port: 5000,
     log: path.resolve(process.cwd(), 'logs', 'pact.log'),
     dir: path.resolve(process.cwd(), 'pacts'),
-    logLevel: 'INFO',
+    logLevel: 'ERROR',
     pactfileWriteMode: 'update',
   });
   const EXPECTED_BODY = {
-    id: {
-      id: 'BLAH',
-      name: 'PLAYLIST_NAME',
-      url: '',
-    },
+    id: 'BLAH',
+    url: '',
     name: 'PLAYLIST NAME',
     description: 'hello description is me',
     songs: [
@@ -77,8 +74,10 @@ describe('Playlist API', () => {
     });
 
     it('returns a successful body', async () => {
-      const playlist = await api.getPlaylist('BLAH');
-      // TODO
+      const id = 'BLAH';
+      const playlist = await api.getPlaylist(id);
+      expect(playlist.id).toEqual(id);
+      expect(Array.isArray(playlist.songs)).toEqual(true);
     });
 
     afterEach(() => provider.verify());

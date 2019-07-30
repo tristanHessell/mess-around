@@ -14,7 +14,7 @@ describe('Playlists API', () => {
     port: 5000,
     log: path.resolve(process.cwd(), 'logs', 'pact.log'),
     dir: path.resolve(process.cwd(), 'pacts'),
-    logLevel: 'INFO',
+    logLevel: 'ERROR',
     pactfileWriteMode: 'update',
   });
   const EXPECTED_BODY = [
@@ -56,7 +56,7 @@ describe('Playlists API', () => {
 
     it('returns a successful body', async () => {
       const playlists = await api.getPlaylists();
-      // TODO
+      expect(Array.isArray(playlists)).toEqual(true);
     });
 
     afterEach(() => provider.verify());

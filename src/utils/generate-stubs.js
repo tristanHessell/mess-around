@@ -66,7 +66,7 @@ async function generateStubs() {
         ),
         writeFile(
           `../backend/db/data/playlist/${playlist.id}.json`,
-          JSON.stringify(getPlaylist(playlist), undefined, 2),
+          JSON.stringify(getPlaylist(playlist.id), undefined, 2),
         ),
       ]);
     }),
