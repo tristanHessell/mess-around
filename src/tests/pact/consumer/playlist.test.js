@@ -7,7 +7,7 @@ const { Pact } = require('@pact-foundation/pact');
 
 const api = require('../../../frontend/api');
 
-describe('Playlists API', () => {
+describe('Playlist API', () => {
   const provider = new Pact({
     consumer: 'SpotifyListApp',
     provider: 'SpotifyListService',
@@ -17,33 +17,55 @@ describe('Playlists API', () => {
     logLevel: 'INFO',
     pactfileWriteMode: 'update',
   });
-  const EXPECTED_BODY = [
-    {
+  const EXPECTED_BODY = {
+    id: {
       id: 'BLAH',
       name: 'PLAYLIST_NAME',
       url: '',
     },
-    {
-      id: 'BLAH2',
-      name: 'PLAYLIST_2',
-      url: '',
-    },
-    {
-      id: 'BLAH3',
-      name: 'PLAYLIST_3',
-      url: '',
-    },
-  ];
+    name: 'PLAYLIST NAME',
+    description: 'hello description is me',
+    songs: [
+      {
+        id: '01',
+        artists: [
+          {
+            id: 1,
+            name: 'Gus Dapperton',
+          },
+          {
+            id: 2,
+            name: 'Miley Cyrus',
+          },
+        ],
+        name: 'Hello name 1',
+      },
+      {
+        id: '02',
+        artists: [
+          {
+            id: 1,
+            name: 'Gus Dapperton',
+          },
+          {
+            id: 2,
+            name: 'Miley Cyrus',
+          },
+        ],
+        name: 'Hello name 2',
+      },
+    ],
+  };
 
   describe('works', () => {
     beforeEach(async () => {
       await provider.setup();
       provider.addInteraction({
-        state: 'a list of playlists',
-        uponReceiving: 'a request for playlists',
+        state: 'a playlist',
+        uponReceiving: 'a request for a playlist',
         withRequest: {
           method: 'GET',
-          path: '/playlists',
+          path: '/playlist/BLAH',
           // headers: { Accept: 'application/json' },
         },
         willRespondWith: {
@@ -55,7 +77,7 @@ describe('Playlists API', () => {
     });
 
     it('returns a successful body', async () => {
-      const playlists = await api.getPlaylists();
+      const playlist = await api.getPlaylist('BLAH');
       // TODO
     });
 

@@ -12,6 +12,13 @@ const opts = {
   ],
 };
 
-new Verifier().verifyProvider(opts).then(() => {
-  console.log('POST VERIFYING PROVIDERS');
-});
+async function verify() {
+  try {
+    await new Verifier(opts).verifyProvider();
+    console.log('POST VERIFYING PROVIDERS');
+  } catch (error) {
+    console.log('Pact verification failed', error);
+  }
+}
+
+verify();

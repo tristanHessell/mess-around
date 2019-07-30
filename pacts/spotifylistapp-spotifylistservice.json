@@ -7,6 +7,23 @@
   },
   "interactions": [
     {
+      "description": "a request for comments",
+      "providerState": "a list of comments",
+      "request": {
+        "method": "GET",
+        "path": "/comments/BLAH"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "01": "NEW COMMENT"
+        }
+      }
+    },
+    {
       "description": "a request for playlists",
       "providerState": "a list of playlists",
       "request": {
@@ -35,6 +52,59 @@
             "url": ""
           }
         ]
+      }
+    },
+    {
+      "description": "a request for a playlist",
+      "providerState": "a playlist",
+      "request": {
+        "method": "GET",
+        "path": "/playlist/BLAH"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": {
+            "id": "BLAH",
+            "name": "PLAYLIST_NAME",
+            "url": ""
+          },
+          "name": "PLAYLIST NAME",
+          "description": "hello description is me",
+          "songs": [
+            {
+              "id": "01",
+              "artists": [
+                {
+                  "id": 1,
+                  "name": "Gus Dapperton"
+                },
+                {
+                  "id": 2,
+                  "name": "Miley Cyrus"
+                }
+              ],
+              "name": "Hello name 1"
+            },
+            {
+              "id": "02",
+              "artists": [
+                {
+                  "id": 1,
+                  "name": "Gus Dapperton"
+                },
+                {
+                  "id": 2,
+                  "name": "Miley Cyrus"
+                }
+              ],
+              "name": "Hello name 2"
+            }
+          ]
+        }
       }
     }
   ],

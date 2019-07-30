@@ -27,3 +27,6 @@ yarn-error.log*
 **/cypress/screenshots
 
 src/backend/db/**/*.json
+
+# pact
+**/logs/*.log
