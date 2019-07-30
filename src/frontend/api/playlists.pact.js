@@ -13,7 +13,7 @@ describe('Playlists API', () => {
     provider: 'SpotifyListService',
     port: 5000,
     log: path.resolve(process.cwd(), 'logs', 'pact.log'),
-    dir: path.resolve(process.cwd(), 'pacts'),
+    dir: path.resolve(process.cwd(), 'src/tests', 'pact'),
     logLevel: 'ERROR',
     pactfileWriteMode: 'update',
   });

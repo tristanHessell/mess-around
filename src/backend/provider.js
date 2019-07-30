@@ -7,7 +7,7 @@ const opts = {
   pactUrls: [
     path.resolve(
       process.cwd(),
-      './pacts/spotifylistapp-spotifylistservice.json',
+      './src/tests/pact/spotifylistapp-spotifylistservice.json',
     ),
   ],
 };

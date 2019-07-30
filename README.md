@@ -120,11 +120,12 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 Add pact for contract testing
 
-- Make sure consumer tests actually use expectations
-- Structure tests correctly (application wise)
+- Structure tests better (application wise)
+  - Put the consumer provider definition in a common place, so its not repeated in each pact test (this will live in `api/`, but not exported)
+  - update application structure readme
+- Make pact test expectations much more in depth
 
 ---
-
 Write actual REST
 
 - Accept, Content-Type headers
@@ -143,14 +144,11 @@ Write visual regression snapshot testing
 
 Add ability to light/dark theme page
 
+Give Swagger a shot
+
 Research naming standard for components (including styled components)
 
 - Not super happy with what I've chosen so far
-
-Connect to spotify (store credentials in front end only)
-
-- Add tests for log-in flow(?)
-- Add fixtures for stubbed data returned from spotify
 
 Move to rxjs
 
@@ -159,6 +157,11 @@ Move to rxjs
 Handle CORS properly
 
 - [this](<https://expressjs.com/en/resources/middleware/cors.html>)
+
+Connect to spotify (store credentials in front end only)
+
+- Add tests for log-in flow(?)
+- Add fixtures for stubbed data returned from spotify
 
 Simplify Webpack
 

@@ -5,7 +5,7 @@
 const path = require('path');
 const { Pact } = require('@pact-foundation/pact');
 
-const api = require('../../../frontend/api/api');
+const api = require('./api');
 
 describe('Comments API', () => {
   const provider = new Pact({
@@ -13,7 +13,7 @@ describe('Comments API', () => {
     provider: 'SpotifyListService',
     port: 5000,
     log: path.resolve(process.cwd(), 'logs', 'pact.log'),
-    dir: path.resolve(process.cwd(), 'pacts'),
+    dir: path.resolve(process.cwd(), 'src/tests', 'pact'),
     logLevel: 'ERROR',
     pactfileWriteMode: 'update',
   });

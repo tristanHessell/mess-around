@@ -6,7 +6,7 @@ module.exports = {
     '<rootDir>/src/frontend/**/__tests__/**/*.{js,jsx,ts,tsx}',
     '<rootDir>/src/frontend/**/*.{spec,test}.{js,jsx,ts,tsx}',
     '<rootDir>/src/tests/enzyme/**/*.{spec,test}.{js,jsx,ts,tsx}',
-    '<rootDir>/src/tests/pact/**/*.{spec,test}.{js,jsx,ts,tsx}',
+    '<rootDir>/src/frontend/api/**/*.pact.{js,jsx,ts,tsx}',
   ],
   testEnvironment: 'jest-environment-jsdom-fourteen',
   transform: {
