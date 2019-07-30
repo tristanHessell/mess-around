@@ -37,37 +37,47 @@ The actions should be structured as follows:
 
 ```javascript
 src/
-  components/
-    ComponentName/
-      index.js // should contain AT LEAST the default export of the primary component
-      styles.js // will only contain styled components
-      ComponentName.js
-      ComponentName.container.js // if the component connects to redux
-      ComponentName.stories.js // for storybook/visual regression tests
-      ComponentName.spec.js
-  pages/
-    urlName/
-      UrlNamePage.js
-      index.js
-  redux/
-    modules/
-      actions.js // exports named actions
-      index.js // default exports the reducer
-      stateName.spec.js
-      selectors.js // exports named selectors
-      types.js // exports named action types
-    index.js //
-    reducer.js //
-    store.js //
-  tests/ // for integration/e2e tests
-    cypress/ // holds the cypres e2e tests & config
-      test-area/
-        test-area.test.js // the actually cypress test
-        page.js // the PageObject for the given test-area
-    enzyme/ // holds the enzyme FE integration tests
-  App.js
-  api.js // contains the code that interacts with the server
-  index.js
+  backend/
+    endpoints/
+      route/
+        index.js // the endpoints for given route
+      index.js // amalgamates the routes into a single router
+    db/ // an abstraction of an actual DB
+    index.js // the actual running webserver
+  frontend/
+    components/
+      ComponentName/
+        index.js // should contain AT LEAST the default export of the primary component
+        styles.js // will only contain styled components
+        ComponentName.js
+        ComponentName.container.js // if the component connects to redux
+        ComponentName.stories.js // for storybook/visual regression tests
+        ComponentName.spec.js
+    pages/
+      urlName/
+        UrlNamePage.js
+        index.js
+    redux/
+      modules/
+        actions.js // exports named actions
+        index.js // default exports the reducer
+        stateName.spec.js
+        selectors.js // exports named selectors
+        types.js // exports named action types
+      index.js //
+      reducer.js //
+      store.js //
+      api/
+        index.js // contains the code that interacts with the/other servers
+        *.pact.js // a pact consumer test for each kind of interaction with the server
+    tests/ // for integration/e2e tests
+      cypress/ // holds the cypres e2e tests & config
+        test-area/
+          test-area.test.js // the actually cypress test
+          page.js // the PageObject for the given test-area
+      enzyme/ // holds the enzyme FE integration tests
+    App.js
+    index.js
 ```
 
 ## Questions you might have
@@ -118,19 +128,17 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Add pact for contract testing
-
-- Structure tests better (application wise)
-  - Put the consumer provider definition in a common place, so its not repeated in each pact test (this will live in `api/`, but not exported)
-  - update application structure readme
-- Make pact test expectations much more in depth
-
----
 Write actual REST
 
 - Accept, Content-Type headers
 - HATEOAS
 - See [this](<https://martinfowler.com/articles/richardsonMaturityModel.html>)
+
+---
+
+Add pact for contract testing
+
+- Make pact test expectations much more in depth
 
 Write cypress tests that don't suck
 

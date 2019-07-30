@@ -2,21 +2,11 @@
  * @jest-environment node
  */
 
-const path = require('path');
-const { Pact } = require('@pact-foundation/pact');
+const provider = require('./pactProvider');
 
-const api = require('./api');
+const api = require('.');
 
 describe('Playlist API', () => {
-  const provider = new Pact({
-    consumer: 'SpotifyListApp',
-    provider: 'SpotifyListService',
-    port: 5000,
-    log: path.resolve(process.cwd(), 'logs', 'pact.log'),
-    dir: path.resolve(process.cwd(), 'src/tests', 'pact'),
-    logLevel: 'ERROR',
-    pactfileWriteMode: 'update',
-  });
   const EXPECTED_BODY = {
     id: 'BLAH',
     url: '',
