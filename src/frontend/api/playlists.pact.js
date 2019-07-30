@@ -5,9 +5,9 @@
 const path = require('path');
 const { Pact } = require('@pact-foundation/pact');
 
-const api = require('../../../frontend/api');
+const api = require('./api');
 
-describe('Comments API', () => {
+describe('Playlists API', () => {
   const provider = new Pact({
     consumer: 'SpotifyListApp',
     provider: 'SpotifyListService',
@@ -17,19 +17,33 @@ describe('Comments API', () => {
     logLevel: 'ERROR',
     pactfileWriteMode: 'update',
   });
-  const EXPECTED_BODY = {
-    '01': 'NEW COMMENT',
-  };
+  const EXPECTED_BODY = [
+    {
+      id: 'BLAH',
+      name: 'PLAYLIST_NAME',
+      url: '',
+    },
+    {
+      id: 'BLAH2',
+      name: 'PLAYLIST_2',
+      url: '',
+    },
+    {
+      id: 'BLAH3',
+      name: 'PLAYLIST_3',
+      url: '',
+    },
+  ];
 
   describe('works', () => {
     beforeEach(async () => {
       await provider.setup();
       provider.addInteraction({
-        state: 'a list of comments',
-        uponReceiving: 'a request for comments',
+        state: 'a list of playlists',
+        uponReceiving: 'a request for playlists',
         withRequest: {
           method: 'GET',
-          path: '/comments/BLAH',
+          path: '/playlists',
           // headers: { Accept: 'application/json' },
         },
         willRespondWith: {
@@ -41,10 +55,8 @@ describe('Comments API', () => {
     });
 
     it('returns a successful body', async () => {
-      const comments = await api.getComments('BLAH');
-      expect(typeof comments).toEqual('object');
-      expect(Array.isArray(comments)).toEqual(false);
-      // body is an object
+      const playlists = await api.getPlaylists();
+      expect(Array.isArray(playlists)).toEqual(true);
     });
 
     afterEach(() => provider.verify());

@@ -5,7 +5,7 @@
 const path = require('path');
 const { Pact } = require('@pact-foundation/pact');
 
-const api = require('../../../frontend/api');
+const api = require('./api');
 
 describe('Playlist API', () => {
   const provider = new Pact({
