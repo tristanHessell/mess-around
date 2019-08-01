@@ -137,23 +137,13 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Add pact for contract testing
-
-- Make pact test expectations much more in depth
+Add ability to light/dark theme page
 
 ---
-
-Write cypress tests that don't suck
-
-- Figure out better solution for accessing selectors from a collection
-- Include tests that are actually end-to-end (rather than using just fetch-mock)
-  - do this after actual accounts are featured
 
 Write visual regression snapshot testing
 
 - Add some actual tests
-
-Add ability to light/dark theme page
 
 Give Swagger a shot
 
@@ -164,6 +154,10 @@ Research naming standard for components (including styled components)
 Move to rxjs
 
 - Inspiration: [this](<https://redux-saga.js.org/>)
+
+Add pact for contract testing
+
+- Make pact test expectations much more in depth
 
 Handle CORS properly
 
@@ -179,6 +173,11 @@ Make the application RESTful
 - Add more descriptive status codes for when things go wrong in endpoints
 - HATEOAS
 - See [this](<https://martinfowler.com/articles/richardsonMaturityModel.html>)
+
+Write cypress tests that don't suck
+
+- Include tests that are actually end-to-end (rather than using just fetch-mock)
+  - do this after actual accounts are featured
 
 Simplify Webpack
 
