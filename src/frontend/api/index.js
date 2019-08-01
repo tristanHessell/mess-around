@@ -4,22 +4,32 @@
 // window already and wont be polyfilled.
 import 'isomorphic-fetch';
 
-export function getPlaylists() {
-  return fetch('http://localhost:5000/playlists').then((response) =>
-    response.json(),
-  );
+export async function getPlaylists() {
+  const response = await fetch('http://localhost:5000/playlists', {
+    headers: {
+      Accept: 'application/json',
+    },
+  });
+
+  return response.json();
 }
 
-export function getPlaylist(playlistId) {
-  return fetch(`http://localhost:5000/playlist/${playlistId}`).then(
-    (response) => response.json(),
-  );
+export async function getPlaylist(playlistId) {
+  const response = await fetch(`http://localhost:5000/playlist/${playlistId}`, {
+    headers: {
+      Accept: 'application/json',
+    },
+  });
+  return response.json();
 }
 
-export function getComments(playlistId) {
-  return fetch(`http://localhost:5000/comments/${playlistId}`).then(
-    (response) => response.json(),
-  );
+export async function getComments(playlistId) {
+  const response = await fetch(`http://localhost:5000/comments/${playlistId}`, {
+    headers: {
+      Accept: 'application/json',
+    },
+  });
+  return response.json();
 }
 
 export function saveComments(playlistId, comments) {

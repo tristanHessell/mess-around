@@ -126,19 +126,22 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 - Short for PageObject, this contains abstractions for getting/fiddling with the specifics of the test area at hand.
 - This is a common pattern for tests that interact with UI, its basis coming from [this](<https://martinfowler.com/bliki/PageObject.html>).
 
+## Your API isn't actually RESTful
+
+- Agreed. I have purposely not implemented HATEOAS - although I have taken the API to RMM level 2.
+- Proper REST (as defined by Roy T. Fielding Phd thesis and spoken about at talks/twitter & his blog), would include HATEOAS.
+- One of the driving forces behind HATEOAS is that the server specifies what it can and can't do at a given state, and has the freedom change its interface due to the client being coupled to only what it is told by the server.
+  - To clarify, this means that the server specifies what actions the client can take and the client needs no outside knowledge on how to execute those actions
+- While I think this is an excellent idea, I am using this project as a means to test different technologies/patterns.
+- I will look to implement HATEOAS at a future date.
+
 ## TODO
-
-Write actual REST
-
-- Accept, Content-Type headers
-- HATEOAS
-- See [this](<https://martinfowler.com/articles/richardsonMaturityModel.html>)
-
----
 
 Add pact for contract testing
 
 - Make pact test expectations much more in depth
+
+---
 
 Write cypress tests that don't suck
 
@@ -170,6 +173,12 @@ Connect to spotify (store credentials in front end only)
 
 - Add tests for log-in flow(?)
 - Add fixtures for stubbed data returned from spotify
+
+Make the application RESTful
+
+- Add more descriptive status codes for when things go wrong in endpoints
+- HATEOAS
+- See [this](<https://martinfowler.com/articles/richardsonMaturityModel.html>)
 
 Simplify Webpack
 

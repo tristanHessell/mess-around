@@ -6,7 +6,7 @@ const { getPlaylist } = require('../../db');
 router.get('/:playlistId', async (req, res) => {
   const { playlistId } = req.params;
 
-  res.json(await getPlaylist(playlistId));
+  res.status(200).json(await getPlaylist(playlistId));
 });
 
 // router.post('/', (req, res) => {
