@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from 'react-modal';
+import Modal from '../Modal';
 
 const LoadingModal = React.memo(() => {
   return <Modal isOpen>LoadingMODAL</Modal>;

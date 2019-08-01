@@ -5,7 +5,8 @@ export const CommentContainer = styled.div`
   flex: 1;
   flex-direction: column;
   border-radius: 5px;
-  border: black solid 3px;
+  border: solid 3px;
+  border-color: ${(props) => props.theme.fg};
   text-align: left;
   overflow-y: auto;
   & > p {

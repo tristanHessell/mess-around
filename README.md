@@ -139,6 +139,9 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 Add ability to light/dark theme page
 
+- put the theming code in a more reasonable place + encapsulate - custom hook?
+- Use more reasonable styling for theme
+
 ---
 
 Write visual regression snapshot testing
@@ -153,7 +156,11 @@ Research naming standard for components (including styled components)
 
 Move to rxjs
 
-- Inspiration: [this](<https://redux-saga.js.org/>)
+- Inspiration: [this]<https://redux-saga.js.org/>
+
+Address Accessability Issues
+
+- [this]<https://www.w3.org/WAI/standards-guidelines/aria/>
 
 Add pact for contract testing
 
@@ -161,7 +168,7 @@ Add pact for contract testing
 
 Handle CORS properly
 
-- [this](<https://expressjs.com/en/resources/middleware/cors.html>)
+- [this]<https://expressjs.com/en/resources/middleware/cors.html>
 
 Connect to spotify (store credentials in front end only)
 
@@ -172,7 +179,7 @@ Make the application RESTful
 
 - Add more descriptive status codes for when things go wrong in endpoints
 - HATEOAS
-- See [this](<https://martinfowler.com/articles/richardsonMaturityModel.html>)
+- See [this]<https://martinfowler.com/articles/richardsonMaturityModel.html>
 
 Write cypress tests that don't suck
 

@@ -4,6 +4,8 @@ export const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  background-color: ${(props) => props.theme.bg};
+  color: ${(props) => props.theme.fg};
 `;
 
 // shit naming

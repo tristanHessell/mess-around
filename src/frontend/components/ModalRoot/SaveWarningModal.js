@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from 'react-modal';
+import Modal from '../Modal';
 import { useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
 
@@ -23,7 +23,7 @@ const SaveWarningModal = React.memo(
     };
 
     return (
-      <Modal isOpen onRequestClose={onClose}>
+      <Modal isOpen onClose={onClose}>
         {message}
         <button
           onClick={async () => {

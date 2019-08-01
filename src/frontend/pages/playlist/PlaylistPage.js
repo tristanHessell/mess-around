@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -14,6 +13,7 @@ import {
   commentChangesSelector,
 } from '../../redux/comments/selectors';
 
+import Modal from '../../components/Modal';
 import { fetchPlaylist } from '../../redux/playlist/actions';
 import { playlistSelector } from '../../redux/playlist/selectors';
 import { showModal, hideModal } from '../../redux/modal/actions';
@@ -60,9 +60,6 @@ const PlaylistPage = React.memo(({ playlistId }) => {
 
     dispatch(hideModal());
   };
-  const toggleShowCarousel = () => {
-    setShowCarousel(!showCarousel);
-  };
 
   useEffect(() => {
     async function getPlaylist() {
@@ -101,8 +98,8 @@ const PlaylistPage = React.memo(({ playlistId }) => {
         <>
           <Modal
             isOpen={showCarousel}
-            onRequestClose={() => {
-              toggleShowCarousel();
+            onClose={() => {
+              setShowCarousel(false);
             }}
           >
             <PlaylistCarousel
@@ -124,7 +121,7 @@ const PlaylistPage = React.memo(({ playlistId }) => {
             getComment={getComment}
             onSaveSong={onSaveComment}
             onClickSong={(id) => {
-              toggleShowCarousel();
+              setShowCarousel(true);
               setSelectedSongId(id);
             }}
             onChangeComment={onChangeComment}
