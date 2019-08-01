@@ -20,7 +20,7 @@ describe('Comments API', () => {
         withRequest: {
           method: 'GET',
           path: '/comments/BLAH',
-          // headers: { Accept: 'application/json' },
+          headers: { Accept: 'application/json' },
         },
         willRespondWith: {
           status: 200,
@@ -34,7 +34,6 @@ describe('Comments API', () => {
       const comments = await api.getComments('BLAH');
       expect(typeof comments).toEqual('object');
       expect(Array.isArray(comments)).toEqual(false);
-      // body is an object
     });
 
     afterEach(() => provider.verify());

@@ -53,7 +53,7 @@ describe('Playlist API', () => {
         withRequest: {
           method: 'GET',
           path: '/playlist/BLAH',
-          // headers: { Accept: 'application/json' },
+          headers: { Accept: 'application/json' },
         },
         willRespondWith: {
           status: 200,
