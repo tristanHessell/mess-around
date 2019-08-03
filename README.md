@@ -137,19 +137,23 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
+Set up github repo better
+
+- run tests on merge PR
+- run lint on merge PR
+- make sure you cannot push directly to master
+
+---
+
 Research naming standard for components (including styled components)
 
 - Not super happy with what I've chosen so far
-
----
 
 Write visual regression snapshot testing
 
 - Add some actual tests
 
 Give Swagger a shot
-
-
 
 Move to rxjs
 
@@ -184,8 +188,6 @@ Changelog commits + process for generating changelog
 Add helmetjs to only use headers we want
 
 Add badges to readme
-
-Add workflows to github repo
 
 Make the application RESTful
 
