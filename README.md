@@ -137,10 +137,9 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Add ability to light/dark theme page
+Research naming standard for components (including styled components)
 
-- put the theming code in a more reasonable place + encapsulate - custom hook?
-- Use more reasonable styling for theme
+- Not super happy with what I've chosen so far
 
 ---
 
@@ -150,9 +149,7 @@ Write visual regression snapshot testing
 
 Give Swagger a shot
 
-Research naming standard for components (including styled components)
 
-- Not super happy with what I've chosen so far
 
 Move to rxjs
 
@@ -170,10 +167,25 @@ Handle CORS properly
 
 - [this]<https://expressjs.com/en/resources/middleware/cors.html>
 
+Style app better
+
 Connect to spotify (store credentials in front end only)
 
 - Add tests for log-in flow(?)
 - Add fixtures for stubbed data returned from spotify
+
+Create responsive UI for different screen sizes
+
+- Desktop
+- Mobile
+
+Changelog commits + process for generating changelog
+
+Add helmetjs to only use headers we want
+
+Add badges to readme
+
+Add workflows to github repo
 
 Make the application RESTful
 
