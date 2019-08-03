@@ -14,6 +14,8 @@ import ReadOnlyContext from './ReadOnlyContext';
 import LandingPage from './pages/landing';
 import PlaylistPage from './pages/playlist';
 
+import useTheme from './useTheme';
+
 import {
   AppWrapper,
   HeadBarWrapper,
@@ -24,34 +26,9 @@ import {
 
 const store = configureStore();
 
-const darkTheme = {
-  fg: 'white',
-  bg: 'black',
-};
-
-const lightTheme = {
-  fg: 'black',
-  bg: 'white',
-};
-
-const defaultTheme = {
-  name: 'light',
-  ...lightTheme,
-};
-
 function App() {
   const [isOpen, setIsOpen] = useState(true);
-  const [theme, setTheme] = useState(defaultTheme);
-
-  const toggleTheme = () => {
-    const name = theme.name === 'dark' ? 'light' : 'dark';
-    const newTheme = name === 'light' ? lightTheme : darkTheme;
-
-    setTheme({
-      name,
-      ...newTheme,
-    });
-  };
+  const [theme, toggleTheme] = useTheme();
 
   return (
     <ThemeProvider theme={theme}>
