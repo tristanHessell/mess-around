@@ -95,14 +95,14 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 - See [this](<https://stackoverflow.com/questions/35623656/how-can-i-display-a-modal-dialog-in-redux-that-performs-asynchronous-actions/35641680>)
 - Also making that redux is serializable (meaning we can't store functions)
 
-## Why did you use `loki` for visual regression testing?
+### Why did you use `loki` for visual regression testing?
 
 - Because there are many, many tools and I needed to pick one.
 - Its free and plugs into Storybook, a tool that is in use in the project.
 - Note: Loki hangs when run in the VSCode terminal, so only run it from the OS terminal
 - Link [here](<https://github.com/oblador/loki>)
 
-## Why did you use Cypress for E2E & Integration tests
+### Why did you use Cypress for E2E & Integration tests
 
 - Terminology: E2E tests will not mock the server interactions, integration tests will.
 - Cypress just works out the box.
@@ -110,23 +110,23 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 - I played around with using full mounting & enzyme [this](<https://www.ebayinc.com/stories/blogs/tech/integration-testing-with-react-and-enzyme/>), but I found that there was too many work arounds/hacks to make the tests work.
   - These tests would ideally be the same as Cypress tests, except significantly faster.
 
-## Why are you using Cypress run in headed mode? (with `--headed`) flag
+### Why are you using Cypress run in headed mode? (with `--headed`) flag
 
 - Tests were passing when running in chrome (via `open` cli command), but failing with the run command.
 - I continued to use electron for the `run` tests as it comes baked into cypress.
 - See [this](<https://github.com/cypress-io/cypress/issues/1011>)
 
-## Why are you using `fetch-mock` and not `cy.server()` in the Cypress tests?
+### Why are you using `fetch-mock` and not `cy.server()` in the Cypress tests?
 
 - `cy.server()` does not deal with fetch - only `XMLHttpRequest`'s.
 - Although there are work arounds, using `fetch-mock` seemed the most reasonable.
 
-## `page.js` in the Cypress tests?
+### `page.js` in the Cypress tests?
 
 - Short for PageObject, this contains abstractions for getting/fiddling with the specifics of the test area at hand.
 - This is a common pattern for tests that interact with UI, its basis coming from [this](<https://martinfowler.com/bliki/PageObject.html>).
 
-## Your API isn't actually RESTful
+### Your API isn't actually RESTful
 
 - Agreed. I have purposely not implemented HATEOAS - although I have taken the API to RMM level 2.
 - Proper REST (as defined by Roy T. Fielding Phd thesis and spoken about at talks/twitter & his blog), would include HATEOAS.
