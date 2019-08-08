@@ -91,7 +91,9 @@
   "devDependencies": {
     "@pact-foundation/pact": "^9.0.1",
     "@storybook/react": "^5.1.9",
+    "commitizen": "^4.0.3",
     "cypress": "^3.4.0",
+    "cz-conventional-changelog": "^3.0.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
@@ -103,6 +105,7 @@
     "loki": "^0.17.0",
     "prettier": "1.18.2",
     "react-test-renderer": "^16.8.6",
+    "semantic-release": "^15.13.19",
     "sinon": "^7.3.2"
   },
   "loki": {
@@ -123,5 +126,10 @@
   },
   "repository": "https://github.com/tristanHessell/spotify-comment.git",
   "author": "Tristan <tristan.hessell@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
