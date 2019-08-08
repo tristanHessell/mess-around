@@ -139,14 +139,6 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
-Changelog commits + process for generating changelog + add releases
-
-- [this]<https://github.com/semantic-release/semantic-release>
-
----
-
-Add helmetjs to only use headers we want
-
 Set up github repo better
 
 - run tests on merge PR
@@ -154,6 +146,12 @@ Set up github repo better
 - make sure you cannot push directly to master
 - Make sure PRs are squashed into master
 - Add contributing guide
+
+---
+
+Add process for generating changelog + add releases
+
+- [this]<https://github.com/semantic-release/semantic-release>
 
 Write visual regression snapshot testing
 
