@@ -1,5 +1,7 @@
 # Spotify-list (Proper name to come)
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 ## React
 
 The `react` component side of the application is organised/named such that redux-connected components are split into display & container components. There are various reasons for this, one of them being that it is easier to test the display side of the component when there is a seperation of concerns between what is shown vs how it is shown.
@@ -137,17 +139,21 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 
 ## TODO
 
+Changelog commits + process for generating changelog + add releases
+
+- [this]<https://github.com/semantic-release/semantic-release>
+
+---
+
+Add helmetjs to only use headers we want
+
 Set up github repo better
 
 - run tests on merge PR
 - run lint on merge PR
 - make sure you cannot push directly to master
-
----
-
-Research naming standard for components (including styled components)
-
-- Not super happy with what I've chosen so far
+- Make sure PRs are squashed into master
+- Add contributing guide
 
 Write visual regression snapshot testing
 
@@ -182,10 +188,6 @@ Create responsive UI for different screen sizes
 
 - Desktop
 - Mobile
-
-Changelog commits + process for generating changelog
-
-Add helmetjs to only use headers we want
 
 Add badges to readme
 
