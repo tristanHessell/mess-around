@@ -47,7 +47,7 @@ describe('Playlist API', () => {
   describe('works', () => {
     beforeEach(async () => {
       await provider.setup();
-      provider.addInteraction({
+      return provider.addInteraction({
         state: 'a playlist',
         uponReceiving: 'a request for a playlist',
         withRequest: {
