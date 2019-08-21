@@ -14,7 +14,7 @@ describe('Comments API', () => {
   describe('works', () => {
     beforeEach(async () => {
       await provider.setup();
-      provider.addInteraction({
+      return provider.addInteraction({
         state: 'a list of comments',
         uponReceiving: 'a request for comments',
         withRequest: {
