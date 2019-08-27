@@ -1,22 +1,17 @@
 
 # TODO
 
-Set up github repo better
-
-- Add contributing guide
-- Add husky for validation against commits
-- run tests on merge PR
-- run lint on merge PR
-
----
-
-Make it so prettier doesn't break react build
-
-- prettier rules should warn, but have a command to make warnings error
-
 Add process for generating changelog + add releases
 
 - [this]<https://github.com/semantic-release/semantic-release>
+
+---
+
+Set up github repo better
+
+- run tests on merge PR
+- run lint on merge PR
+- Fill out contributing guide
 
 Write visual regression snapshot testing
 
