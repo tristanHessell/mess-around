@@ -1,10 +1,6 @@
 
 # TODO
 
-Add process for generating changelog + add releases
-
-- [this]<https://github.com/semantic-release/semantic-release>
-
 ---
 
 Set up github repo better
