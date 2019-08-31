@@ -1,6 +1,6 @@
 {
   "name": "spotify-list",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@babel/core": "7.4.3",
@@ -87,11 +87,13 @@
     "pact-c": "jest ./src/frontend/api/ --testMatch=**/*.pact.js --runInBand",
     "pact-p": "node ./src/backend/provider.js",
     "test-e2e-open": "cypress open --project ./src/tests/",
-    "release": "semantic-release -no-ci",
+    "release": "semantic-release --no-ci",
     "test": "jest"
   },
   "devDependencies": {
     "@pact-foundation/pact": "^9.0.1",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
     "@storybook/react": "^5.1.9",
     "commitizen": "^4.0.3",
     "cypress": "^3.4.0",
