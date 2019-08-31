@@ -1,6 +1,10 @@
 
 # TODO
 
+Add pact for contract testing
+
+- Make pact test expectations much more in depth
+
 ---
 
 Set up github repo better
@@ -23,10 +27,6 @@ Address Accessability Issues
 
 - [this]<https://www.w3.org/WAI/standards-guidelines/aria/>
 
-Add pact for contract testing
-
-- Make pact test expectations much more in depth
-
 Handle CORS properly
 
 - [this]<https://expressjs.com/en/resources/middleware/cors.html>
@@ -42,8 +42,6 @@ Create responsive UI for different screen sizes
 
 - Desktop
 - Mobile
-
-Add badges to readme
 
 Make the application RESTful
 

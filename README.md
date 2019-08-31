@@ -1,8 +1,30 @@
-# Spotify-list (Proper name to come)
+# Spotify-list (Proper name to come) <!-- omit in toc -->
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
+---
+
+- [React](#react)
+  - [Component Naming Convention](#component-naming-convention)
+- [Redux](#redux)
+  - [Action Type Naming Convention](#action-type-naming-convention)
+  - [Action Creator Naming Convention](#action-creator-naming-convention)
+- [Application Structure](#application-structure)
+- [Questions you might have](#questions-you-might-have)
+  - [Why use `reach/router`?](#why-use-reachrouter)
+  - [Why use `redux-saga`?](#why-use-redux-saga)
+  - [Why have you structured modals in the way you have?](#why-have-you-structured-modals-in-the-way-you-have)
+  - [Why did you use `loki` for visual regression testing?](#why-did-you-use-loki-for-visual-regression-testing)
+  - [Why did you use Cypress for E2E & Integration tests](#why-did-you-use-cypress-for-e2e--integration-tests)
+  - [Why are you using Cypress run in headed mode? (with `--headed`) flag](#why-are-you-using-cypress-run-in-headed-mode-with---headed-flag)
+  - [Why are you using `fetch-mock` and not `cy.server()` in the Cypress tests?](#why-are-you-using-fetch-mock-and-not-cyserver-in-the-cypress-tests)
+  - [`page.js` in the Cypress tests?](#pagejs-in-the-cypress-tests)
+  - [Your API isn't actually RESTful](#your-api-isnt-actually-restful)
+  - [Releasing seems weird?](#releasing-seems-weird)
+
+---
 
 ## React
 
@@ -138,3 +160,9 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
   - To clarify, this means that the server specifies what actions the client can take and the client needs no outside knowledge on how to execute those actions
 - While I think this is an excellent idea, I am using this project as a means to test different technologies/patterns.
 - I will look to implement HATEOAS at a future date.
+
+### Releasing seems weird?
+
+- I am using `@semantic-release` to facilitate CHANGELOG, package versioning and releases.
+- Normally this would be done through CI, but that doesn't exist yet.
+- This will change one this codebase uses CI.

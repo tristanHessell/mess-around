@@ -1,9 +1,21 @@
-# Contributing to BLAH-BLAH-NAME
+# Contributing to BLAH-BLAH-NAME <!-- omit in toc -->
 
 Treat this document as the source of truth with respect to coding practises - there may be aspects of the codebase that do not abide by the rules and standards set out in this document.
 Such areas had been put into the codebase before this guide reached its current point, and should be changed when working on the relevant areas.
 
-// TODO add table of contents
+- [Submitting a Pull Request](#submitting-a-pull-request)
+- [Coding Rules](#coding-rules)
+  - [Source Code](#source-code)
+  - [Documentation](#documentation)
+- [Working with the code](#working-with-the-code)
+  - [Setup](#setup)
+    - [Installation](#installation)
+    - [Running the Application](#running-the-application)
+  - [Linting](#linting)
+  - [Testing](#testing)
+  - [Committing](#committing)
+  - [Merge Requests](#merge-requests)
+- [Working with the documentation](#working-with-the-documentation)
 
 ---
 
@@ -30,13 +42,9 @@ Inline commenting that is for assistance to the reader should be line comments t
 
 All other documentation should be presented in `Markdown` files, with the `.md` extension.
 
-All markdown files will need to pass `markdownlint` - as defined [here](<https://github.com/DavidAnson/markdownlint>).
+All markdown files will need to pass `markdownlint` - as defined [here](https://github.com/DavidAnson/markdownlint).
 
 If you are using VsCode, the `davidanson.vscode-markdownlint` extension will come in handy.
-
-### Source Control
-
-See `https://github.com/semantic-release/semantic-release/blob/master/CONTRIBUTING.md#commit-message-guidelines` for the guidelines as to how to structure commits and format their messages.
 
 ## Working with the code
 
@@ -89,12 +97,13 @@ TODO add a description of how to run the tests
 
 ### Committing
 
-All commits *should* be atomic and have the correct message format (see [here](<TODO_LINK>)).
+All commits *should* be atomic in the changes they represent.
+All commits *must* use the message convention as specified by [semantic-release](https://github.com/semantic-release/semantic-release/blob/master/CONTRIBUTING.md#commit-message-guidelines).
+
+This project uses `husky` and `commitizen`, so you shouldn't need to worry about ensuring that your commits are correct as long as you use the tooling correctly.
 
 - To reiterate: A commit does not need to compile or pass all tests/linting in each commit, but a branch ready for merge into master does.
 - However, it is prefered that all commits are 100% valid.
-
-The `prepare-commit-msg` in `utils/git-hooks` should be used to assist in assuring that the commit messages are of the correct structure.
 
 ### Merge Requests
 
@@ -109,4 +118,4 @@ There is currently no collated documentation for the repository - this will chan
 
 ---
 
-This contributing guide has been inspired from [here](<https://github.com/semantic-release/semantic-release/blob/master/CONTRIBUTING.md>)
+This contributing guide has been inspired from [here](https://github.com/semantic-release/semantic-release/blob/master/CONTRIBUTING.md)
