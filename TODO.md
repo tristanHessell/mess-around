@@ -1,9 +1,17 @@
 
 # TODO
 
-Add pact for contract testing
+Style app better
 
-- Make pact test expectations much more in depth
+- style:
+  - buttons
+  - comments
+  - titles
+  - side bar
+  - view song modal
+- write visual regression snapshot testing
+- change loading to not flash modal
+- find brand colours
 
 ---
 
@@ -12,10 +20,6 @@ Set up github repo better
 - run tests on merge PR
 - run lint on merge PR
 - Fill out contributing guide
-
-Write visual regression snapshot testing
-
-- Add some actual tests
 
 Give Swagger a shot
 
@@ -30,8 +34,6 @@ Address Accessability Issues
 Handle CORS properly
 
 - [this]<https://expressjs.com/en/resources/middleware/cors.html>
-
-Style app better
 
 Connect to spotify (store credentials in front end only)
 
