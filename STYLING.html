@@ -1,0 +1,208 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background-color: #000000;
+        color: #FFFFFF;
+        font-family: 'Roboto Condensed', serif;
+      }
+
+      .swatch {
+        height: 100px;
+        width: 100px;
+        display: flex;
+        align-items: flex-end;
+      }
+
+      .swatch > .foreground {
+        height: 50px;
+        width: 50px;
+        margin-left: 5px;
+        margin-bottom: 5px;
+      }
+
+      .primary {
+        background-color: #FF0000;
+      }
+
+      .secondary {
+        background-color: #0000FF;
+      }
+
+      .light {
+        background-color: #a0a8bd;
+        color: #131313;
+      }
+
+      .light > .foreground {
+        background-color: #131313;
+      }
+
+      .dark {
+        background-color: #131313;
+      }
+
+      .dark > .foreground {
+        background-color: #FFFFFF;
+      }
+
+      h1 {
+        font-family: 'Roboto Slab', serif;
+      }
+
+      h2 {
+        font-family: 'Roboto Slab', serif;
+      }
+
+      h3 {
+        font-family: 'Roboto Slab', serif;
+      }
+
+      h4 {
+        font-family: 'Roboto Slab', serif;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+      .btn {
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        font-family: 'Roboto Condensed', serif;
+      }
+
+      .btn-affirmative {
+        /*  */
+      }
+
+      .btn-affirmative:hover {
+        /*  */
+      }
+
+      .btn-affirmative:disabled {
+        /*  */
+      }
+
+      .btn-secondary {
+        /*  */
+      }
+
+      .btn-secondary:hover {
+        /*  */
+      }
+
+      .btn-secondary:disabled {
+        /*  */
+      }
+
+      .btn-negative {
+        /*  */
+      }
+
+      .btn-negative:hover {
+        /*  */
+      }
+
+      .btn-negative:disabled {
+        /*  */
+      }
+
+      .swatch-row {
+        display: grid;
+        margin-left: 10px;
+        grid-template: [row1-start] "row-cell row-cell" [row1-end] / auto auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Style Guide</h1>
+    <p>This document exists to track and explain the high-level styling of the application</p>
+    <p>For concrete implementation of this style guide, see the storybook: <code>yarn run storybook</code></p>
+    <hr />
+
+    <h2>Colour Palette</h2>
+    <h3>Branding</h3>
+    <p>TODO These colours to be determined</p>
+    <div class="swatch-row">
+      <div>
+        <h4>Primary</h4>
+        <div class="swatch primary">#FF0000</div>
+      </div>
+      <div>
+        <h4>Secondary</h4>
+        <div class="swatch secondary">#0000FF</div>
+      </div>
+    </div>
+
+    <h3>Theming</h3>
+    <div class="swatch-row">
+      <div>
+        <h4>Light</h4>
+        <div class="swatch light">
+          <div class="foreground">
+          </div>
+        </div>
+        <div class="italic">Foreground: #131313 | Background: #a0a8bd</div>
+      </div>
+      <div>
+        <h4>Dark</h4>
+        <div class="swatch dark">
+          <div class="foreground">
+          </div>
+        </div>
+        <div class="italic">Foreground: #000000 | Background: #131313</div>
+      </div>
+    </div>
+
+    <ul>
+      <li>A theme's <code>background</code> should be used as the background of the page.</li>
+      <li>A theme's <code>foreground</code> should be used as the colour of text on the page.</li>
+    </ul>
+
+    <hr />
+
+    <h2>Typography</h2>
+    <div>
+      <h1>Header 1</h1>
+      <div class="italic">Font: Roboto Slab | Colour: Theme foreground</div>
+      <p>
+        <ul>
+          <li>There should only be one Header 1 (h1) element for a given page.</li>
+        </ul> 
+      </p>
+      <h2>Header 2</h2>
+      <div class="italic">Font: Roboto Slab | Colour: Theme foreground</div>
+      <h3>Header 3</h3>
+      <div class="italic">Font: Roboto Slab | Colour: Theme foreground</div>
+      <h4>Header 4</h4>
+      <div class="italic">Font: Roboto Slab | Colour: Theme foreground</div>
+      <p>Body text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div class="italic">Font: Roboto Condensed | Colour: Theme foreground</div>
+    </div>
+
+    <hr />
+
+    <h2>Buttons</h2>
+    <p>TODO these will be coloured correctly once the branding colours have been determined</p>
+    <button class="btn btn-affirmative">Affirmative</button>
+    Disabled:
+    <button class="btn btn-affirmative" disabled>Affirmative</button>
+
+    <button class="btn btn-secondary">Secondary</button>
+    Disabled:
+    <button class="btn btn-secondary" disabled>Secondary</button>
+
+    <button class="btn btn-negative">Negative</button>
+    Disabled:
+    <button class="btn btn-negative" disabled>Negative</button>
+
+    <hr />
+
+    <h2>Do's and Don'ts</h2>
+    <h3>Do: Always abide by the Spotify <a href="https://developer.spotify.com/branding-guidelines/">branding guidelines</a></h3>
+  </body>
+</html>
