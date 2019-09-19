@@ -4,9 +4,8 @@
 Style app better
 
 - write visual regression snapshot testing
-  - make carousel its own component
-  - move carousel styling to styled
   - buttons
+  - comments
 - style:
   - buttons
   - comments
