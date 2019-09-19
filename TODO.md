@@ -3,13 +3,16 @@
 
 Style app better
 
+- write visual regression snapshot testing
+  - make carousel its own component
+  - move carousel styling to styled
+  - buttons
 - style:
   - buttons
   - comments
   - titles
   - side bar
   - view song modal
-- write visual regression snapshot testing
 - change loading to not flash modal
 - find brand colours
 

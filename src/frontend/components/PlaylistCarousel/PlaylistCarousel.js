@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import { Carousel } from 'react-responsive-carousel';
 
 import ReadOnlyContext from '../../ReadOnlyContext';
 import Song from '../Song';
+import Carousel from './Carousel';
 
 import { PlaylistCarouselWrapper } from './styles';
-import './playlistCarousel.css';
 
 const PlaylistCarousel = React.memo(
   ({
@@ -18,16 +17,12 @@ const PlaylistCarousel = React.memo(
     selectedSongId,
   }) => {
     const readOnly = useContext(ReadOnlyContext);
-    const selectedItem = songs.findIndex((song) => song.id === selectedSongId);
+    const selectedIndex = songs.findIndex((song) => song.id === selectedSongId);
 
     return (
       <PlaylistCarouselWrapper>
         <Carousel
-          className="playlist-carousel"
-          showThumbs={false}
-          showStatus={false}
-          showIndicators={false}
-          selectedItem={selectedItem === -1 ? 0 : selectedItem}
+          selectedIndex={selectedIndex === -1 ? 0 : selectedIndex}
           onChange={(index) => onClickSong(songs[index].id)}
         >
           {songs.map((song) => {
