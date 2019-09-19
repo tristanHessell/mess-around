@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/tristanHessell/spotify-comment/compare/v4.1.0...v4.2.0) (2019-09-19)
+
+
+### Features
+
+* **button:** used Button instead of button throughout application ([de0f117](https://github.com/tristanHessell/spotify-comment/commit/de0f117))
+
 # [4.1.0](https://github.com/tristanHessell/spotify-comment/compare/v4.0.0...v4.1.0) (2019-09-19)
 
 
