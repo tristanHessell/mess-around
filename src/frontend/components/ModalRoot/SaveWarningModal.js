@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
 
 import { saveComments } from '../../redux/comments/actions';
+import Button from './components/Button';
 
 import { hideModal } from '../../redux/modal/actions';
 
@@ -25,23 +26,23 @@ const SaveWarningModal = React.memo(
     return (
       <Modal isOpen onClose={onClose}>
         {message}
-        <button
+        <Button
           onClick={async () => {
             await onClickYes();
             onClose();
           }}
         >
           Yes
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={async () => {
             await onClickNo();
             onClose();
           }}
         >
           No
-        </button>
-        <button onClick={onClose}>Cancel</button>
+        </Button>
+        <Button onClick={onClose}>Cancel</Button>
       </Modal>
     );
   },

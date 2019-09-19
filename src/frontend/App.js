@@ -9,6 +9,7 @@ import configureStore from './redux/store';
 
 import ModalRoot from './components/ModalRoot';
 import Playlists from './components/Playlists';
+import Button from './components/Button';
 import ReadOnlyContext from './ReadOnlyContext';
 
 import LandingPage from './pages/landing';
@@ -38,11 +39,11 @@ function App() {
             <ModalRoot />
             <AppWrapper id="app">
               <HeadBarWrapper>
-                <button onClick={() => setIsOpen(!isOpen)}>
+                <Button onClick={() => setIsOpen(!isOpen)}>
                   {isOpen ? 'IS OPEN' : ' ISCLOSE'}
-                </button>
+                </Button>
                 <Link to="/">Home</Link>|
-                <button onClick={() => toggleTheme()}> TOGGLE THEME</button>
+                <Button onClick={() => toggleTheme()}> TOGGLE THEME</Button>
               </HeadBarWrapper>
 
               <ViewPortWrapper>
