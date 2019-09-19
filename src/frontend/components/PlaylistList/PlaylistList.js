@@ -3,6 +3,7 @@ import { List, AutoSizer } from 'react-virtualized';
 
 import ReadOnlyContext from '../../ReadOnlyContext';
 import Song from '../Song';
+import Button from './components/Button';
 
 import { SongRow, PlaylistWrapper, AutoSizerWrapper } from './styles';
 
@@ -54,13 +55,13 @@ const PlaylistList = React.memo(
           </AutoSizer>
         </AutoSizerWrapper>
         {!readOnly && (
-          <button
-            data-test="save-all-button"
+          <Button
+            testIdentifier="save-all-button"
             disabled={!Object.keys(comments.changes).length}
             onClick={() => onSaveSong()}
           >
             Save All
-          </button>
+          </Button>
         )}
       </PlaylistWrapper>
     );

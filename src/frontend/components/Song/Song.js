@@ -2,6 +2,7 @@ import React from 'react';
 
 import Artists from '../Artists';
 import Comment from '../Comment';
+import Button from './components/Button';
 import { SongContainer } from './styles';
 
 const Song = React.memo(
@@ -27,7 +28,7 @@ const Song = React.memo(
           <Artists artists={artists} />
           {hasChanged && 'changed'}
           {hasChanged && (
-            <button onClick={() => onChangeComment(songId)}>Undo</button>
+            <Button onClick={() => onChangeComment(songId)}>Undo</Button>
           )}
         </div>
         <Comment

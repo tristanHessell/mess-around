@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import ReadOnlyContext from '../../ReadOnlyContext';
 import Song from '../Song';
 import Carousel from './Carousel';
+import Button from './components/Button';
 
 import { PlaylistCarouselWrapper } from './styles';
 
@@ -46,12 +47,12 @@ const PlaylistCarousel = React.memo(
           })}
         </Carousel>
         {!readOnly && (
-          <button
+          <Button
             disabled={!Object.keys(comments.changes).length}
             onClick={() => onSaveSong()}
           >
             Save All
-          </button>
+          </Button>
         )}
       </PlaylistCarouselWrapper>
     );
