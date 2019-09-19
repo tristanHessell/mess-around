@@ -12,7 +12,7 @@
   - [Action Type Naming Convention](#action-type-naming-convention)
   - [Action Creator Naming Convention](#action-creator-naming-convention)
 - [Application Structure](#application-structure)
-- [Questions you might have](#questions-you-might-have)
+- [FAQ](#faq)
   - [Why use `reach/router`?](#why-use-reachrouter)
   - [Why use `redux-saga`?](#why-use-redux-saga)
   - [Why have you structured modals in the way you have?](#why-have-you-structured-modals-in-the-way-you-have)
@@ -106,7 +106,7 @@ src/
     index.js
 ```
 
-## Questions you might have
+## FAQ
 
 ### Why use `reach/router`?
 
@@ -166,3 +166,4 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 - I am using `@semantic-release` to facilitate CHANGELOG, package versioning and releases.
 - Normally this would be done through CI, but that doesn't exist yet.
 - This will change one this codebase uses CI.
+- This is also an application for me to play around with and releasing is not something I plan on ever doing
