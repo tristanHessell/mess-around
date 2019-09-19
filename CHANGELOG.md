@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/tristanHessell/spotify-comment/compare/v4.0.0...v4.1.0) (2019-09-19)
+
+
+### Features
+
+* **button:** create button abstraction component ([9985f98](https://github.com/tristanHessell/spotify-comment/commit/9985f98))
+
 # [4.0.0](https://github.com/tristanHessell/spotify-comment/compare/v3.0.0...v4.0.0) (2019-08-31)
 
 
