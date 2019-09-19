@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-const darkTheme = {
+export const darkTheme = {
   fg: 'white',
   bg: 'black',
 };
 
-const lightTheme = {
+export const lightTheme = {
   fg: 'black',
   bg: 'white',
 };
