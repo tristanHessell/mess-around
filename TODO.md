@@ -3,9 +3,6 @@
 
 Style app better
 
-- write visual regression snapshot testing
-  - buttons
-  - comments
 - style:
   - buttons
   - comments
@@ -16,6 +13,13 @@ Style app better
 - find brand colours
 
 ---
+
+- fix up changelog generation
+  - make sure it generates a line on each recognised commit
+  - make sure it follows markdownlint
+  - find if we can configure commitizen?
+  - fix up gh releases
+  - see <https://github.com/semantic-release/changelog/issues/34>
 
 Set up github repo better
 
