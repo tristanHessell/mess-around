@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
 
 import { saveComments } from '../../redux/comments/actions';
-import Button from './components/Button';
+import Button from '../Button';
 
 import { hideModal } from '../../redux/modal/actions';
 

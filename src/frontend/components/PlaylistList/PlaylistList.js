@@ -3,7 +3,7 @@ import { List, AutoSizer } from 'react-virtualized';
 
 import ReadOnlyContext from '../../ReadOnlyContext';
 import Song from '../Song';
-import Button from './components/Button';
+import Button from '../Button';
 
 import { SongRow, PlaylistWrapper, AutoSizerWrapper } from './styles';
 
@@ -25,9 +25,7 @@ const PlaylistList = React.memo(
       return (
         <SongRow key={song.id} style={style}>
           <Song
-            songId={song.id}
-            name={song.name}
-            artists={song.artists}
+            song={song}
             onChangeComment={onChangeComment}
             comment={comment}
             hasChanged={hasChanged}
