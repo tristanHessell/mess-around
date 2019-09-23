@@ -2,22 +2,15 @@ import React from 'react';
 
 import Artists from '../Artists';
 import Comment from '../Comment';
-import Button from './components/Button';
+import Button from '../Button';
 import { SongContainer } from './styles';
 
 const Song = React.memo(
-  ({
-    songId,
-    name,
-    artists,
-    comment = '',
-    hasChanged,
-    onChangeComment,
-    onClick,
-  }) => {
+  ({ song, comment = '', hasChanged, onChangeComment, onClick }) => {
+    const { id, name, artists } = song;
     const onClickSong = (/*e*/) => {
       // if (e.target.type !== 'textarea' && e.target.type !== 'a') {
-      onClick && onClick(songId);
+      onClick && onClick(id);
       // }
     };
 
@@ -28,12 +21,12 @@ const Song = React.memo(
           <Artists artists={artists} />
           {hasChanged && 'changed'}
           {hasChanged && (
-            <Button onClick={() => onChangeComment(songId)}>Undo</Button>
+            <Button onClick={() => onChangeComment(id)}>Undo</Button>
           )}
         </div>
         <Comment
           comment={comment}
-          onChange={(comment) => onChangeComment(songId, comment)}
+          onChange={(comment) => onChangeComment(id, comment)}
         />
       </SongContainer>
     );
