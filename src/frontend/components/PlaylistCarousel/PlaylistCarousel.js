@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import ReadOnlyContext from '../../ReadOnlyContext';
 import Song from '../Song';
-import Carousel from './Carousel';
+import Carousel from '../Carousel';
 import Button from '../Button';
 
 import { PlaylistCarouselWrapper } from './styles';
