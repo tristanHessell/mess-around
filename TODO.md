@@ -1,31 +1,26 @@
 
 # TODO
 
-Style app better
-
-- style:
-  - buttons
-  - comments
-  - titles
-  - side bar
-  - view song modal
-- change loading to not flash modal
-- find brand colours
-
----
-
-- fix up changelog generation
-  - make sure it generates a line on each recognised commit
-  - make sure it follows markdownlint
-  - find if we can configure commitizen?
-  - fix up gh releases
-  - see <https://github.com/semantic-release/changelog/issues/34>
-
 Set up github repo better
 
 - run tests on merge PR
 - run lint on merge PR
 - Fill out contributing guide
+
+---
+
+- change loading to not flash modal
+
+Style app better
+
+- find brand colours
+
+- style:
+  - comments
+  - titles
+  - side bar
+  - view song modal
+  - buttons
 
 Give Swagger a shot
 
