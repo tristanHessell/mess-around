@@ -8,7 +8,8 @@ import { SongContainer } from './styles';
 describe('<Song />', () => {
   it('simulates DOM events', () => {
     const onButtonClick = sinon.spy();
-    const song = shallow(<Song onClick={onButtonClick} />);
+    const songObject = {};
+    const song = shallow(<Song song={songObject} onClick={onButtonClick} />);
 
     song.find(SongContainer).simulate('doubleClick');
 
