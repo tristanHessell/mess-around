@@ -95,7 +95,7 @@
     "@pact-foundation/pact": "9.1.0",
     "@semantic-release/changelog": "3.0.4",
     "@semantic-release/git": "7.0.16",
-    "@storybook/react": "5.2.0",
+    "@storybook/react": "5.2.1",
     "commitizen": "4.0.3",
     "cypress": "3.4.1",
     "cz-conventional-changelog": "3.0.2",
