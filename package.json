@@ -62,7 +62,7 @@
     "sass-loader": "7.3.1",
     "semver": "6.3.0",
     "style-loader": "0.23.1",
-    "styled-components": "4.3.2",
+    "styled-components": "4.4.0",
     "styled-react-modal": "1.2.4",
     "terser-webpack-plugin": "1.4.1",
     "typescript": "3.5.3",
