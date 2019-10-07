@@ -103,7 +103,7 @@
     "enzyme-adapter-react-16": "1.14.0",
     "eslint": "5.16.0",
     "eslint-config-prettier": "6.0.0",
-    "eslint-plugin-cypress": "2.6.0",
+    "eslint-plugin-cypress": "2.7.0",
     "eslint-plugin-prettier": "3.1.1",
     "eslint-plugin-react": "7.16.0",
     "fetch-mock": "7.5.1",
