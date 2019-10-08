@@ -63,7 +63,7 @@
     "semver": "6.3.0",
     "style-loader": "0.23.1",
     "styled-components": "4.4.0",
-    "styled-react-modal": "1.2.4",
+    "styled-react-modal": "2.0.0",
     "terser-webpack-plugin": "2.1.2",
     "typescript": "3.6.3",
     "url-loader": "2.2.0",
