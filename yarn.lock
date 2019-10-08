@@ -1531,10 +1531,10 @@
     unixify "1.0.0"
     url-join "^4.0.0"
 
-"@pact-foundation/pact@9.1.1":
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/@pact-foundation/pact/-/pact-9.1.1.tgz#f09bac9113671464c1ae7fdb3440bb8494e0223f"
-  integrity sha512-qb2X9FaRwX0K8N7ozxkePGg1e2LH0HjGg1BIUNE4J0MfThKAwByH0gDgn763nHBqpk8mo6srelPhiE6fDzaGHg==
+"@pact-foundation/pact@9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@pact-foundation/pact/-/pact-9.2.0.tgz#3c36189033b1e9b4f044257063a928f7c1d31d33"
+  integrity sha512-tAM1+/E8F7ag1mmB60vSrzglzuLM93d5xoqpNWJqS+vRtRltXvE4QSWL035q4G1/mhjnpgA7LMy2rjHvWHA4Ug==
   dependencies:
     "@pact-foundation/pact-node" "^9.0.3"
     "@types/bluebird" "^3.5.20"
