@@ -64,7 +64,7 @@
     "style-loader": "0.23.1",
     "styled-components": "4.4.0",
     "styled-react-modal": "1.2.4",
-    "terser-webpack-plugin": "1.4.1",
+    "terser-webpack-plugin": "2.1.2",
     "typescript": "3.6.3",
     "url-loader": "1.1.2",
     "uuid": "3.3.3",
