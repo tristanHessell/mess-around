@@ -2,21 +2,32 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
+import ReactMarkdown from 'react-markdown';
+import { ThemeProvider } from 'styled-components';
 
 import Comment from './Comment';
 import { CommentContainer, CommentArea } from './styles';
-import ReactMarkdown from 'react-markdown';
-// import ReadOnlyContext from '../../ReadOnlyContext';
+import { lightTheme } from '../../useTheme';
+
+/**
+ * Having to attach theming to each of the mount tests is annoying, but I'd rather have to do that in tests rather
+ * allow the Comment component to exist without a theme. Given that these tests are "action" tests (rather than snapshot),
+ * the use of the themeProvider HOC is not a problem.
+ */
+
+function mountWithTheme(tree, theme) {
+  return mount(<ThemeProvider theme={theme}>{tree}</ThemeProvider>);
+}
 
 describe('<Comment />', () => {
   it('defaults to showing markdown box', () => {
-    const comment = mount(<Comment />);
+    const comment = mountWithTheme(<Comment />, lightTheme);
 
     expect(comment.find(ReactMarkdown).length).toEqual(1);
   });
 
   it('shows the editable box when clicked', () => {
-    const comment = mount(<Comment />);
+    const comment = mountWithTheme(<Comment />, lightTheme);
 
     comment.find(CommentContainer).simulate('click');
 
@@ -24,7 +35,7 @@ describe('<Comment />', () => {
   });
 
   it('shows the markdown box when the comment area is blurred', () => {
-    const comment = mount(<Comment />);
+    const comment = mountWithTheme(<Comment />, lightTheme);
 
     comment.find(CommentContainer).simulate('click');
     expect(comment.find(CommentArea).length).toEqual(1);
@@ -36,7 +47,7 @@ describe('<Comment />', () => {
   it('fires onChange when the comment is changed', () => {
     const onChange = sinon.spy();
 
-    const comment = mount(<Comment onChange={onChange} />);
+    const comment = mountWithTheme(<Comment onChange={onChange} />, lightTheme);
 
     comment.find(CommentContainer).simulate('click');
     expect(comment.find(CommentArea).length).toEqual(1);
