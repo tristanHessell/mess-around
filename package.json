@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.6.3",
+    "@babel/core": "7.6.4",
     "@reach/router": "1.2.1",
     "@svgr/webpack": "4.3.3",
     "@typescript-eslint/eslint-plugin": "2.3.3",
