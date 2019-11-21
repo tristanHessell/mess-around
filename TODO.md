@@ -9,7 +9,23 @@ Set up github repo better
 
 ---
 
+- Make sure unneeded headers are removed/ good ones are used
+  - See: [this]<https://www.fastly.com/blog/headers-we-dont-want> and [this]<https://www.fastly.com/blog/headers-we-want>
+
+- Adhere to README maturity model
+  - Level One
+  - Level Two
+  - Level Three
+  - Level Four
+  - Level Five
+  - See: [this]<https://github.com/LappleApple/feedmereadmes/blob/master/README-maturity-model.md>
+
+- Adhere to API security checklist
+- See: [this]<https://github.com/shieldfy/API-Security-Checklist>
+
 - change loading to not flash modal
+
+- [Immutable Web Apps]<https://immutablewebapps.org/>
 
 Style app better
 
