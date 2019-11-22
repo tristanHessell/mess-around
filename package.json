@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.7.2",
+    "@babel/core": "7.7.4",
     "@reach/router": "1.2.1",
     "@svgr/webpack": "4.3.3",
     "@typescript-eslint/eslint-plugin": "2.4.0",
@@ -91,7 +91,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-dynamic-import": "7.7.0",
+    "@babel/plugin-proposal-dynamic-import": "7.7.4",
     "@pact-foundation/pact": "9.5.0",
     "@semantic-release/changelog": "3.0.5",
     "@semantic-release/git": "7.0.18",
