@@ -11458,10 +11458,10 @@ loglevel@^1.6.6:
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.6.6.tgz#0ee6300cc058db6b3551fa1c4bf73b83bb771312"
   integrity sha512-Sgr5lbboAUBo3eXCSPL4/KoVz3ROKquOjcctxmHIt+vol2DrqTQe3SwkKKuYhEiWB5kYa13YyopJ69deJ1irzQ==
 
-loki@0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/loki/-/loki-0.17.0.tgz#a230cf777836fe4b30b64c0d39dd4a9c859c2e4b"
-  integrity sha512-GvKIWI8EL2hMzwY5BgnNQ0YD+z6dIM2L6VZswyVYA2wK3oSW+SfOtLCTdzpRn7ozYSlZ4H8RmXz7wD0rwIyUbA==
+loki@0.18.1:
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/loki/-/loki-0.18.1.tgz#2a2ec1610c59a6835c67666b8d17ed5b1ebbd2a7"
+  integrity sha512-0nXSeSDSKJqxeHGHRVzg47hAP81e6bW+Z8/xpwOGvfk/3D7x8uUgMl8QAl8ay+p1HXFPYMFd7i22a6ToVQsTXw==
   dependencies:
     chalk "^2.4.1"
     chrome-launcher "^0.10.5"
