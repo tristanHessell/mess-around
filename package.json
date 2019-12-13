@@ -92,7 +92,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-dynamic-import": "7.7.4",
-    "@pact-foundation/pact": "9.5.0",
+    "@pact-foundation/pact": "9.5.1",
     "@semantic-release/changelog": "3.0.6",
     "@semantic-release/git": "7.0.18",
     "@storybook/react": "5.2.8",
