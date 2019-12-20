@@ -78,7 +78,7 @@
     "start-endpoints": "node ./src/backend/",
     "build": "node scripts/build.js",
     "cover": "jest --coverage",
-    "lint": "eslint --fix ./src/",
+    "lint": "eslint .",
     "storybook": "start-storybook --config-dir ./src/frontend/.storybook --port 46609",
     "test-v": "loki test --port 46609 --reference ./src/frontend/.loki/reference --output ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",
     "test-v-update": "loki update --port 46609 --reference ./src/frontend/.loki/reference --output ./src/frontend/.loki/current --difference ./src/frontend/.loki/difference",

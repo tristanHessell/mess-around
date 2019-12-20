@@ -4,6 +4,9 @@
 Set up github repo better
 
 - run tests on merge PR
+  - unit tests 
+  - visual regression tests
+  - pact tests
 - run lint on merge PR
 - Fill out contributing guide
 
