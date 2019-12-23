@@ -9,6 +9,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
+          install: false
           browser: chrome
           start: yarn run start-endpoints 
           working-directory: src/tests/ 
