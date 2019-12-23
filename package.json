@@ -112,7 +112,7 @@
     "loki": "0.17.0",
     "prettier": "1.19.1",
     "react-test-renderer": "16.11.0",
-    "semantic-release": "15.13.31",
+    "semantic-release": "15.14.0",
     "sinon": "7.5.0"
   },
   "loki": {
