@@ -11,11 +11,14 @@ jobs:
           yarn install
         env:
           CI: true
+      - name: Start server in the background
+        run: yarn run start-endpoints &
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
           install: false
           browser: chrome
-          start: yarn run start-endpoints 
+          start: yarn run start
           working-directory: src/tests/ 
+          wait-on: 'http://localhost:5000'
 
