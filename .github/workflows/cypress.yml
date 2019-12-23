@@ -6,6 +6,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      - name: install dependencies
+        run: |
+          yarn install
+        env:
+          CI: true
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
