@@ -4,8 +4,11 @@
 Set up github repo better
 
 - run tests on merge PR
+  - unit tests 
+  - visual regression tests
+  - pact tests (consumer is easy, provider is not)
 - run lint on merge PR
-- Fill out contributing guide
+- make pushes to master "releases"
 
 ---
 

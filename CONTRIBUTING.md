@@ -1,7 +1,7 @@
 # Contributing to BLAH-BLAH-NAME <!-- omit in toc -->
 
 Treat this document as the source of truth with respect to coding practises - there may be aspects of the codebase that do not abide by the rules and standards set out in this document.
-Such areas had been put into the codebase before this guide reached its current point, and should be changed when working on the relevant areas.
+Such areas had been put into the codebase before this guide reached its current state, and should be changed when working on the relevant areas.
 
 - [Submitting a Pull Request](#submitting-a-pull-request)
 - [Coding Rules](#coding-rules)
@@ -30,8 +30,8 @@ Any relevant test/documentation/dependency changes should be included in the PR 
 
 All code modifications must have:
 
-- No [linting](<TODO_LINK>) errors
-- At least 1 test for the introduced changes (this will become stricter in the future)
+- No errors
+- At least 1 test for the introduced changes
 - No failing tests
 - Documentation for any features
 
@@ -79,21 +79,19 @@ yarn run start-endpoints
 
 ### Linting
 
-The whole `NAME OF APP` is linted using `eslint` and formatted using `prettier`.
+The whole of this codebase is linted using `eslint` and formatted using `prettier`. The standards set out by those tools should be abided to for any code that is being merged into master.
 
 ### Testing
 
 All relevant tests to your code changes will need to pass.
 
-100% code coverage is not needed (yet), although code should be written in a way that is easily testable.
+100% code coverage is not needed, although code should be written in a way that is easily testable.
 
 Tests should include commenting in-file explaining exactly what the tests are doing.
 
 There are a variety of different tests (unit, visual & structural regression, contract, integration, e2e tests). Some of which are frontend only, some are backend only, some are both.
 
 I have used a variety of different tools and libraries to get a taste for what is out there - for now, test what you feel is worthwhile.
-
-TODO add a description of how to run the tests
 
 ### Committing
 
