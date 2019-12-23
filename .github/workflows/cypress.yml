@@ -20,5 +20,7 @@ jobs:
           browser: chrome
           start: yarn run start
           working-directory: src/tests/ 
-          wait-on: 'http://localhost:5000/playlists`
+          wait-on: 'http://localhost:5000/playlists'
+# wait for 10 seconds tops
+# add get at base that returns 204
 
