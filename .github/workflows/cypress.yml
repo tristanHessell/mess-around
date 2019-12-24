@@ -22,8 +22,7 @@ jobs:
           browser: chrome
           start: yarn run start
           working-directory: src/tests
-          # config-file: 'src/tests/cypress.json'
           wait-on: 'http://localhost:5000/playlists'
-# wait for 10 seconds tops
-# add get at base that returns 204
+        env:
+          NODE_ENV: test
 
