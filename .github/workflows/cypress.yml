@@ -1,0 +1,28 @@
+name: End-to-end tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: install dependencies
+        run: |
+          yarn install
+        env:
+          CI: true
+      - name: Start server in the background
+        run: |
+          node ./src/utils/generate-stubs.js
+          yarn run start-endpoints &
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          install: false
+          browser: chrome
+          start: yarn run start
+          working-directory: src/tests
+          wait-on: 'http://localhost:5000/playlists'
+        env:
+          NODE_ENV: test
+

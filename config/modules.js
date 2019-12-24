@@ -44,10 +44,7 @@ function getAdditionalModulePaths(options = {}) {
 }
 
 function getModules() {
-  const config = require(paths.appJsConfig) || {};
-  const options = config.compilerOptions || {};
-
-  const additionalModulePaths = getAdditionalModulePaths(options);
+  const additionalModulePaths = getAdditionalModulePaths();
 
   return {
     additionalModulePaths: additionalModulePaths,
