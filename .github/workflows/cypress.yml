@@ -12,7 +12,9 @@ jobs:
         env:
           CI: true
       - name: Start server in the background
-        run: yarn run start-endpoints &
+        run: |
+          node ./src/utils/generate-stubs.js
+          yarn run start-endpoints &
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
