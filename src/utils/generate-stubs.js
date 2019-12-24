@@ -1,3 +1,4 @@
+const path = require('path');
 const fs = require('fs');
 const { promisify } = require('util');
 
@@ -52,8 +53,9 @@ const getPlaylist = (playlistId) => ({
 });
 
 async function generateStubs() {
+  const DATA_PATH = path.resolve(__dirname, '..', 'backend', 'db', 'data');
   await writeFile(
-    `../backend/db/data/playlists/data.json`,
+    path.resolve(DATA_PATH, 'playlists', 'data.json'),
     JSON.stringify(PLAYLISTS, undefined, 2),
   );
 
@@ -61,11 +63,11 @@ async function generateStubs() {
     PLAYLISTS.map(async (playlist) => {
       return Promise.all([
         writeFile(
-          `../backend/db/data/comments/${playlist.id}.json`,
+          path.resolve(DATA_PATH, 'comments', `${playlist.id}.json`),
           JSON.stringify(getComments(playlist.id), undefined, 2),
         ),
         writeFile(
-          `../backend/db/data/playlist/${playlist.id}.json`,
+          path.resolve(DATA_PATH, 'playlist', `${playlist.id}.json`),
           JSON.stringify(getPlaylist(playlist.id), undefined, 2),
         ),
       ]);
