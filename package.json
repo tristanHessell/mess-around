@@ -98,7 +98,7 @@
     "@semantic-release/git": "7.0.18",
     "@storybook/react": "5.2.8",
     "commitizen": "4.0.3",
-    "cypress": "3.8.0",
+    "cypress": "3.8.1",
     "cz-conventional-changelog": "3.0.2",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
