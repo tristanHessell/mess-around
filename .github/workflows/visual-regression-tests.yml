@@ -1,0 +1,18 @@
+name: Visual Regression Test (Loki)
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: install dependencies 
+      run: yarn install
+    - name: start storybook
+      run: |
+        yarn run storybook &
+        timeout 60 bash -c 'until echo > /dev/tcp/localhost/46609; do sleep 0.5; done'
+    - name: run visual regression tests
+      run: yarn run test-v
+
