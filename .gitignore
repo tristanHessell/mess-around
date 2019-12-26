@@ -30,3 +30,5 @@ src/backend/db/**/*.json
 
 # pact
 **/logs/*.log
+
+Session.vim
