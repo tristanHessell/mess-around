@@ -1,0 +1,17 @@
+name: Pact Tests
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install dependencies
+      run: yarn install
+    - name: Run consumer tests
+      run: yarn run pact-c
+    - name: Start endpoint server
+      run: |
+        yarn run start-endpoints &
+        timeout 60 bash -c 'until echo > /dev/tcp/localhost/46609; do sleep 2; done'
+    - name: Run provider tests
+      run: yarn run pact-p
