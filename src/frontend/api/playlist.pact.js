@@ -9,7 +9,7 @@ const api = require('.');
 describe('Playlist API', () => {
   const EXPECTED_BODY = {
     id: 'BLAH',
-    url: '',
+    // url: '',
     name: 'PLAYLIST NAME',
     description: 'hello description is me',
     songs: [

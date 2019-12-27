@@ -8,7 +8,7 @@ const api = require('.');
 
 describe('Comments API', () => {
   const EXPECTED_BODY = {
-    '01': 'NEW COMMENT',
+    '01': 'BLAH',
   };
 
   describe('works', () => {
