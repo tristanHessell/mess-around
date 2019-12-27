@@ -4,10 +4,6 @@
 Set up github repo better
 
 - run tests on merge PR
-  - unit tests 
-  - visual regression tests
-  - pact tests (consumer is easy, provider is not)
-- run lint on merge PR
 - make pushes to master "releases"
 
 ---
@@ -97,3 +93,4 @@ Create app as an electron app
 ## Notes
 
 <https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf>
+

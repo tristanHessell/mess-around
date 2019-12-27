@@ -12,6 +12,7 @@ jobs:
     - name: Start endpoint server
       run: |
         yarn run start-endpoints &
-        timeout 60 bash -c 'until echo > /dev/tcp/localhost/46609; do sleep 2; done'
+        timeout 60 bash -c 'until echo > /dev/tcp/localhost/5000; do sleep 2; done'
     - name: Run provider tests
       run: yarn run pact-p
+
