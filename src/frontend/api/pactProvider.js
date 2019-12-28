@@ -11,6 +11,6 @@ module.exports = new Pact({
   port: 5000,
   log: path.resolve(process.cwd(), 'logs', 'pact.log'),
   dir: path.resolve(process.cwd(), 'src', 'tests', 'pact'),
-  logLevel: 'ERROR',
+  logLevel: 'WARN',
   pactfileWriteMode: 'update',
 });
