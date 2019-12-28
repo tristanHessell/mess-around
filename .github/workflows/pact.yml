@@ -11,8 +11,8 @@ jobs:
       run: |
         yarn run pact-c
         [[ -z $(git status -uno --porcelain) ]] && echo "consumers have changed contacts - failing CI. Please run consumer pact tests and commit" && kill -SIGINT $$
-# if the contracts have changed and its passed to here, fail and get them to update pacts
-# eventually make the updating of pacts CI-able
+      env:
+        ENV: CI
     - name: Start endpoint server
       run: |
         yarn run start-endpoints &
