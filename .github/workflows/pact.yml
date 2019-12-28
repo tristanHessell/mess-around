@@ -7,10 +7,12 @@ jobs:
     - uses: actions/checkout@v1
     - name: Install dependencies
       run: yarn install
-    - name: Run consumer tests
-      run: yarn run pact-c
-    - name: check for consumer contract changes
-      run: [[ -n $(git status -uno --porcelain) ]] && echo "consumers have changed contacts - failing CI. Please run consumer pact tests and commit" && kill -SIGINT $$
+    # - name: Run consumer tests
+    #   run: |
+    #     yarn run pact-c
+    #     [[ -n $(git status -uno --porcelain) ]] && echo "consumers have changed contacts - failing CI. Please run consumer pact tests and commit" && kill -SIGINT $$
+    #   env:
+    #     ENV: CI
     - name: Start endpoint server
       run: |
         yarn run start-endpoints &
