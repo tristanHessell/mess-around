@@ -6,10 +6,15 @@ const opts = {
   provider: 'SpotifyListService',
   pactUrls: [
     path.resolve(
-      process.cwd(),
-      './src/tests/pact/spotifylistapp-spotifylistservice.json',
+      __dirname,
+      '../tests/pact/spotifylistapp-spotifylistservice.json',
     ),
   ],
+  stateHandlers: {
+    'a list of comments': () => {},
+    'a list of playlists': () => {},
+    'a playlist': () => {},
+  },
 };
 
 async function verify() {

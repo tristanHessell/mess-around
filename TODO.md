@@ -3,10 +3,11 @@
 
 Set up github repo better
 
-- run tests on merge PR
 - make pushes to master "releases"
 
 ---
+- Remove pact from codebase
+  - include writeup as to why
 
 - Make sure unneeded headers are removed/ good ones are used
   - See: [this]<https://www.fastly.com/blog/headers-we-dont-want> and [this]<https://www.fastly.com/blog/headers-we-want>
