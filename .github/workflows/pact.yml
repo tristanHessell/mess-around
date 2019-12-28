@@ -10,7 +10,7 @@ jobs:
     - name: Run consumer tests
       run: |
         yarn run pact-c
-        [[ -z $(git status -uno --porcelain) ]] && echo "consumers have changed contacts - failing CI. Please run consumer pact tests and commit" && kill -SIGINT $$
+        [[ -n $(git status -uno --porcelain) ]] && echo "consumers have changed contacts - failing CI. Please run consumer pact tests and commit" && kill -SIGINT $$
       env:
         ENV: CI
     - name: Start endpoint server
