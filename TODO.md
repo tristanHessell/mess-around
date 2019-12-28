@@ -3,7 +3,6 @@
 
 Set up github repo better
 
-- run tests on merge PR
 - make pushes to master "releases"
 
 ---
