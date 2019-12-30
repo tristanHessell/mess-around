@@ -1,13 +1,14 @@
 
 # TODO
 
-Set up github repo better
-
-- make pushes to master "releases"
-
----
 - Remove pact from codebase
   - include writeup as to why
+  - find replacement for testing endpoints
+  - make sure to add CI job
+
+---
+
+- [Immutable Web Apps]<https://immutablewebapps.org/>
 
 - Make sure unneeded headers are removed/ good ones are used
   - See: [this]<https://www.fastly.com/blog/headers-we-dont-want> and [this]<https://www.fastly.com/blog/headers-we-want>
@@ -25,7 +26,9 @@ Set up github repo better
 
 - change loading to not flash modal
 
-- [Immutable Web Apps]<https://immutablewebapps.org/>
+- Set up github repo better
+
+- make pushes to master "releases"
 
 Style app better
 
