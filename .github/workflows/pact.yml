@@ -1,0 +1,25 @@
+name: Pact
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Dependencies
+      run: yarn install
+    - name: Run pact consumer tests
+      run: yarn run pact-c
+    - name: Ensure contracts havent changed 
+      run: |
+        [[ -n $(git status -uno --porcelain) ]] && echo "The contacts have changed on this test run - failing CI. Please run the tests and commit the changes" && kill -SIGINT $$;
+        git diff
+    - name: Start endpoint server
+      run: |
+        yarn run start-endpoints &
+        node src/utils/generate-stubs.js
+        timeout 60 bash -c 'until echo > /dev/tcp/localhost/5000; do sleep 2; done'
+    - name: Run pact provider tests
+      run: yarn run pact-p
+
