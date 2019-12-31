@@ -13,6 +13,7 @@ jobs:
       run: yarn run pact-c
     - name: Ensure contracts havent changed 
       run: |
+        git diff
         [[ -n $(git status -uno --porcelain) ]] && echo "The contacts have changed on this test run - failing CI. Please run the tests and commit the changes" && kill -SIGINT $$;
     - name: Start endpoint server
       run: |
@@ -20,3 +21,4 @@ jobs:
         timeout 60 bash -c 'until echo > /dev/tcp/localhost/5000; do sleep 2; done'
     - name: Run pact provider tests
       run: yarn run pact-p
+
