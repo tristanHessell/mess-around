@@ -18,6 +18,7 @@ jobs:
     - name: Start endpoint server
       run: |
         yarn run start-endpoints &
+        node src/utils/generate-stubs.js
         timeout 60 bash -c 'until echo > /dev/tcp/localhost/5000; do sleep 2; done'
     - name: Run pact provider tests
       run: yarn run pact-p
