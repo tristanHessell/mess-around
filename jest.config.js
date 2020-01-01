@@ -43,4 +43,9 @@ module.exports = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
   ],
+  globals: {
+    ENV: {
+      API_URL: 'http://localhost:5000',
+    },
+  },
 };

@@ -1,8 +1,10 @@
+/* global ENV */
+
 const path = require('path');
 const { Verifier } = require('@pact-foundation/pact');
 
 const opts = {
-  providerBaseUrl: 'http://localhost:5000',
+  providerBaseUrl: ENV.API_URL,
   provider: 'SpotifyListService',
   pactUrls: [
     path.resolve(

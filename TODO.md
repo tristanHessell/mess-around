@@ -1,5 +1,8 @@
 # TODO
 
+- pact-p: doesnt return fail code if interactions fail.
+- change pacts to use 500 rather than 404 (temporarily)
+
 - [Immutable Web Apps]<https://immutablewebapps.org/>
   - make the application deployable 
   - make the application releasable (make the master release job)
