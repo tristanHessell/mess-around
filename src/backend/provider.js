@@ -10,11 +10,6 @@ const opts = {
       '../tests/pact/spotifylistapp-spotifylistservice.json',
     ),
   ],
-  stateHandlers: {
-    'a list of comments': () => {},
-    'a list of playlists': () => {},
-    'a playlist': () => {},
-  },
 };
 
 async function verify() {
