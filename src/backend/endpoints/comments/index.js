@@ -6,7 +6,15 @@ const { getComments, saveComments } = require('../../db');
 router.get('/:playlistId', async (req, res) => {
   const { playlistId } = req.params;
 
-  res.status(200).json(await getComments(playlistId));
+  try {
+    const comments = await getComments(playlistId);
+    res.status(200).json(comments);
+    return;
+  } catch (ex) {
+    res.status(ex.status || 500).json({
+      message: ex.message || 'Error',
+    });
+  }
 });
 
 // on a technical level, put and post here dont do anything different, put I'm including them both just for completeness

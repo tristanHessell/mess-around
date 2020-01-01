@@ -11,7 +11,11 @@ export async function getPlaylists() {
     },
   });
 
-  return response.json();
+  if (response.ok) {
+    return response.json();
+  }
+
+  throw new Error();
 }
 
 export async function getPlaylist(playlistId) {
@@ -20,7 +24,12 @@ export async function getPlaylist(playlistId) {
       Accept: 'application/json',
     },
   });
-  return response.json();
+
+  if (response.ok) {
+    return response.json();
+  }
+
+  throw new Error();
 }
 
 export async function getComments(playlistId) {
@@ -29,7 +38,12 @@ export async function getComments(playlistId) {
       Accept: 'application/json',
     },
   });
-  return response.json();
+
+  if (response.ok) {
+    return response.json();
+  }
+
+  throw new Error();
 }
 
 export function saveComments(playlistId, comments) {

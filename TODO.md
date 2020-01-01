@@ -1,14 +1,17 @@
-
 # TODO
 
-- Remove pact from codebase
-  - include writeup as to why
-  - find replacement for testing endpoints
-  - make sure to add CI job
+- [Immutable Web Apps]<https://immutablewebapps.org/>
+  - make the application deployable 
+  - make the application releasable (make the master release job)
+  - add CI tasks for release/deploy
+  - make sure the endpoints and the webapp are deployable separately
+  - add endpoint location to index.html
+  - no relative references to any assets (except inside code modules)
+  - use index.html globals for endpoint reference
 
 ---
 
-- [Immutable Web Apps]<https://immutablewebapps.org/>
+- set up css to listen to OS theme [type]<https://tombrow.com/dark-mode-website-css>
 
 - Make sure unneeded headers are removed/ good ones are used
   - See: [this]<https://www.fastly.com/blog/headers-we-dont-want> and [this]<https://www.fastly.com/blog/headers-we-want>
