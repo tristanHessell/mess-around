@@ -83,7 +83,7 @@ describe('Playlist API', () => {
           headers: { Accept: 'application/json' },
         },
         willRespondWith: {
-          status: 404,
+          status: 500,
           headers: { 'Content-Type': 'application/json; charset=utf-8' },
           body: {},
         },
