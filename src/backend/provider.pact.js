@@ -1,8 +1,10 @@
+/* global ENV */
+
 const path = require('path');
 const { Verifier } = require('@pact-foundation/pact');
 
 const opts = {
-  providerBaseUrl: 'http://localhost:5000',
+  providerBaseUrl: ENV.API_URL,
   provider: 'SpotifyListService',
   pactUrls: [
     path.resolve(
@@ -12,13 +14,6 @@ const opts = {
   ],
 };
 
-async function verify() {
-  try {
-    await new Verifier(opts).verifyProvider();
-    console.log('POST VERIFYING PROVIDERS');
-  } catch (error) {
-    console.log('Pact verification failed', error);
-  }
-}
-
-verify();
+describe('PactJs Provider Tests', () => {
+  it('should work', async () => new Verifier(opts).verifyProvider());
+});

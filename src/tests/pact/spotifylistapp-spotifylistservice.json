@@ -126,7 +126,7 @@
         }
       },
       "response": {
-        "status": 404,
+        "status": 500,
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
@@ -146,27 +146,7 @@
         }
       },
       "response": {
-        "status": 404,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-        }
-      },
-      "metadata": null
-    },
-    {
-      "description": "a request for non-existent playlists",
-      "providerState": "a non-present list of playlists",
-      "request": {
-        "method": "GET",
-        "path": "/playlists",
-        "headers": {
-          "Accept": "application/json"
-        }
-      },
-      "response": {
-        "status": 404,
+        "status": 500,
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },

@@ -5,9 +5,6 @@
   - make the application releasable (make the master release job)
   - add CI tasks for release/deploy
   - make sure the endpoints and the webapp are deployable separately
-  - add endpoint location to index.html
-  - no relative references to any assets (except inside code modules)
-  - use index.html globals for endpoint reference
 
 ---
 

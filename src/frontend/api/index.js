@@ -1,3 +1,5 @@
+/* global ENV */
+
 // need to add this for pact testing, which are run on (bare) node
 // rather than jsdom or some browser simulator.
 // This should have no effect on the app itself, as fetch exists on the
@@ -5,7 +7,7 @@
 import 'isomorphic-fetch';
 
 export async function getPlaylists() {
-  const response = await fetch('http://localhost:5000/playlists', {
+  const response = await fetch(`${ENV.API_URL}/playlists`, {
     headers: {
       Accept: 'application/json',
     },
@@ -19,7 +21,7 @@ export async function getPlaylists() {
 }
 
 export async function getPlaylist(playlistId) {
-  const response = await fetch(`http://localhost:5000/playlist/${playlistId}`, {
+  const response = await fetch(`${ENV.API_URL}/playlist/${playlistId}`, {
     headers: {
       Accept: 'application/json',
     },
@@ -33,7 +35,7 @@ export async function getPlaylist(playlistId) {
 }
 
 export async function getComments(playlistId) {
-  const response = await fetch(`http://localhost:5000/comments/${playlistId}`, {
+  const response = await fetch(`${ENV.API_URL}/comments/${playlistId}`, {
     headers: {
       Accept: 'application/json',
     },
@@ -47,7 +49,7 @@ export async function getComments(playlistId) {
 }
 
 export function saveComments(playlistId, comments) {
-  return fetch(`http://localhost:5000/comments/${playlistId}`, {
+  return fetch(`${ENV.API_URL}/comments/${playlistId}`, {
     method: 'PUT',
     body: JSON.stringify(comments),
     headers: {

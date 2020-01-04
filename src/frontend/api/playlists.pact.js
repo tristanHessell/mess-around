@@ -51,28 +51,6 @@ describe('Playlists API', () => {
     });
   });
 
-  describe('with request for non-existing value', () => {
-    beforeAll(async () => {
-      await provider.addInteraction({
-        state: 'a non-present list of playlists',
-        uponReceiving: 'a request for non-existent playlists',
-        withRequest: {
-          method: 'GET',
-          path: '/playlists',
-          headers: { Accept: 'application/json' },
-        },
-        willRespondWith: {
-          status: 404,
-          headers: { 'Content-Type': 'application/json; charset=utf-8' },
-          body: {},
-        },
-      });
-    });
-
-    it('works with non-present value', async () =>
-      await expect(api.getPlaylists()).rejects.toThrow());
-  });
-
   afterEach(() => provider.verify());
   afterAll(() => provider.finalize());
 });

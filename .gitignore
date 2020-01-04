@@ -32,3 +32,6 @@ src/backend/db/**/*.json
 **/logs/*.log
 
 Session.vim
+
+.env
+
