@@ -1,21 +1,18 @@
 module.exports = {
-  collectCoverageFrom: ['src/frontend/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
+  collectCoverageFrom: ['src/frontend/**/*.{js,jsx}'],
   setupFiles: ['react-app-polyfill/jsdom'],
   setupFilesAfterEnv: ['<rootDir>/src/frontend/jest.setup.js'],
   testMatch: [
-    '<rootDir>/src/frontend/**/__tests__/**/*.{js,jsx,ts,tsx}',
-    '<rootDir>/src/frontend/**/*.{spec,test}.{js,jsx,ts,tsx}',
-    '<rootDir>/src/tests/enzyme/**/*.{spec,test}.{js,jsx,ts,tsx}',
+    '<rootDir>/src/frontend/**/__tests__/**/*.{js,jsx}',
+    '<rootDir>/src/frontend/**/*.{spec,test}.{js,jsx}',
+    '<rootDir>/src/tests/enzyme/**/*.{spec,test}.{js,jsx}',
   ],
   testEnvironment: 'jest-environment-jsdom-fourteen',
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
-    '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js',
-    '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)':
-      '<rootDir>/config/jest/fileTransform.js',
+    '^.+\\.(js|jsx)$': '<rootDir>/node_modules/babel-jest',
   },
   transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
+    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$',
     '^.+\\.module\\.(css|sass|scss)$',
   ],
   modulePaths: [],
@@ -23,18 +20,7 @@ module.exports = {
     '^react-native$': 'react-native-web',
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
   },
-  moduleFileExtensions: [
-    'web.js',
-    'js',
-    'web.ts',
-    'ts',
-    'web.tsx',
-    'tsx',
-    'json',
-    'web.jsx',
-    'jsx',
-    'node',
-  ],
+  moduleFileExtensions: ['web.js', 'js', 'json', 'web.jsx', 'jsx', 'node'],
   watchPathIgnorePatterns: [
     '<rootDir>/src/backend/',
     '<rootDir>/src/tests/cypress/',
