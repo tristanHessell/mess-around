@@ -28,4 +28,6 @@ jobs:
           wait-on: 'http://localhost:5000/playlists'
         env:
           NODE_ENV: test
+          API_URL: 'http://localhost:5000'
+          PUBLIC_URL: 'http://localhost:3000'
 
