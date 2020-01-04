@@ -14,7 +14,8 @@ jobs:
     - name: Ensure contracts havent changed
       run: |
         git diff
-        [[ -n $(git status -uno --porcelain) ]] && echo "The contacts have changed on this test run - failing CI. Please run the tests and commit the changes" && kill -SIGINT $$;
+        # [[ -n $(git status -uno --porcelain) ]] && echo "The contacts have changed on this test run - failing CI. Please run the tests and commit the changes" && kill -SIGINT $$;
+        echo "this step has been turned off due to flakiness. just be careful"
     - name: Start endpoint server
       run: |
         yarn run start-endpoints &
