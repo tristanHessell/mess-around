@@ -3,6 +3,6 @@
  * Exists as an initial run through of cypress
  */
 
-describe('Login', function() {
+describe('Login', () => {
   it('', function() {});
 });
