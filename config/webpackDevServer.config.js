@@ -4,10 +4,10 @@ const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMi
 const ignoredFiles = require('react-dev-utils/ignoredFiles');
 const paths = require('./paths');
 
-const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
-const host = process.env.HOST || '0.0.0.0';
+// const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
+const [, HOST /*, PORT */] = process.env.PUBLIC_URL.match(/http:\/\/(.*):(.*)/);
 
-module.exports = function(proxy, allowedHost) {
+module.exports = (proxy, allowedHost) => {
   return {
     // WebpackDevServer 2.4.3 introduced a security fix that prevents remote
     // websites from potentially accessing local content through DNS rebinding:
@@ -69,8 +69,8 @@ module.exports = function(proxy, allowedHost) {
       ignored: ignoredFiles(paths.appSrc),
     },
     // Enable HTTPS if the HTTPS environment variable is set to 'true'
-    https: protocol === 'https',
-    host,
+    // https: protocol === 'https',
+    host: HOST,
     overlay: false,
     historyApiFallback: {
       // Paths with dots should still use the history fallback.
