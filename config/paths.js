@@ -20,8 +20,8 @@ function ensureSlash(inputPath, needsSlash) {
 const publicUrl = process.env.PUBLIC_URL;
 
 // We can't use a relative path in HTML because we don't want to load something
-// like /todos/42/static/js/bundle.7289d.js. We have to know the root.
-const servedPath = ensureSlash(publicUrl, true);
+// like /todos/42/bundle.7289d.js. We have to know the root.
+const publicPath = ensureSlash(publicUrl, true);
 
 const moduleFileExtensions = [
   'web.mjs',
@@ -43,7 +43,7 @@ module.exports = {
   appSrc: resolveApp('src'),
   appNodeModules: resolveApp('node_modules'),
   publicUrl,
-  servedPath,
+  publicPath,
 };
 
 module.exports.moduleFileExtensions = moduleFileExtensions;

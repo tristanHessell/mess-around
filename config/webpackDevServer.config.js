@@ -5,7 +5,7 @@ const ignoredFiles = require('react-dev-utils/ignoredFiles');
 const paths = require('./paths');
 
 // const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
-const [, HOST /*, PORT */] = process.env.PUBLIC_URL.match(/http:\/\/(.*):(.*)/);
+const HOST = process.env.HOST;
 
 module.exports = (proxy, allowedHost) => {
   return {
