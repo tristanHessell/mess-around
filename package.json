@@ -114,7 +114,7 @@
     "prettier": "1.19.1",
     "react-test-renderer": "16.12.0",
     "semantic-release": "15.14.0",
-    "sinon": "8.0.2"
+    "sinon": "8.0.4"
   },
   "loki": {
     "configurations": {
