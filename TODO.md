@@ -1,11 +1,28 @@
 # TODO
 
-- [Immutable Web Apps]<https://immutablewebapps.org/>
-  - make the application deployable 
-  - make the application releasable (make the master release job)
-  - add CI tasks for release/deploy
-  - make sure the endpoints and the webapp are deployable separately
+- rename build to dist
+- clean up config & scripts file structure
+- make sure local dev build still works after the webpack changes
 
+- work on wait-for action
+
+---
+
+- [Immutable Web Apps]<https://immutablewebapps.org/>
+  - add CI tasks for build
+    - index.html: from webpack
+    - assets: from webpack
+    - endpoints: nothing for now
+  - add CI tasks for deploy
+    - index.html: TODO
+    - assets: TODO
+    - endpoints: do nothing (keep it as localhost for now)
+  - script:
+    - make sure version is in the files and the index.html
+    - move map css js LICENSE files out
+    - move .html to somewhere
+    - move assets somewhere (url should have the version in the name)
+  - set up aws account for hosting (ec2) etc
 ---
 
 - set up css to listen to OS theme [type]<https://tombrow.com/dark-mode-website-css>
@@ -28,18 +45,18 @@
 
 - Set up github repo better
 
-- make pushes to master "releases"
+  - make pushes to master "releases"
 
 Style app better
 
-- find brand colours
+  - find brand colours
 
-- style:
-  - comments
-  - titles
-  - side bar
-  - view song modal
-  - buttons
+  - style:
+    - comments
+    - titles
+    - side bar
+    - view song modal
+    - buttons
 
 Give Swagger a shot
 
@@ -75,10 +92,6 @@ Write cypress tests that don't suck
 
 - Include tests that are actually end-to-end (rather than using just fetch-mock)
   - do this after actual accounts are featured
-
-Simplify Webpack
-
-- remove all the unnecessary stuff from the create-react-app
 
 Figure out how to handle unsaved changes properly
   Save unsaved changes to session storage? - show indication that changes have been made in playlist list?

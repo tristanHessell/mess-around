@@ -16,14 +16,15 @@ const createDevServerConfig = require('../config/webpackDevServer.config');
 if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
-const [, HOST, PORT] = process.env.PUBLIC_URL.match(/http:\/\/(.*):(.*)/);
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
 
 // We require that you explicitly set browsers and do not fall back to
 // browserslist defaults.
 const { checkBrowsers } = require('react-dev-utils/browsersHelper');
 checkBrowsers(paths.appPath, false)
   .then(() => {
-    const config = configFactory('development');
+    const config = configFactory();
     const appName = require(paths.appPackageJson).name;
     const urls = prepareUrls('http', HOST, PORT);
     const devSocket = {
