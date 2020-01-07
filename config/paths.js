@@ -7,6 +7,9 @@ const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 function ensureSlash(inputPath, needsSlash) {
+  if (inputPath == null) {
+    throw new Error('inputPath missing value');
+  }
   const hasSlash = inputPath.endsWith('/');
   if (hasSlash && !needsSlash) {
     return inputPath.substr(0, inputPath.length - 1);
@@ -35,9 +38,9 @@ const moduleFileExtensions = [
 
 module.exports = {
   appPath: resolveApp('.'),
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
+  appBuild: resolveApp('dist'),
+  appPublic: resolveApp('app'),
+  appHtml: resolveApp('app/index.html'),
   appIndexJs: './src/frontend/index.js',
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
