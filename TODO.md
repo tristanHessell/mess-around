@@ -1,9 +1,5 @@
 # TODO
 
-- rename build to dist
-- clean up config & scripts file structure
-- make sure local dev build still works after the webpack changes
-
 - work on wait-for action
 
 ---
