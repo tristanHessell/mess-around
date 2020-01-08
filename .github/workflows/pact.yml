@@ -21,9 +21,6 @@ jobs:
         yarn run start-endpoints &
         node src/utils/generate-stubs.js
         timeout 60 bash -c 'until echo > /dev/tcp/localhost/5000; do sleep 2; done'
-      env:
-        API_URL: 'http://localhost:5000'
-        PUBLIC_URL: 'http://localhost:3000'
     - name: Run pact provider tests
       run: yarn run pact-p
 
