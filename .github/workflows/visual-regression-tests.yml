@@ -12,7 +12,7 @@ jobs:
     - name: start storybook
       run: |
         yarn run storybook &
-        timeout 60 bash -c 'until echo > /dev/tcp/localhost/46609; do sleep 0.5; done'
+        timeout 60 bash -c 'until echo > /dev/tcp/localhost/46609; do sleep 2; done'
     - name: run visual regression tests
       run: yarn run test-v
 

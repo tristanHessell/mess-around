@@ -15,9 +15,7 @@ jobs:
         run: |
           node ./src/utils/generate-stubs.js
           yarn run start-endpoints &
-        env:
-          API_URL: 'http://localhost:5000'
-          PUBLIC_URL: 'http://localhost:3000'
+          timeout 60 bash -c 'until echo > /dev/tcp/localhost/5000; do sleep 2; done'
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
@@ -30,4 +28,6 @@ jobs:
           NODE_ENV: test
           API_URL: 'http://localhost:5000'
           PUBLIC_URL: 'http://localhost:3000'
+          HOST: 'localhost'
+          PORT: 3000
 
