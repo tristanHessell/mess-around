@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.8.0",
+    "@babel/core": "7.8.3",
     "@reach/router": "1.2.1",
     "@svgr/webpack": "5.0.1",
     "@typescript-eslint/eslint-plugin": "2.15.0",
@@ -88,7 +88,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-dynamic-import": "7.8.0",
+    "@babel/plugin-proposal-dynamic-import": "7.8.3",
     "@cypress/webpack-preprocessor": "4.1.1",
     "@pact-foundation/pact": "9.6.0",
     "@semantic-release/changelog": "3.0.6",
