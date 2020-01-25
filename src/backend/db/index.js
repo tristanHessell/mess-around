@@ -10,6 +10,8 @@ module.exports = {
   getPlaylists,
   getComments,
   saveComments,
+  getUser,
+  saveUser,
 };
 
 /**
@@ -58,3 +60,13 @@ async function saveComments(playlistId, comments) {
     JSON.stringify(comments, undefined, 2),
   );
 }
+
+/**
+ *
+ */
+async function getUser() {}
+
+/**
+ *
+ */
+async function saveUser() {}

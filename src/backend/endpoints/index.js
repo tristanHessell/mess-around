@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+router.use('/auth', require('./auth'));
 router.use('/comments', require('./comments'));
 router.use('/playlist', require('./playlist'));
 router.use('/playlists', require('./playlists'));
