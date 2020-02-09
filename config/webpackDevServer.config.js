@@ -1,7 +1,4 @@
-const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
-const evalSourceMapMiddleware = require('react-dev-utils/evalSourceMapMiddleware');
-const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
-const ignoredFiles = require('react-dev-utils/ignoredFiles');
+/*eslint-env node*/
 const paths = require('./paths');
 
 // const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
@@ -61,13 +58,6 @@ module.exports = (proxy, allowedHost) => {
     // WebpackDevServer is noisy by default so we emit custom message instead
     // by listening to the compiler events with `compiler.hooks[...].tap` calls above.
     quiet: true,
-    // Reportedly, this avoids CPU overload on some systems.
-    // https://github.com/facebook/create-react-app/issues/293
-    // src/node_modules is not ignored to support absolute imports
-    // https://github.com/facebook/create-react-app/issues/1065
-    watchOptions: {
-      ignored: ignoredFiles(paths.appSrc),
-    },
     // Enable HTTPS if the HTTPS environment variable is set to 'true'
     // https: protocol === 'https',
     host: HOST,
@@ -79,18 +69,5 @@ module.exports = (proxy, allowedHost) => {
     },
     public: allowedHost,
     proxy,
-    before(app, server) {
-      // This lets us fetch source contents from webpack for the error overlay
-      app.use(evalSourceMapMiddleware(server));
-      // This lets us open files from the runtime error overlay.
-      app.use(errorOverlayMiddleware());
-
-      // This service worker file is effectively a 'no-op' that will reset any
-      // previous service worker registered for the same host:port combination.
-      // We do this in development to avoid hitting the production cache if
-      // it used the same host and port.
-      // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
-      app.use(noopServiceWorkerMiddleware());
-    },
   };
 };
