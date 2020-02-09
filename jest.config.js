@@ -1,6 +1,7 @@
+/* eslint-env node */
 module.exports = {
   collectCoverageFrom: ['src/frontend/**/*.{js,jsx}'],
-  setupFiles: ['react-app-polyfill/jsdom'],
+  // setupFiles: [''],
   setupFilesAfterEnv: ['<rootDir>/src/frontend/jest.setup.js'],
   testMatch: [
     '<rootDir>/src/frontend/**/__tests__/**/*.{js,jsx}',
