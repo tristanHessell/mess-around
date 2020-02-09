@@ -1,3 +1,4 @@
+/* eslint-env jest */
 /* global ENV */
 
 const path = require('path');
