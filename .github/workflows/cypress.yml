@@ -27,7 +27,7 @@ jobs:
         env:
           NODE_ENV: test
           API_URL: 'http://localhost:5000'
-          PUBLIC_URL: 'http://localhost:3000'
+          PUBLIC_URL: 'http://localhost:9000'
           HOST: 'localhost'
-          PORT: 3000
+          PORT: 9000
 
