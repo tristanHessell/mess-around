@@ -104,7 +104,7 @@
     "eslint-plugin-react": "7.18.3",
     "fetch-mock": "8.3.2",
     "husky": "4.2.1",
-    "lint-staged": "10.0.5",
+    "lint-staged": "10.0.7",
     "loki": "0.18.1",
     "prettier": "1.19.1",
     "react-test-renderer": "16.12.0",
