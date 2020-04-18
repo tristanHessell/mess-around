@@ -21,6 +21,7 @@ jobs:
         with:
           install: false
           browser: chrome
+          headless: true
           start: yarn run start
           working-directory: src/tests
           wait-on: 'http://localhost:5000/playlists'
