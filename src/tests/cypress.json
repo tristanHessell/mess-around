@@ -1,6 +1,8 @@
 {
-"baseUrl": "http://localhost:9000",
+  "baseUrl": "http://localhost:9000",
   "testFiles": "**/*.test.js",
   "fixturesFolder": false,
-  "supportFile": false
+  "supportFile": false,
+  "viewportHeight": 1500,
+  "viewportWidth": 2000
 }
