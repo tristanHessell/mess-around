@@ -8,7 +8,7 @@
     "@babel/preset-env": "7.9.6",
     "@babel/preset-react": "7.9.4",
     "@reach/router": "1.2.1",
-    "@svgr/webpack": "5.1.0",
+    "@svgr/webpack": "5.4.0",
     "@typescript-eslint/eslint-plugin": "2.19.0",
     "@typescript-eslint/parser": "2.19.0",
     "babel-eslint": "10.1.0",
