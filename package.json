@@ -66,7 +66,8 @@
     "url-loader": "3.0.0",
     "uuid": "3.4.0",
     "webpack": "4.43.0",
-    "webpack-dev-server": "3.10.3"
+    "webpack-dev-server": "3.10.3",
+    "snyk": "^1.319.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -83,7 +84,9 @@
     "pact-c": "jest ./src/frontend/api/ --testMatch=**/*.pact.js --runInBand",
     "pact-p": "jest ./src/backend/ --testMatch=**/*.pact.js",
     "release": "semantic-release --no-ci",
-    "test": "jest"
+    "test": "jest",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "devDependencies": {
     "@babel/plugin-proposal-dynamic-import": "7.8.3",
@@ -146,5 +149,6 @@
       "eslint --fix --max-warnings 0 --no-ignore",
       "git add"
     ]
-  }
+  },
+  "snyk": true
 }
