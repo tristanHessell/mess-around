@@ -58,7 +58,7 @@
     "resolve": "1.17.0",
     "sass-loader": "8.0.2",
     "semver": "7.3.2",
-    "style-loader": "1.1.3",
+    "style-loader": "1.2.1",
     "styled-components": "4.4.1",
     "styled-react-modal": "2.0.1",
     "terser-webpack-plugin": "2.3.5",
