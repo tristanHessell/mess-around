@@ -15734,10 +15734,10 @@ react-redux@7.2.0:
     prop-types "^15.7.2"
     react-is "^16.9.0"
 
-react-responsive-carousel@3.2.6:
-  version "3.2.6"
-  resolved "https://registry.yarnpkg.com/react-responsive-carousel/-/react-responsive-carousel-3.2.6.tgz#bd1bf08d6931b834d1b25ca4cb5e86da69d7cd63"
-  integrity sha512-QceJtyI2CXjneDcWD+svT3hyeZIJTMw9wa4KaKMXQ+B28IEZLN2Ud+s3jRwX4+rBjUlgzy97tFLXGtM11IgS4w==
+react-responsive-carousel@3.2.7:
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/react-responsive-carousel/-/react-responsive-carousel-3.2.7.tgz#a9a5b7efb5206f18a5de38d80826780acfc46ba0"
+  integrity sha512-uqGCnoZukU+U1relhTNe8eVX/hMT5ELh1uxHCOxR6cH+A67eG2aX68e1pJnohWqXqPj/u+Pupt1q5j8LGhDabA==
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.5.8"
