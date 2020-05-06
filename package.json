@@ -67,7 +67,7 @@
     "uuid": "3.4.0",
     "webpack": "4.43.0",
     "webpack-dev-server": "3.10.3",
-    "snyk": "^1.319.0"
+    "snyk": "1.319.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
