@@ -3,14 +3,12 @@ import React, { useContext } from 'react';
 import ReadOnlyContext from '../../ReadOnlyContext';
 import Song from '../Song';
 import Carousel from '../Carousel';
-import Button from '../Button';
 
 import { PlaylistCarouselWrapper } from './styles';
 
 const PlaylistCarousel = React.memo(
   ({
     songs,
-    comments,
     onClickSong,
     onChangeComment,
     onSaveSong,
@@ -24,7 +22,10 @@ const PlaylistCarousel = React.memo(
       <PlaylistCarouselWrapper>
         <Carousel
           selectedIndex={selectedIndex === -1 ? 0 : selectedIndex}
-          onChange={(index) => onClickSong(songs[index].id)}
+          onChange={(index) => {
+            console.log(songs, index);
+            onClickSong(songs[index].id);
+          }}
         >
           {songs.map((song) => {
             const { comment, hasChanged } = getComment(song.id);
@@ -32,7 +33,7 @@ const PlaylistCarousel = React.memo(
             return (
               <Song
                 key={song.id}
-                songId={song.id}
+                song={song}
                 name={song.name}
                 artists={song.artists}
                 onChangeComment={onChangeComment}
@@ -46,14 +47,6 @@ const PlaylistCarousel = React.memo(
             );
           })}
         </Carousel>
-        {!readOnly && (
-          <Button
-            disabled={!Object.keys(comments.changes).length}
-            onClick={() => onSaveSong()}
-          >
-            Save All
-          </Button>
-        )}
       </PlaylistCarouselWrapper>
     );
   },

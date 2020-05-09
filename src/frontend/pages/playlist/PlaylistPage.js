@@ -13,7 +13,7 @@ import {
   commentChangesSelector,
 } from '../../redux/comments/selectors';
 
-import Modal from '../../components/Modal';
+// import Modal from '../../components/Modal';
 import { fetchPlaylist } from '../../redux/playlist/actions';
 import { playlistSelector } from '../../redux/playlist/selectors';
 import { showModal, hideModal } from '../../redux/modal/actions';
@@ -33,9 +33,14 @@ const user = {
   name: 'ALI BABA',
 };
 
+const modes = {
+  CAROUSEL: 'CAROUSEL',
+  LIST: 'LIST',
+};
+
 const PlaylistPage = React.memo(({ playlistId }) => {
-  const [showCarousel, setShowCarousel] = useState(false);
-  const [selectedSongId, setSelectedSongId] = useState(false);
+  const [mode, setMode] = useState(modes.LIST);
+  const [selectedSongId, setSelectedSongId] = useState();
 
   const comments = useSelector(commentsSelector);
   const playlist = useSelector(playlistSelector);
@@ -92,19 +97,29 @@ const PlaylistPage = React.memo(({ playlistId }) => {
         <h1>{playlist.canonical.name}</h1>
         <p>{playlist.canonical.description}</p>
         Written by <User name={user.name} />
+        <input
+          data-test="list-mode"
+          type="radio"
+          name="mode"
+          checked={mode === modes.LIST}
+          onChange={() => setMode(modes.LIST)}
+        />
+        List
+        <input
+          data-test="carousel-mode"
+          type="radio"
+          name="mode"
+          checked={mode === modes.CAROUSEL}
+          onChange={() => setMode(modes.CAROUSEL)}
+        />
+        Carousel
       </div>
 
       {!comments.loading && (
         <>
-          <Modal
-            isOpen={showCarousel}
-            onClose={() => {
-              setShowCarousel(false);
-            }}
-          >
+          {mode === modes.CAROUSEL && (
             <PlaylistCarousel
               songs={playlist.canonical.songs}
-              comments={comments}
               getComment={getComment}
               onSaveSong={onSaveComment}
               onClickSong={(id) => {
@@ -113,19 +128,19 @@ const PlaylistPage = React.memo(({ playlistId }) => {
               onChangeComment={onChangeComment}
               selectedSongId={selectedSongId}
             />
-          </Modal>
-
-          <PlaylistList
-            songs={playlist.canonical.songs}
-            comments={comments}
-            getComment={getComment}
-            onSaveSong={onSaveComment}
-            onClickSong={(id) => {
-              setShowCarousel(true);
-              setSelectedSongId(id);
-            }}
-            onChangeComment={onChangeComment}
-          />
+          )}
+          {mode === modes.LIST && (
+            <PlaylistList
+              songs={playlist.canonical.songs}
+              comments={comments}
+              getComment={getComment}
+              onSaveSong={onSaveComment}
+              onClickSong={(id) => {
+                setSelectedSongId(id);
+              }}
+              onChangeComment={onChangeComment}
+            />
+          )}
         </>
       )}
     </PlaylistContainer>

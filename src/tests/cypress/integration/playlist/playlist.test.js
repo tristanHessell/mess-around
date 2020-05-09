@@ -6,6 +6,10 @@ import {
   getCommentBox,
   getCommentInput,
   getPlaylistButton,
+  getListModeButton,
+  getCarouselModeButton,
+  getCarousel,
+  getList,
 } from './page.js';
 
 /**
@@ -286,5 +290,138 @@ describe('Playlist Interactions', function() {
     cy.url().should('include', '/playlists/BLAH2');
 
     getCommentBox(0).contains('BLAH2');
+  });
+
+  it('should be able to show a playlist as a list', () => {
+    fetchMock.get('path:/playlists', [
+      {
+        id: 'BLAH',
+        name: 'PLAYLIST_NAME',
+        url: '',
+      },
+    ]);
+
+    fetchMock.get('path:/playlist/BLAH', {
+      id: {
+        id: 'BLAH',
+        name: 'PLAYLIST_NAME',
+        url: '',
+      },
+      name: 'PLAYLIST NAME',
+      description: 'hello description is me',
+      songs: [
+        {
+          id: '01',
+          artists: [
+            {
+              id: 1,
+              name: 'Gus Dapperton',
+            },
+            {
+              id: 2,
+              name: 'Miley Cyrus',
+            },
+          ],
+          name: 'Hello name 1',
+        },
+        {
+          id: '02',
+          artists: [
+            {
+              id: 1,
+              name: 'Gus Dapperton',
+            },
+            {
+              id: 2,
+              name: 'Miley Cyrus',
+            },
+          ],
+          name: 'Hello name 2',
+        },
+      ],
+    });
+
+    fetchMock.get('path:/comments/BLAH', {
+      '01': 'BLAH',
+    });
+
+    cy.visit('/', {
+      onBeforeLoad: (win) => {
+        cy.stub(win, 'fetch', fetchMock.sandbox()).as('fetch');
+      },
+    });
+
+    getPlaylistButton(0).click();
+    cy.url().should('include', '/playlists/BLAH');
+    getListModeButton().click();
+    // TODO make sure the list is visible
+    getList();
+  });
+
+  it('should be able to show a playlist as a carousel', () => {
+    fetchMock.get('path:/playlists', [
+      {
+        id: 'BLAH',
+        name: 'PLAYLIST_NAME',
+        url: '',
+      },
+    ]);
+
+    fetchMock.get('path:/playlist/BLAH', {
+      id: {
+        id: 'BLAH',
+        name: 'PLAYLIST_NAME',
+        url: '',
+      },
+      name: 'PLAYLIST NAME',
+      description: 'hello description is me',
+      songs: [
+        {
+          id: '01',
+          artists: [
+            {
+              id: 1,
+              name: 'Gus Dapperton',
+            },
+            {
+              id: 2,
+              name: 'Miley Cyrus',
+            },
+          ],
+          name: 'Hello name 1',
+        },
+        {
+          id: '02',
+          artists: [
+            {
+              id: 1,
+              name: 'Gus Dapperton',
+            },
+            {
+              id: 2,
+              name: 'Miley Cyrus',
+            },
+          ],
+          name: 'Hello name 2',
+        },
+      ],
+    });
+
+    fetchMock.get('path:/comments/BLAH', {
+      '01': 'BLAH',
+    });
+
+    cy.visit('/', {
+      onBeforeLoad: (win) => {
+        cy.stub(win, 'fetch', fetchMock.sandbox()).as('fetch');
+      },
+    });
+
+    getPlaylistButton(0).click();
+    cy.url().should('include', '/playlists/BLAH');
+
+    getCarouselModeButton().click();
+    // TODO check that the carousel is visible
+    getCarousel();
   });
 });
