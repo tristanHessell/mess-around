@@ -11,7 +11,7 @@ describe('<Song />', () => {
     const songObject = {};
     const song = shallow(<Song song={songObject} onClick={onButtonClick} />);
 
-    song.find(SongContainer).simulate('doubleClick');
+    song.find(SongContainer).simulate('doubleClick', new Event('doubleClick'));
 
     expect(onButtonClick.callCount).toEqual(1);
   });
