@@ -7,11 +7,12 @@ const Carousel = React.memo(
     const selectedItem = selectedIndex === undefined ? 0 : selectedIndex;
     return (
       <StyledCarousel
+        data-test="carousel"
         showThumbs={false}
         showStatus={false}
         showIndicators={false}
         selectedItem={selectedItem}
-        onChange={(index) => onChange(children[index])}
+        onChange={(index) => onChange(index)}
       >
         {children}
       </StyledCarousel>

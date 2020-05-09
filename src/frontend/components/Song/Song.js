@@ -8,9 +8,10 @@ import { SongContainer } from './styles';
 const Song = React.memo(
   ({ song, comment = '', hasChanged, onChangeComment, onClick }) => {
     const { id, name, artists } = song;
-    const onClickSong = (/*e*/) => {
+    const onClickSong = (e) => {
       // if (e.target.type !== 'textarea' && e.target.type !== 'a') {
       onClick && onClick(id);
+      e.stopPropagation();
       // }
     };
 
