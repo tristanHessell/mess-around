@@ -55,7 +55,7 @@
     "resolve": "1.17.0",
     "sass-loader": "8.0.2",
     "semver": "7.3.2",
-    "snyk": "1.330.2",
+    "snyk": "1.334.0",
     "style-loader": "1.2.1",
     "styled-components": "4.4.1",
     "styled-react-modal": "2.0.1",
