@@ -3,6 +3,14 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+TODO add build status badge
+TODO add badge for test coverage
+
+This is a project I am using to try out different technologies, concepts and methodologies. You should have no reason to read any further into the codebase.
+
+Have you ever created a playlist for someone and want to explain how and why you chose each song?
+
+This project has come about because I wanted to do exactly that.
 
 ---
 
@@ -25,6 +33,32 @@
   - [Releasing seems weird?](#releasing-seems-weird)
 
 ---
+## Installation
+
+```bash
+yarn install
+```
+
+## Running and the application
+
+TODO write about and link to immutable webapps
+
+### Environment Variables
+
+| Name | Description | Example |
+| ---  | ----------- | ------- |
+| API_URL | The fully qualified URL for the endpoint gateway | http://localhost:5000 |
+| PUBLIC_URL | The fully qualified URL for the server hosting the assets | http://localhost:4000 |
+| HOST | The host used for the webpack dev server in local development | localhost |
+| PORT | The port used for the webpack dev server in local development | 9000 |
+
+### Running the application locally
+
+//
+
+### Production Build TODO
+
+//
 
 ## React
 
@@ -167,3 +201,10 @@ Its API is far more useful than `react-router` & v5 of `react-router` will be mo
 - Normally this would be done through CI, but that doesn't exist yet.
 - This will change one this codebase uses CI.
 - This is also an application for me to play around with and releasing is not something I plan on ever doing
+
+## Contributing
+
+Expect reported issues to be responded to within 24 hours. There are clearly no assurances on how long an issue will be fixed (or if it will be fixed at all).
+
+Likewise, pull requests will be responded to within 24 hours. If you are contributing, please read the CONTRIBUTING.md document (TODO add link).
+

@@ -1,10 +1,24 @@
 # TODO
 
 - work on wait-for action
+- work on yarn-deduplicate workflow
+  - run yarn-deduplicate after a week
+  - if there are any changes to yarn.lock, make a PR.
+  - STRETCH: if there is already a PR from the yarn-lock workflow, then update it
+
+- add github bot that tells you reported code coverage pre and post changes
+- add github bot that comments on the change in build time
 
 ---
+make sure 405 (method not allowed), 406 (request content type not allowed), 
+add login/logout functionality (basic)
+ - add a login endpoint
+ - add a logout endpoint
+ - Error codes: 401 (unauthorised: supplied auth is for wrong account etc), 403 (credentials incorrect), 400 (client error - request not of expected shape), 
 
 - [Immutable Web Apps]<https://immutablewebapps.org/>
+  - Setup CI so that we can have a one-click release button
+    - make sure it works with semantic release
   - add CI tasks for build
     - index.html: from webpack
     - assets: from webpack
@@ -19,7 +33,6 @@
     - move .html to somewhere
     - move assets somewhere (url should have the version in the name)
   - set up aws account for hosting (ec2) etc
----
 
 - set up css to listen to OS theme [type]<https://tombrow.com/dark-mode-website-css>
 
@@ -38,10 +51,6 @@
 - See: [this]<https://github.com/shieldfy/API-Security-Checklist>
 
 - change loading to not flash modal
-
-- Set up github repo better
-
-  - make pushes to master "releases"
 
 Style app better
 
