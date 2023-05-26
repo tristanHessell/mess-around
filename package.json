@@ -8,7 +8,7 @@
     "@babel/preset-env": "7.10.1",
     "@babel/preset-react": "7.10.1",
     "@reach/router": "1.2.1",
-    "@svgr/webpack": "5.4.0",
+    "@svgr/webpack": "6.0.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "26.0.1",
     "babel-loader": "8.1.0",
@@ -36,7 +36,7 @@
     "jest-resolve": "26.0.1",
     "jest-watch-typeahead": "0.6.0",
     "mini-css-extract-plugin": "0.9.0",
-    "optimize-css-assets-webpack-plugin": "5.0.3",
+    "optimize-css-assets-webpack-plugin": "5.0.5",
     "pnp-webpack-plugin": "1.6.4",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-loader": "3.0.0",
@@ -55,7 +55,6 @@
     "resolve": "1.17.0",
     "sass-loader": "8.0.2",
     "semver": "7.3.2",
-    "snyk": "1.348.1",
     "style-loader": "1.2.1",
     "styled-components": "4.4.1",
     "styled-react-modal": "2.0.1",
@@ -63,7 +62,8 @@
     "url-loader": "4.1.0",
     "uuid": "3.4.0",
     "webpack": "4.43.0",
-    "webpack-dev-server": "3.11.0"
+    "webpack-dev-server": "3.11.0",
+    "@snyk/protect": "latest"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -81,7 +81,7 @@
     "pact-p": "jest ./src/backend/ --testMatch=**/*.pact.js",
     "release": "semantic-release --no-ci",
     "test": "jest",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepare": "yarn run snyk-protect"
   },
   "devDependencies": {
