@@ -59,10 +59,10 @@
     "style-loader": "1.2.1",
     "styled-components": "4.4.1",
     "styled-react-modal": "2.0.1",
-    "terser-webpack-plugin": "3.0.2",
+    "terser-webpack-plugin": "5.1.4",
     "url-loader": "4.1.0",
     "uuid": "3.4.0",
-    "webpack": "4.43.0",
+    "webpack": "5.1.1",
     "webpack-dev-server": "3.11.0"
   },
   "scripts": {
