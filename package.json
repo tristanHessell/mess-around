@@ -31,7 +31,7 @@
     "identity-obj-proxy": "3.0.0",
     "is-wsl": "2.2.0",
     "isomorphic-fetch": "2.2.1",
-    "jest": "26.0.1",
+    "jest": "27.0.0",
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-resolve": "26.0.1",
     "jest-watch-typeahead": "0.6.0",
@@ -62,8 +62,8 @@
     "terser-webpack-plugin": "3.0.2",
     "url-loader": "4.1.0",
     "uuid": "3.4.0",
-    "webpack": "4.43.0",
-    "webpack-dev-server": "3.11.0"
+    "webpack": "5.0.0",
+    "webpack-dev-server": "4.0.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
